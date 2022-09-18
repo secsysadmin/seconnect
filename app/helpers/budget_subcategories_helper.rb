@@ -1,0 +1,2 @@
+module BudgetSubcategoriesHelper
+end

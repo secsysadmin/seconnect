@@ -1,0 +1,25 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  budget_id: 1
+  category: MyString
+  subcategory: MyString
+  tax_category: MyString
+  gift: false
+  cost: 9.99
+  items_purchased: MyString
+  type: 
+  vendor_id: 1
+
+two:
+  user_id: 1
+  budget_id: 1
+  category: MyString
+  subcategory: MyString
+  tax_category: MyString
+  gift: false
+  cost: 9.99
+  items_purchased: MyString
+  type: 
+  vendor_id: 1
