@@ -15,5 +15,10 @@
   <%= @budget_subcategory.subcategory_amount %>
 </p>
 
+<p>
+  <strong>Status:</strong>
+  <%= @budget_subcategory.status %>
+</p>
+
 <%= link_to 'Edit', edit_budget_subcategory_path(@budget_subcategory) %> |
 <%= link_to 'Back', budget_subcategories_path %>
