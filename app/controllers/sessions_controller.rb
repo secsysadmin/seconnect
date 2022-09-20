@@ -24,4 +24,7 @@ class SessionsController < ApplicationController
         end
     end
 
+    # def request
+    #     @request = Request.find_by(user_id: params[:user_id])
+    # end
 end

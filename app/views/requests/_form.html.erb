@@ -13,12 +13,12 @@
 
   <div class="field">
     <%= form.label :user_id %>
-    <%= form.number_field :user_id %>
+    <%= form.select :user_id, User.order(:first_name).map { |user| [user.first_name, user.id] }, include_blank: true, id: "id_of_the_user_id_select_box" %>
   </div>
 
   <div class="field">
     <%= form.label :budget_id %>
-    <%= form.number_field :budget_id %>
+    <%= form.select :budget_id, BudgetSubcategory.order(:subcategory_name).map { |budget_subcategory| [budget_subcategory.subcategory_name, budget_subcategory.id] }, include_blank: true, id: "id_of_the_budget_id_select_box" %>
   </div>
 
   <div class="field">
@@ -53,12 +53,12 @@
 
   <div class="field">
     <%= form.label :type %>
-    <%= form.text_field :type %>
+    <%= form.text_field :item_type %>
   </div>
 
   <div class="field">
     <%= form.label :vendor_id %>
-    <%= form.number_field :vendor_id %>
+    <%= form.select :vendor_id, Vendor.order(:vendor_name).map { |vendor| [vendor.vendor_name, vendor.id] }, include_blank: true, id: "id_of_the_vendor_id_select_box" %>
   </div>
 
   <div class="actions">
