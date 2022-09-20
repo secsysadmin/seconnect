@@ -1,11 +1,16 @@
 class RequestsController < ApplicationController
-  before_action :set_request, only: %i[ show edit update destroy ]
+  before_action :set_request, only: %i[ show edit update destroy]
 
   # GET /requests or /requests.json
   def index
     @requests = Request.all
   end
 
+  def update_status
+    @requests = Request.find(params[:id])
+    @requests.update(status: params[:status])
+    redirect_to @requests, notice: "Staus changed to #{@requests.status}"
+  end
   # GET /requests/1 or /requests/1.json
   def show
   end

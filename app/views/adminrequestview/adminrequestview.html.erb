@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+<h1>Admin: View All Submitted Requests Here</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Pending!</th>
+    </tr>
+  </thead>
+
+ <p>
+   <strong>status:</strong>
+   <%= @request.status %>
+   <% Post::requests.each do |status| %>
+     <%= link_to_unless @request.status.eql?(status.to_s), status, update_status_post_path(@request, status: status), method: :patch %>
+   <% end %>
+ </p>
+
+ <p>
+   <strong>Content:</strong>
+   <%= simple_format(@request.content) %>
+
+
+
+
