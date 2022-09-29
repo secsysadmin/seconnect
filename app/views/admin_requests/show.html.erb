@@ -1,0 +1,61 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @request.user_id %>
+</p>
+
+<p>
+  <strong>Budget:</strong>
+  <%= @request.budget_id %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @request.category %>
+</p>
+
+<p>
+  <strong>Subcategory:</strong>
+  <%= @request.subcategory %>
+</p>
+
+<p>
+  <strong>Tax category:</strong>
+  <%= @request.tax_category %>
+</p>
+
+<p>
+  <strong>Gift:</strong>
+  <%= @request.gift %>
+</p>
+
+<p>
+  <strong>Cost:</strong>
+  <%= @request.cost %>
+</p>
+
+<p>
+  <strong>Items purchased:</strong>
+  <%= @request.items_purchased %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @request.type %>
+</p>
+
+<p>
+  <strong>Vendor:</strong>
+  <%= @request.vendor_id %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @request.status %>
+  <% Post::STATUSES.each do |status| %>
+    <%= link_to_unless @request.status.eql?(status.to_s), status, update_status_post_path(@request, status: status), method: :patch %>
+  <% end %>
+</p>
+
+<%= link_to 'Back', admin_requests_path %>
