@@ -1,0 +1,15 @@
+<<<<<<< HEAD
+class Request < ApplicationRecord 
+    validates :status, presence: true
+    #STATUSES = [:pending, :in_progress, :approved, :denied]
+=======
+class Request < ApplicationRecord
+    belongs_to :user
+    belongs_to :budget_subcategory, :optional => true
+    belongs_to :vendor
+>>>>>>> f1cbb2e5bdee8ab0068ac8cad7c23598b452c41f
+end
+
+def to_s
+    status
+end
