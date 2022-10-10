@@ -7,7 +7,11 @@ class SessionsController < ApplicationController
           if !!@user && @user.authenticate(params[:password])
                # set session and redirect on success
                session[:user_id] = @user.id
-               redirect_to(home_path(@user))
+               if @user.permission_type == 'admin'
+                    redirect_to(admin_home_path(@user))
+               else
+                    redirect_to(user_home_path(@user))
+               end
           else
                # error message on fail
                message = 'Something went wrong! Make sure your username and password are correct.'
