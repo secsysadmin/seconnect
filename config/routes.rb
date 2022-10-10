@@ -16,6 +16,6 @@ Rails.application.routes.draw do
 
   get '/home', to: 'sessions#home'
   get '/admin_requests', to: 'admin_requests#index'
-  get '/auth/google_oauth2/callback', to: 'session#omniauth'
+  get '/auth/google_oauth2/callback', to: 'sessions#omniauth'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
