@@ -35,13 +35,20 @@ class SessionsController < ApplicationController
                u.last_name = request.env['omniauth.auth'][:info][:last_name]
                u.email = request.env['omniauth.auth'][:info][:email]
                u.permission_type = 'user'
-               u.password = SecureRandom.hex(15)
+               u.committee_id = 1
           end 
           if user.valid?
+               # set session and redirect on success
                session[:user_id] = user.id
-               redirect_to(home_path(user))
+               if user.permission_type == 'admin'
+                    redirect_to(admin_home_path(user))
+               else
+                    redirect_to(user_home_path(user))
+               end
           else
-               redirect_to root 
+               # error message on fail
+               message = 'omniauth failed'
+               redirect_to(login_path, notice: message)
           end
 
      end 
