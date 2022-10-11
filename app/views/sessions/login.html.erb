@@ -1,12 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <div>
-    <h2>Log In</h2>
-    <%= form_tag '/login' do %>
-        Email: <%= text_field_tag :email %><br>
-        Password: <%= password_field_tag :password %><br>
-        <%= submit_tag "Log In" %>
-        <%= link_to 'Create Account', new_user_path %>
-        <%= link_to 'Committee Manager', committees_path %>
-    <% end %>
+    <h2>Log In with Google:</h2>
+    <%= button_to 'Google', '/auth/google_oauth2', method: :post %>
+    <%= link_to 'Committee Manager', committees_path %>
 </div>
