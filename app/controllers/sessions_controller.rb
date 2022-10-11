@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-
+require 'pry'
 class SessionsController < ApplicationController
      def create
           @user = User.find_by(email: params[:email])
@@ -29,6 +29,22 @@ class SessionsController < ApplicationController
           end
      end
 
+     def omniauth 
+          user = User.find_or_create_by(uid: request.env['omniauth.auth'][:uid]) do |u|
+               u.first_name = request.env['omniauth.auth'][:info][:first_name]
+               u.last_name = request.env['omniauth.auth'][:info][:last_name]
+               u.email = request.env['omniauth.auth'][:info][:email]
+               u.permission_type = 'user'
+               u.password = SecureRandom.hex(15)
+          end 
+          if user.valid?
+               session[:user_id] = user.id
+               redirect_to(home_path(user))
+          else
+               redirect_to root 
+          end
+
+     end 
      # def request
      #     @request = Request.find_by(user_id: params[:user_id])
      # end
