@@ -39,11 +39,6 @@
 </p>
 
 <p>
-  <strong>Password:</strong>
-  <%= @user.password %>
-</p>
-
-<p>
   <strong>Phone number:</strong>
   <%= @user.phone_number %>
 </p>
@@ -59,4 +54,4 @@
 </p>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', home_path %>
+<%= link_to 'Back', :back %>
