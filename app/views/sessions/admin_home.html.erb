@@ -1,0 +1,4 @@
+<p>Admin Home Page</p>
+<td><%= link_to 'Logout', logout_path, method: :destroy %></td> <br>
+<td><%= link_to 'Profile', user_path(session[:user_id]) %></td> <br>
+<td><%= link_to 'Committee Manager', committees_path %></td> <br>
