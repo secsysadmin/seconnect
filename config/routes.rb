@@ -23,5 +23,7 @@ Rails.application.routes.draw do
   if Rails.env.test?
     get '/login_user', to: 'sessions#createuser'
     get '/login_admin', to: 'sessions#createadmin'
+  else
+    
   end
 end
