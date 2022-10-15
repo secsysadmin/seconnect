@@ -9,7 +9,13 @@ class CommitteesController < ApplicationController
      end
 
      # GET /committees/1 or /committees/1.json
-     def show; end
+     def show
+          if @committee == nil
+               redirect_to(root_url) and return
+          else
+               @users = @committee.users
+          end
+     end
 
      # GET /committees/new
      def new
@@ -71,6 +77,7 @@ class CommitteesController < ApplicationController
 
      # Use callbacks to share common setup or constraints between actions.
      def set_committee
+          #@committee = User.find(params[:id]).committee
           @committee = Committee.find(params[:id])
      end
 

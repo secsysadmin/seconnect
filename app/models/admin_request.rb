@@ -3,7 +3,7 @@ class AdminRequest < ApplicationRecord
     belongs_to :budget_subcategory, :optional => true
     belongs_to :vendor
 
-    validates: :status, presence: true
+    validates :status, presence: true
     STATUSES = [:submitted, :in_progress, :approved, :denied]
 end
 

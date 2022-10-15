@@ -52,18 +52,13 @@
   </div>
 
   <div class="field">
-    <%= form.label :password %>
-    <%= form.text_field :password %>
-  </div>
-
-  <div class="field">
     <%= form.label :phone_number %>
     <%= form.text_field :phone_number %>
   </div>
 
   <div class="field">
-    <%= form.label :committee_id %>
-    <%= form.number_field :committee_id %>
+    <%= form.label :committee %>
+    <%= form.select :committee_id, Committee.order(:committee_name).map { |committee| [committee.committee_name, committee.id] }, include_blank: true, id: "id_of_the_committee_id_select_box" %>
   </div>
 
   <div class="field">

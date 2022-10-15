@@ -5,9 +5,8 @@
 <table>
   <thead>
     <tr>
-      <th>Committee name</th>
+      <th>Name</th>
       <th>Budget</th>
-      <th>User</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -17,7 +16,6 @@
       <tr>
         <td><%= committee.committee_name %></td>
         <td><%= committee.budget %></td>
-        <td><%= committee.user_id %></td>
         <td><%= link_to 'Show', committee %></td>
         <td><%= link_to 'Edit', edit_committee_path(committee) %></td>
         <td><%= link_to 'Destroy', committee, method: :delete, data: { confirm: 'Are you sure?' } %></td>
