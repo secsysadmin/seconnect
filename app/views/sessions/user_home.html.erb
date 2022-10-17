@@ -6,5 +6,6 @@
 <% end -%>
 <td><%= link_to 'Profile', user_path(session[:user_id]) %></td> <br>
 <td><%= link_to 'Request', requests_path(session[:user_id]) %></td> <br>
+<td><%= link_to 'Vendors', vendors_path(session[:user_id]) %></td> <br>
 <td><%= link_to 'Committee', committee_path(User.find(session[:user_id]).committee_id) %></td> <br>
 <td><%= link_to 'Budget', budget_subcategories_path(User.find(session[:user_id]).committee_id) %></td>
