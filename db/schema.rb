@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_11_215027) do
+ActiveRecord::Schema.define(version: 2022_10_17_053320) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,17 @@ ActiveRecord::Schema.define(version: 2022_10_11_215027) do
     t.string "committee_name"
     t.decimal "budget"
     t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "creditcards", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "committee"
+    t.date "start_time"
+    t.date "end_time"
+    t.string "reason"
+    t.string "status"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

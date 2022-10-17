@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @creditcard.user_id %>
+</p>
+
+<p>
+  <strong>Committee:</strong>
+  <%= @creditcard.committee %>
+</p>
+
+<p>
+  <strong>Start time:</strong>
+  <%= @creditcard.start_time %>
+</p>
+
+<p>
+  <strong>End time:</strong>
+  <%= @creditcard.end_time %>
+</p>
+
+<p>
+  <strong>Reason:</strong>
+  <%= @creditcard.reason %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @creditcard.status %>
+</p>
+
+<%= link_to 'Edit', edit_creditcard_path(@creditcard) %> |
+<%= link_to 'Back', creditcards_path %>

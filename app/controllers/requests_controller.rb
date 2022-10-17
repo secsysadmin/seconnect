@@ -77,7 +77,7 @@ class RequestsController < ApplicationController
      # Only allow a list of trusted parameters through.
      def request_params
           params.require(:request).permit(:user_id, :budget_id, :category, :subcategory, :tax_category,
-                                          :gift, :cost, :items_purchased, :type, :vendor_id, :status
+                                          :gift, :cost, :items_purchased, :type, :vendor_id, :vendor_name, :status
           )
      end
 end
