@@ -23,3 +23,23 @@ RSpec.describe('Create user', type: :feature) do
           expect(page).to(have_content('Log In'))
      end
 end
+
+RSpec.describe('Create Vendor', type: :feature) do
+     it 'new vendor' do
+          visit vendors_path
+          click_on 'New Vendor'
+          fill_in 'Vendor name', with: 'julia'
+          fill_in 'Street address', with: '123 street'
+          fill_in 'City', with: 'College Station'
+          fill_in 'State', with: 'Texas'
+          fill_in 'Zip code', with: '77845'
+          fill_in 'Email', with: 'juliateleki@tamu.edu'
+          fill_in 'Phone number', with: '1234567890'
+          click_on 'Create Vendor'
+          expect(page).to(have_content('123 street'))
+     end
+end
+
+#Create Budget Subcategory
+
+#Reimbursement Request 
