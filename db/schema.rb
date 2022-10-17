@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 2022_10_17_120524) do
 
   create_table "invoices", force: :cascade do |t|
     t.string "vendor_title"
-    t.string "street_taxID"
+    t.string "vendor_taxid"
     t.string "vendor_address"
     t.string "vendor_city"
     t.string "vendor_state"
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 2022_10_17_120524) do
   end
 
   create_table "receipts", force: :cascade do |t|
+    t.string "user_id"
     t.string "vendor_id"
     t.string "details"
     t.datetime "created_at", precision: 6, null: false
