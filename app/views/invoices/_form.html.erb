@@ -1,0 +1,39 @@
+<%= form_for(@invoice, :url => invoices_path, :method => 'post') do |form| %>
+  <div class="field">
+    <%= form.label :vendor_title %>
+    <%= form.text_field :vendor_title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :vendor_ids %>
+    <%= form.number_field :vendor_ids %>
+  </div>
+
+  <div class="field">
+    <%= form.label :vendor_address %>
+    <%= form.text_field :vendor_address %>
+  </div>
+
+  <div class="field">
+    <%= form.label :vendor_city %>
+    <%= form.text_field :vendor_city%>
+  </div>
+
+  <div class="field">
+    <%= form.label :vendor_state %>
+    <%= form.text_field :vendor_state%>
+  </div>
+
+  <div class="field">
+    <%= form.label :vendor_zip %>
+    <%= form.text_field :vendor_zip%>
+  </div>
+
+  <div class="field">
+    <%= form.label :vendor_paymentmethod %>
+    <%= form.text_field :vendor_paymentmethod%>
+  </div>
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
