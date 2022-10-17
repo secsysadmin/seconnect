@@ -55,7 +55,7 @@
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <% if @current_user.permission_type == 'admin' %>
-<%= link_to 'Back', users_path%>
+<%= link_to 'Back', admin_home_path(@user)%>
 <% else %>
 <%= link_to 'Home', user_home_path(@user)%>
 <% end %>
