@@ -1,0 +1,34 @@
+<%= form_with(model: receipt) do |form| %>
+  <% if @receipt.errors.any? %>
+    <div id="errorexplanation">
+      <h2><%= pluralize(receipt.errors.count, "error") %> prohibited this receipt from being saved:</h2>
+
+      <ul>
+        <% receipt.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= form.select :user_id, User.order(:first_name).map { |user| [user.first_name, user.id] }, include_blank: true, id: "id_of_the_user_id_select_box" %>
+  </div>
+
+
+  <div class="field">
+    <%= form.label :vendor_id %>
+    <%= form.select :vendor_id, Vendor.order(:vendor_name).map { |vendor| [vendor.vendor_name, vendor.id] }, include_blank: true, id: "id_of_the_vendor_id_select_box" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :receipt_details %>
+    <%= form.text_field :details %>
+  </div>
+
+  
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
