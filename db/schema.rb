@@ -48,22 +48,6 @@ ActiveRecord::Schema.define(version: 2022_10_17_120524) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "requests", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "budget_id"
-    t.string "category"
-    t.string "subcategory"
-    t.string "tax_category"
-    t.boolean "gift"
-    t.decimal "cost"
-    t.string "items_purchased"
-    t.string "type"
-    t.integer "vendor_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.string "status"
-  end
-
   create_table "invoices", force: :cascade do |t|
     t.string "vendor_title"
     t.string "vendor_taxid"
@@ -82,6 +66,22 @@ ActiveRecord::Schema.define(version: 2022_10_17_120524) do
     t.string "details"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "requests", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "budget_id"
+    t.string "category"
+    t.string "subcategory"
+    t.string "tax_category"
+    t.boolean "gift"
+    t.decimal "cost"
+    t.string "items_purchased"
+    t.string "type"
+    t.integer "vendor_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "status"
   end
 
   create_table "users", force: :cascade do |t|
