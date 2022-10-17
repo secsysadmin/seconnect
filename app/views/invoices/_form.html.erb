@@ -1,12 +1,12 @@
-<%= form_for(@invoice, :url => invoices_path, :method => 'post') do |form| %>
+<%= form_with(model: invoice) do |form| %>
   <div class="field">
     <%= form.label :vendor_title %>
     <%= form.text_field :vendor_title %>
   </div>
 
   <div class="field">
-    <%= form.label :vendor_ids %>
-    <%= form.number_field :vendor_ids %>
+    <%= form.label :vendor_taxid %>
+    <%= form.number_field :vendor_taxid %>
   </div>
 
   <div class="field">

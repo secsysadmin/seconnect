@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :requests
   resources :admin_requests
   resources :invoices
+  resources :receipts
 
   root 'sessions#login'
 
@@ -22,4 +23,11 @@ Rails.application.routes.draw do
   
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  if Rails.env.test?
+    get '/login_user', to: 'sessions#createuser'
+    get '/login_admin', to: 'sessions#createadmin'
+  else
+    
+  end
 end

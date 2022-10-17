@@ -1,5 +1,9 @@
 <p>User Home Page</p>
+<% if Rails.env.test? -%>
+<td><%= link_to 'Logout', login_path %></td> <br>
+<% else -%>
 <td><%= link_to 'Logout', logout_path, method: :destroy %></td> <br>
+<% end -%>
 <td><%= link_to 'Profile', user_path(session[:user_id]) %></td> <br>
 <td><%= link_to 'Request', requests_path(session[:user_id]) %></td> <br>
 <td><%= link_to 'Vendors', vendors_path(session[:user_id]) %></td> <br>
