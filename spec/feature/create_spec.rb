@@ -41,5 +41,21 @@ RSpec.describe('Create Vendor', type: :feature) do
 end
 
 #Create Budget Subcategory
-
+RSpec.describe('Create Budget Subcategory', type: :feature) do
+     it 'new budget subcategory' do
+          visit budget_subcategories_path
+          click_on 'New Budget Subcategory'
+          fill_in 'Committee', with: '1'
+          fill_in 'Subcategory name', with: 'meeting refreshments'
+          fill_in 'Subcategory amount', with: '35'
+          fill_in 'Status', with: 'Pending'
+          click_on 'Create Budget subcategory'
+          expect(page).to(have_content('meeting refreshments'))
+     end
+end
 #Reimbursement Request 
+# RSpec.describe('Create Vendor', type: :feature) do
+#      it 'new vendor' do
+#          fill_in '', with: ''
+#      end
+# end
