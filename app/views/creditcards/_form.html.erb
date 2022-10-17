@@ -13,12 +13,12 @@
 
   <div class="field">
     <%= form.label :user_id %>
-    <%= form.number_field :user_id %>
+    <%= form.select :user_id, User.order(:first_name).map { |user| [user.first_name, user.id] }, include_blank: false, id: "id_of_the_user_id_select_box" %>
   </div>
 
   <div class="field">
     <%= form.label :committee %>
-    <%= form.text_field :committee %>
+    <%= form.select :committee, Committee.order(:committee_name).map { |committee| [committee.committee_name] }, include_blank: false, id: "id_of_the_user_id_select_box" %>
   </div>
 
   <div class="field">

@@ -65,6 +65,6 @@ class CreditcardsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def creditcard_params
-      params.require(:creditcard).permit(:user_id, :committee, :start_time, :end_time, :reason, :status)
+      params.require(:creditcard).permit(:user_id, :committee, :start_time, :end_time, :reason, :status, :first_name, :user_id, :committee_name)
     end
 end

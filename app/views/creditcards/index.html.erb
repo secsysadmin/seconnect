@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Creditcards</h1>
+<h1>Credit Cards</h1>
 
 <table>
   <thead>
@@ -18,7 +18,7 @@
   <tbody>
     <% @creditcards.each do |creditcard| %>
       <tr>
-        <td><%= creditcard.user_id %></td>
+        <td><%= User.where(id: creditcard.user_id).last.first_name %></td>
         <td><%= creditcard.committee %></td>
         <td><%= creditcard.start_time %></td>
         <td><%= creditcard.end_time %></td>
@@ -34,4 +34,5 @@
 
 <br>
 
-<%= link_to 'New Creditcard', new_creditcard_path %>
+<%= link_to 'New Credit card', new_creditcard_path %>
+<%= link_to 'Back', :back%>
