@@ -30,12 +30,16 @@ jobs:
         run: |
           gem install bundler
           bundler install
-      - name: Create database
+      - name: Create Database
         run: |
-          rails RAILS_ENV=test db:drop db:create db:migrate db:seed
+          bundler exec rails db:create RAILS_ENV=test
+          bundler exec rails db:migrate RAILS_ENV=test
+      - name : Rails Seed
+        run: |
+          bundler exec rails db:seed RAILS_ENV=test
       - name: Rake Seed
         run : |
-          rake RAILS_ENV=test db:seed
+          bundler exec rake db:seed RAILS_ENV=test
       - uses: borales/actions-yarn@v3.0.0
         with:
           cmd: install
