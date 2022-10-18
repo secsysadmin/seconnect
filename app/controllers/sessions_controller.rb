@@ -71,7 +71,8 @@ class SessionsController < ApplicationController
                u.last_name = request.env['omniauth.auth'][:info][:last_name]
                u.email = request.env['omniauth.auth'][:info][:email]
                u.permission_type = 'user'
-               u.committee_id = 1
+               committee = Committee.find_by(committee_name: "default")
+               u.committee_id = committee.id
           end 
           if user.valid?
                # set session and redirect on success
