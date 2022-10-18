@@ -63,7 +63,7 @@
 
   <div class="field">
     <%= form.label :permission_type %>
-    <%= form.text_field :permission_type %>
+    <%= form.select :permission_type, [['Admin','admin'],['User','user']] %>
   </div>
 
   <div class="actions">
