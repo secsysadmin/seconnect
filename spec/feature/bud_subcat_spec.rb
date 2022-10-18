@@ -2,7 +2,7 @@ require 'rails_helper'
 
 
 #Create Budget Subcategory
-RSpec.describe('Create Budget Subcategory', type: :feature) do
+RSpec.describe('Budget Subcat Spec', type: :feature) do
     it 'new budget subcategory' do
          visit budget_subcategories_path
          click_on 'New Budget Subcategory'
