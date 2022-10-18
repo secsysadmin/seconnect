@@ -36,6 +36,7 @@ gem 'omniauth'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-rails_csrf_protection' , '~> 1.0'
 gem 'pry'
+gem 'seed_dump'
 
 group :development, :test do
      # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -71,4 +72,3 @@ end
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 gem 'brakeman'
-gem 'rubocop'

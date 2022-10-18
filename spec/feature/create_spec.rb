@@ -2,24 +2,26 @@
 
 require 'rails_helper'
 
-RSpec.describe('Create user', type: :feature) do
-     it 'new user' do
-          visit login_path
-          click_on 'Create Account'
-          fill_in 'First name', with: 'shiv'
-          fill_in 'Last name', with: 'patel'
-          fill_in 'Street address', with: 'lane drive avenue'
-          fill_in 'City', with: 'houston'
-          fill_in 'State', with: 'texas'
-          fill_in 'Zip code', with: '12345'
-          fill_in 'Uin', with: '1234567890'
-          fill_in 'Email', with: 'shivhoustontx@gmail.com'
-          fill_in 'Password', with: 'TempPassword'
+RSpec.describe('Create Vendor', type: :feature) do
+     it 'new vendor' do
+          visit vendors_path
+          click_on 'New Vendor'
+          fill_in 'Vendor name', with: 'julia'
+          fill_in 'Street address', with: '123 street'
+          fill_in 'City', with: 'College Station'
+          fill_in 'State', with: 'Texas'
+          fill_in 'Zip code', with: '77845'
+          fill_in 'Email', with: 'juliateleki@tamu.edu'
           fill_in 'Phone number', with: '1234567890'
-          fill_in 'Committee', with: '3'
-          fill_in 'Permission type', with: 'admin'
-
-          click_on 'Create User'
-          expect(page).to(have_content('Log In'))
+          click_on 'Create Vendor'
+          expect(page).to(have_content('123 street'))
      end
 end
+
+
+#Reimbursement Request 
+# RSpec.describe('Create Vendor', type: :feature) do
+#      it 'new vendor' do
+#          fill_in '', with: ''
+#      end
+# end

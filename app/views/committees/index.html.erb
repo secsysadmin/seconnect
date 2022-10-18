@@ -26,4 +26,9 @@
 
 <br>
 
-<%= link_to 'New Committee', new_committee_path %>
+<%= link_to 'New Committee', new_committee_path %> |
+<% if @user.permission_type == 'admin' %>
+<%= link_to 'Home', admin_home_path(@user)%>
+<% else %>
+<%= link_to 'Home', user_home_path(@user)%>
+<% end %>

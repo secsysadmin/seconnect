@@ -8,5 +8,9 @@ class User < ApplicationRecord
      validates :permission_type, presence:true
      # https://stackoverflow.com/questions/13203159/rails-has-one-and-belongs-to-with-presence-validation-on-both-foreign-keys
      has_many :request
-     belongs_to :committee
+     if Rails.env.test?
+	    belongs_to :committee, optional: true
+	 else
+	    belongs_to :committee
+	 end
 end

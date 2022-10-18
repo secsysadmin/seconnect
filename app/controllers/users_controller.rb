@@ -1,11 +1,34 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
-     before_action :set_user, only: %i[show edit update destroy]
+
+     def index # ADMIN ONLY
+          if session[:user_id]
+               @user = User.find(session[:user_id])
+               # check for proper permissions
+               if (@user.permission_type == 'admin')
+                    @users = User.all
+               else
+                    redirect_to(root_url) and return
+               end
+          else
+               redirect_to(root_url) and return
+          end
+     end
 
      # GET /users/1 or /users/1.json
-     def show
-          @user = User.find(params[:id])
+     def show # ADMIN AND USER
+          if session[:user_id]
+               @current_user = User.find(session[:user_id]) # keep track of session user
+               # check for proper permissions
+               if (@current_user.permission_type == 'admin' || @current_user.permission_type == 'user')
+                    @user = User.find(params[:id])
+               else
+                    redirect_to(root_url) and return
+               end
+          else
+               redirect_to(root_url) and return
+          end
      end
 
      # GET /users/new
@@ -15,7 +38,17 @@ class UsersController < ApplicationController
 
      # GET /users/1/edit
      def edit
-          @user = User.find(params[:id])
+          if session[:user_id]
+               @current_user = User.find(session[:user_id]) # keep track of session user
+               # check for proper permissions
+               if (@current_user.permission_type == 'admin' || @current_user.permission_type == 'user')
+                    @user = User.find(params[:id])
+               else
+                    redirect_to(root_url) and return
+               end
+          else
+               redirect_to(root_url) and return
+          end
      end
 
      # POST /users or /users.json
@@ -31,40 +64,44 @@ class UsersController < ApplicationController
 
      # PATCH/PUT /users/1 or /users/1.json
      def update
+          @user = User.find(params[:id])
+          if session[:user_id]
+               @current_user = User.find(session[:user_id]) # keep track of session user
+          end
+
           respond_to do |format|
                if @user.update(user_params)
                     format.html do
-                         redirect_to(user_url(@user), notice: 'User was successfully updated.')
+                         
+                         if (@current_user.permission_type == 'admin')
+                              redirect_to(users_path, notice: 'User was successfully updated.')
+                         else
+                              redirect_to(user_url(@user), notice: 'User was successfully updated.')
+                         end
                     end
-                    format.json { render(:show, status: :ok, location: @user) }
+                    # format.json { render(:show, status: :ok, location: @user) }
                else
                     format.html { render(:edit, status: :unprocessable_entity) }
-                    format.json { render(json: @user.errors, status: :unprocessable_entity) }
+                    # format.json { render(json: @user.errors, status: :unprocessable_entity) }
                end
           end
      end
 
      # DELETE /users/1 or /users/1.json
-     # def destroy
-     #   @user.destroy
+     def destroy
+          @user = User.find(params[:id])
+          @user.destroy
 
-     #   respond_to do |format|
-     #     format.html { redirect_to users_url, notice: "User was successfully destroyed." }
-     #     format.json { head :no_content }
-     #   end
-     # end
+          respond_to do |format|
+               format.html { redirect_to users_url, notice: "User was successfully destroyed." }
+               # format.json { head :no_content }
+          end
+     end
 
      private
 
-     # Use callbacks to share common setup or constraints between actions.
-     def set_user
-          @user = User.find(params[:id])
-     end
-
      # Only allow a list of trusted parameters through.
      def user_params
-          # eventually committee_id and permission_type MUST be removed from this permit list to prevent users from being able to set
-          # these attributes, for now they will remain for testing purposes.
           params.require(:user).permit(:first_name, :last_name, :street_address, :city, :state,
                                        :zip_code, :uin, :email, :password, :phone_number, :committee_id, :permission_type
           )

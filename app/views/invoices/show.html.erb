@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+
+<p>
+  <strong>User:</strong>
+  <%= @invoice.vendor_title %>
+</p>
+
+<p>
+  <strong>Vendor:</strong>
+  <%= @invoice.vendor_taxid %>
+</p>
+
+<p>
+  <strong>Details:</strong>
+  <%= @invoice.vendor_address %>
+</p>
+
+<p>
+  <strong>Details:</strong>
+  <%= @invoice.vendor_city %>
+</p>
+
+<p>
+  <strong>Details:</strong>
+  <%= @invoice.vendor_state %>
+</p>
+
+<p>
+  <strong>Details:</strong>
+  <%= @invoice.vendor_zip %>
+</p>
+
+<p>
+  <strong>Details:</strong>
+  <%= @invoice.vendor_paymentmethod %>
+</p>
+
+<%= link_to 'Edit', edit_invoice_path(@invoice) %> |
+<%= link_to 'Back', :back %>
