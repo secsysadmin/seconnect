@@ -37,6 +37,17 @@ ActiveRecord::Schema.define(version: 2022_10_17_120524) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "creditcards", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "committee"
+    t.date "start_time"
+    t.date "end_time"
+    t.string "reason"
+    t.string "status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "invoices", force: :cascade do |t|
     t.string "vendor_title"
     t.string "vendor_taxid"
