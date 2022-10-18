@@ -32,9 +32,9 @@ jobs:
           bundler install
       - name: Create Database
         run: |
-          bundler exec rails db:purge
-          bundler exec rails db:drop:all
-          bundler exec rails db:create:all RAILS_ENV=test
+          bundler exec rails db:purge RAILS_ENV=test
+          bundler exec rails db:drop RAILS_ENV=test
+          bundler exec rails db:create RAILS_ENV=test
           bundler exec rails db:migrate RAILS_ENV=test
       - name : Rails Seed
         run: |
