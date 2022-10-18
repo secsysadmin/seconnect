@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :creditcards
   resources :committees
   resources :vendors
   resources :budget_subcategories
