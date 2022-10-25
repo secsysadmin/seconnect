@@ -92,6 +92,8 @@ class SessionsController < ApplicationController
                u.permission_type = 'user'
                committee = Committee.find_by(committee_name: "default")
                u.committee_id = committee.id
+               # budget_subcategory = BudgetSubcategory.find_by(subcategory_name: "default")
+               # u.budget_subcategory.committee_id = committee.id
           end 
           if user.valid?
                # set session and redirect on success
