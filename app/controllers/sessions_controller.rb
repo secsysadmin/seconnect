@@ -108,9 +108,11 @@ class SessionsController < ApplicationController
                message = 'omniauth failed'
                redirect_to(login_path, notice: message)
           end
-
      end 
-     # def request
-     #     @request = Request.find_by(user_id: params[:user_id])
-     # end
+     
+     def financial_forms
+          respond_to do |format|
+               format.html { render :financial_forms }
+          end
+     end
 end

@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-
+require 'pry'
 class UsersController < ApplicationController
 
      def index # ADMIN ONLY

@@ -1,3 +1,4 @@
+require 'pry'
 Rails.application.routes.draw do
   resources :creditcards
   resources :committees
@@ -21,8 +22,9 @@ Rails.application.routes.draw do
   get '/admin_home', to: 'sessions#admin_home'
   get '/user_home', to: 'sessions#user_home'
   get '/auth/google_oauth2/callback', to: 'sessions#omniauth'
-  
 
+  get '/financial_forms', to: 'sessions#financial_forms'
+  
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   if Rails.env.test?
