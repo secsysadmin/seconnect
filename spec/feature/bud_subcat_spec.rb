@@ -4,7 +4,8 @@ require 'rails_helper'
 #Create Budget Subcategory
 RSpec.describe('Budget Subcat Spec', type: :feature) do
     it 'new budget subcategory' do
-         visit budget_subcategories_path
+         visit login_admin_path
+         click_on 'Budget Management'
          click_on 'New Budget Subcategory'
          fill_in 'Committee', with: '1'
          fill_in 'Subcategory name', with: 'meeting snacks'
@@ -16,7 +17,8 @@ RSpec.describe('Budget Subcat Spec', type: :feature) do
 end
 RSpec.describe('Create Budget Subcategory 2', type: :feature) do
     it 'new budget subcategory' do
-         visit budget_subcategories_path
+         visit login_admin_path
+         click_on 'Budget Management'
          click_on 'New Budget Subcategory'
          fill_in 'Committee', with: '2'
          fill_in 'Subcategory name', with: 'meeting refreshments'
@@ -28,7 +30,8 @@ RSpec.describe('Create Budget Subcategory 2', type: :feature) do
 end
 RSpec.describe('Create Budget Subcategory 3', type: :feature) do
     it 'new budget subcategory' do
-         visit budget_subcategories_path
+         visit login_admin_path
+         click_on 'Budget Management'
          click_on 'New Budget Subcategory'
          fill_in 'Committee', with: '3'
          fill_in 'Subcategory name', with: 'meeting utensils'
@@ -40,7 +43,8 @@ RSpec.describe('Create Budget Subcategory 3', type: :feature) do
 end
 RSpec.describe('Create Budget Subcategory 4', type: :feature) do
     it 'new budget subcategory' do
-         visit budget_subcategories_path
+         visit login_admin_path
+         click_on 'Budget Management'
          click_on 'New Budget Subcategory'
          fill_in 'Committee', with: '4'
          fill_in 'Subcategory name', with: 'meeting plates'
