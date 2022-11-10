@@ -18,8 +18,8 @@
 
   <div class="field">
     <%= form.label :budget_id %>
-    <%= form.select :budget_id, BudgetSubcategory.order(:subcategory_name).map { |budget_subcategory| [budget_subcategory.subcategory_name, budget_subcategory.id] }, include_blank: true, id: "id_of_the_budget_id_select_box" %>
-  </div>
+    <%= form.select :budget_id, Committee.order(:committee_name).map { |committee| [committee.committee_name] }, include_blank: true, id: "id_of_the_budget_id_select_box" %>
+    </div>
 
   <div class="field">
     <%= form.label :category %>
@@ -28,12 +28,12 @@
 
   <div class="field">
     <%= form.label :subcategory %>
-    <%= form.text_field :subcategory %>
+    <%= form.select :budget_id, BudgetSubcategory.order(:subcategory_name).map { |budget_subcategory| [budget_subcategory.subcategory_name, budget_subcategory.id] }, include_blank: true, id: "id_of_the_budget_id_select_box" %>
   </div>
 
   <div class="field">
     <%= form.label :tax_category %>
-    <%= form.text_field :tax_category %>
+    <%= form.select :tax_category, ['Travel','Food','Office Supplies','Utilities','Membership','Services & Other Income', 'Clothing', 'Rent','Other Expenses', 'Items for Resale'] %>
   </div>
 
   <div class="field">
@@ -52,8 +52,8 @@
   </div>
 
   <div class="field">
-    <%= form.label :type %>
-    <%= form.text_field :item_type %>
+    <%= form.label :item %>
+    <%= form.text_field :item %>
   </div>
 
   <div class="field">
@@ -64,6 +64,16 @@
   <div class="field">
     <%= form.label :status %>
     <%= form.text_field :status %>
+  </div>
+
+  <div class="field">
+    <%= form.label :file %>
+    <%= form.file_field :file %>
+  </div>
+
+  <div class="field">
+    <%= form.label :notes %>
+    <%= form.text_field :notes%>
   </div>
 
   <div class="actions">

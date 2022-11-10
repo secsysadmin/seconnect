@@ -41,8 +41,8 @@
 </p>
 
 <p>
-  <strong>Type:</strong>
-  <%= @request.type %>
+  <strong>Item:</strong>
+  <%= @request.item %>
 </p>
 
 <p>
@@ -50,5 +50,8 @@
   <%= @request.vendor_id %>
 </p>
 
+<%= link_to 'View file', @request.file %>
+<%= link_to 'Download file', @request.file, download: '' %>
+
 <%= link_to 'Edit', edit_request_path(@request) %> |
-<%= link_to 'Back', :back %>
+<%= link_to 'Back', requests_path(session[:user_id]) %>
