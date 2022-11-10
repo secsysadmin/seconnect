@@ -6,6 +6,14 @@ class CreditcardsController < ApplicationController
     @creditcards = Creditcard.all
   end
 
+  def approved
+    @creditcards = Creditcard.all
+  end
+
+  def inprogress
+    @creditcards = Creditcard.all
+  end
+
   # GET /creditcards/1 or /creditcards/1.json
   def show
   end

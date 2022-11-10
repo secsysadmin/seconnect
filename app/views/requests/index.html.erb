@@ -1,6 +1,10 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Requests</h1>
+<% if User.find(session[:user_id]).permission_type == 'admin' %>
+  <%= link_to 'Approved Reimbursement Requests', request_approved_path %>
+  <%= link_to 'In Progress Reimbursement Requests', request_inprogress_path %>
+<% end %>
 
 <table>
   <thead>
@@ -21,6 +25,9 @@
   </thead>
 
   <tbody>
+  <% if User.find(session[:user_id]).permission_type == 'user' %>
+    <% @requests = @requests.where('user_id = ?', User.find(session[:user_id]).id) %>
+  <% end %>
     <% @requests.each do |request|%>
       <tr>
         <td><%= User.where(id: request.user_id).last.first_name %></td>

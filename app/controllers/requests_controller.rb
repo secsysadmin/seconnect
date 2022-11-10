@@ -8,6 +8,14 @@ class RequestsController < ApplicationController
           @requests = Request.all
      end
 
+     def approved
+          @requests = Request.all
+     end
+     
+     def inprogress
+          @requests = Request.all
+     end
+
      # GET /requests/1 or /requests/1.json
      def show; end
 

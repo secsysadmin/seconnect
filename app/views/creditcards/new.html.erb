@@ -2,4 +2,4 @@
 
 <%= render 'form', creditcard: @creditcard %>
 
-<%= link_to 'Back', creditcards_path %>
+<%= link_to 'Back', creditcards_path(session[:user_id]) %>

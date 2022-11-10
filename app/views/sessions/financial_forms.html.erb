@@ -10,6 +10,7 @@
 <td><%= link_to 'Reimbursement Request', requests_path(session[:user_id]) %></td> <br>
 <td><%= link_to 'Vendors', vendors_path(session[:user_id]) %></td> <br>
 <td><%= link_to 'Credit Card Request', creditcards_path(session[:user_id]) %></td> <br>
+<td><%= link_to 'Approval To Charge', atcs_path(session[:user_id]) %></td> <br>
 <td><%= link_to 'New Revenue' %></td> <br>
 
 <% if User.find(session[:user_id]).permission_type == 'admin' %>

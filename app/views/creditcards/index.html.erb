@@ -1,6 +1,10 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Creditcards</h1>
+<% if User.find(session[:user_id]).permission_type == 'admin' %>
+  <%= link_to 'Approved Credit Card Requests', creditcard_approved_path %>
+  <%= link_to 'In Progress Credit Card Requests', creditcard_inprogress_path %>
+<% end %>
 
 <table>
   <thead>
@@ -18,6 +22,10 @@
   </thead>
 
   <tbody>
+  <% if User.find(session[:user_id]).permission_type == 'user' %>
+    <%= link_to 'Approved Credit Card Requests', creditcard_approved_path %>
+    <% @creditcards = @creditcards.where('user_id = ?', User.find(session[:user_id]).id) %>
+  <% end %>
     <% @creditcards.each do |creditcard| %>
       <tr>
         <td><%= User.where(id: creditcard.user_id).last.first_name %></td>
