@@ -20,9 +20,18 @@ class SessionsController < ApplicationController
      end
 
      def createuser
-          @user = User.find_by(uid: 100003231053752770743)
+          @committee = Committee.find_or_create_by(committee_name: "default") do |c|
+               c.budget = 0.00
+          end
+          @user = User.find_or_create_by(uid: "100003231053752770743") do |u|
+               u.first_name = "user"
+               u.last_name = "brs"
+               u.email = "secbrsuser@gmail.com"
+               u.permission_type = 'user'
+               u.committee_id = @committee.id
+          end
           ## authenticate user credentials
-          if !!@user
+          if @user.valid?
                # set session and redirect on success
                session[:user_id] = @user.id
                if @user.permission_type == 'admin'
@@ -38,9 +47,19 @@ class SessionsController < ApplicationController
      end
 
      def createadmin
-          @user = User.find_by(uid: 109290679077990497398)
+          @committee = Committee.find_or_create_by(committee_name: "default") do |c|
+               c.budget = 0.00
+          end
+          @user = User.find_or_create_by(uid: "109290679077990497398") do |u|
+               u.first_name = "admin"
+               u.last_name = "brs"
+               u.email = "secbrs23@gmail.com"
+               u.permission_type = 'admin'
+               u.committee_id = @committee.id
+          end
+
           ## authenticate user credentials
-          if !!@user
+          if @user.valid?
                # set session and redirect on success
                session[:user_id] = @user.id
                if @user.permission_type == 'admin'
@@ -73,6 +92,8 @@ class SessionsController < ApplicationController
                u.permission_type = 'user'
                committee = Committee.find_by(committee_name: "default")
                u.committee_id = committee.id
+               # budget_subcategory = BudgetSubcategory.find_by(subcategory_name: "default")
+               # u.budget_subcategory.committee_id = committee.id
           end 
           if user.valid?
                # set session and redirect on success
@@ -87,9 +108,11 @@ class SessionsController < ApplicationController
                message = 'omniauth failed'
                redirect_to(login_path, notice: message)
           end
-
      end 
-     # def request
-     #     @request = Request.find_by(user_id: params[:user_id])
-     # end
+     
+     def financial_forms
+          respond_to do |format|
+               format.html { render :financial_forms }
+          end
+     end
 end
