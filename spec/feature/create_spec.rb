@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe('Create Vendor', type: :feature) do
      it 'new vendor' do
           visit login_admin_path
-          click_on 'Vendor Management'
+          click_on 'Vendors'
           click_on 'New Vendor'
           fill_in 'Vendor name', with: 'julia'
           fill_in 'Street address', with: '123 street'

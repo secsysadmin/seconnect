@@ -23,6 +23,6 @@ RSpec.describe('User create committee', type: :feature) do
     it 'new committee' do
        visit login_user_path
        visit committees_path
-       expect(page).to(have_content('Log In with Google:'))
+       expect(page).to(have_button('Login with Google Account'))
     end
 end
