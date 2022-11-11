@@ -1,6 +1,5 @@
 class CreateCreditcards < ActiveRecord::Migration[6.1]
   def change
-    drop_table :creditcards
     create_table :creditcards do |t|
       t.integer :user_id
       t.string :vendor
