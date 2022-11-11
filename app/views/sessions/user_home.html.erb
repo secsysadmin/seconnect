@@ -1,21 +1,16 @@
-<p>User Home Page</p>
-<% if Rails.env.test? -%>
-<td><%= link_to 'Logout', login_path %></td> <br>
-<% else -%>
-<td><%= link_to 'Logout', logout_path, method: :destroy %></td> <br>
-<% end -%>
+<div>
+	<div class="p-5 text-center bg-light">
+    <h1 class="mb-3">Student Engineers' Council</h1>
+    <h4 class="mb-3">Budget Request and Reimbursement</h4>
+  </div>
+    <div class="text-center">
+   	<h1>
+   		
+   	</h1>
+    <%= image_tag "LogoFull_Maroon.webp", height: 300 %>
+    <h1>
 
-<td><%= link_to 'Profile', user_path(session[:user_id]) %></td> <br>
-
-
-<td><%= link_to 'Financial Forms', financial_forms_path %></td> <br>
-<td><%= link_to 'Pending Documents' %></td> <br>
-<td><%= link_to 'Budget', committee_path(User.find(session[:user_id]).committee_id) %></td> <br>
-
-<% if false %>
-<td><%= link_to 'Reimbursement Request', requests_path(session[:user_id]) %></td> <br>
-<td><%= link_to 'Credit Card Request', creditcards_path(session[:user_id]) %></td> <br>
-<td><%= link_to 'Vendors', vendors_path(session[:user_id]) %></td> <br>
-<td><%= link_to 'Committee', committee_path(User.find(session[:user_id]).committee_id) %></td> <br>
-<td><%= link_to 'Budget', budget_subcategories_path(User.find(session[:user_id]).committee_id) %></td> <br>
-<% end %>
+    <h1 class="mb-3">Welcome!</h1>
+    <h3>This website serves as a budget request and reimbursement system for the Student Engineers' Council SEC.</h3>
+   	
+</div>
