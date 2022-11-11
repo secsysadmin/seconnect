@@ -1,0 +1,48 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @budget.name %>
+</p>
+<p>
+  <strong>Fiscal year:</strong>
+  <%= @budget.fiscal_year %>
+</p>
+
+<p>
+  <strong>Budgeted:</strong>
+  <%= @budget.budgeted %>
+</p>
+
+<p>
+  <strong>Spent:</strong>
+  <%= @budget.spent %>
+</p>
+
+<p>
+  <strong>Pending:</strong>
+  <%= @budget.pending %>
+</p>
+
+<p>
+  <strong>Balance:</strong>
+  <%= @budget.balance %>
+</p>
+
+<p>
+  <strong>Active:</strong>
+  <%= @budget.active %>
+</p>
+
+<p>
+  <strong>Locked:</strong>
+  <%= @budget.locked %>
+</p>
+
+<p>
+  <strong>Default:</strong>
+  <%= @budget.default %>
+</p>
+
+<%= link_to 'Edit', edit_budget_path(@budget) %> |
+<%= link_to 'Back', budgets_path %>

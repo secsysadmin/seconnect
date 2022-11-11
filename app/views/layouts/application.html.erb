@@ -52,15 +52,14 @@
           </li>
 
           <% if User.find(session[:user_id]).permission_type == 'admin' %>
-            <li class="nav-item <%= budget_subcategories_path(User.find(session[:user_id]).committee_id) %>">
-              <%= link_to 'Budget Management', budget_subcategories_path(User.find(session[:user_id]).committee_id), class: 'nav-link' %>
+            <li class="nav-item <%= budgets_path %>">
+              <%= link_to 'Budget Management', budgets_path, class: 'nav-link' %>
             </li>
           <% else %>
             <li class="nav-item <%= committee_path(User.find(session[:user_id]).committee_id) %>">
               <%= link_to 'Budget', committee_path(User.find(session[:user_id]).committee_id), class: 'nav-link' %>
             </li>
           <% end %>
-
 
           <% if User.find(session[:user_id]).permission_type == 'admin' %>
             <li class="nav-item <%= users_path %>">

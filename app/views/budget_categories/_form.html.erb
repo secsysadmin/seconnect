@@ -1,10 +1,10 @@
-<%= form_with(model: budget_subcategory) do |form| %>
-  <% if budget_subcategory.errors.any? %>
+<%= form_with(model: budget_category) do |form| %>
+  <% if budget_category.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(budget_subcategory.errors.count, "error") %> prohibited this budget_subcategory from being saved:</h2>
+      <h2><%= pluralize(budget_category.errors.count, "error") %> prohibited this budget_category from being saved:</h2>
 
       <ul>
-        <% budget_subcategory.errors.each do |error| %>
+        <% budget_category.errors.each do |error| %>
           <li><%= error.full_message %></li>
         <% end %>
       </ul>

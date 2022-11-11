@@ -83,8 +83,6 @@ class BudgetSubcategoriesController < ApplicationController
 
      # Only allow a list of trusted parameters through.
      def budget_subcategory_params
-          params.require(:budget_subcategory).permit(:committee_id, :subcategory_name,
-                                                     :subcategory_amount, :status
-          )
+          params.require(:budget_subcategory).permit(:name, :budgeted)
      end
 end
