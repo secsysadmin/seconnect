@@ -11,7 +11,7 @@ RSpec.describe('Login user', type: :feature) do
           expect(page).to(have_content('Permission type: user'))
           click_on 'Home'
           click_on 'Logout'
-          expect(page).to(have_content('Log In with Google:'))
+          expect(page).to(have_button('Login with Google Account'))
      end
 end
 
@@ -24,6 +24,6 @@ RSpec.describe('Login admin', type: :feature) do
           expect(page).to(have_content('Permission type: admin'))
           click_on 'Home'
           click_on 'Logout'
-          expect(page).to(have_content('Log In with Google:'))
+          expect(page).to(have_button('Login with Google Account'))
      end
 end
