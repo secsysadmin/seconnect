@@ -1,18 +1,20 @@
-<p>Financial Forms Page</p>
+<style>
+	p {
+	  padding: 20px;
+	  background-color: #D3D3D3; /* Red */
+	  color: black;
+	  margin-bottom: 15px;
+	  font: serif;
+	}
+</style>
 
-<% if Rails.env.test? -%>
-<td><%= link_to 'Logout', login_path %></td> <br>
-<% else -%>
-<td><%= link_to 'Logout', logout_path, method: :destroy %></td> <br>
-<% end -%>
+<div class="p-5 text-center bg-light">
+    <h1 class="mb-3">Financial Forms</h1>
+</div>
 
-<td><%= link_to 'Print Queue' %></td> <br>
-<td><%= link_to 'Reimbursement Request', requests_path(session[:user_id]) %></td> <br>
-<td><%= link_to 'Vendors', vendors_path(session[:user_id]) %></td> <br>
-<td><%= link_to 'New Revenue' %></td> <br>
+<p><%= link_to 'Print Queue' %> - View documents that are in the Print Queue</p> <br>
+<p><%= link_to 'Reimbursement Request', requests_path(session[:user_id]) %> - View or Create a Reimbursement Request</p> <br>
+<p><%= link_to 'Vendors', vendors_path(session[:user_id]) %> - View or Create a Vendor</p> <br>
+<p><%= link_to 'New Revenue' %>- Create a Revenue</p> <br>
 
-<% if User.find(session[:user_id]).permission_type == 'admin' %>
-<%= link_to 'Home', admin_home_path(User.find(session[:user_id])) %>
-<% else %>
-<%= link_to 'Home', user_home_path(User.find(session[:user_id]))%>
-<% end %>
+<%= link_to 'Back', :back %>
