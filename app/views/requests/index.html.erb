@@ -46,3 +46,8 @@
 
 <%= link_to 'New Request', new_request_path %>
 <%= link_to 'Back', :back%>
+<% if User.find(session[:user_id]).permission_type == 'admin' %>
+<%= link_to 'Home', admin_home_path(User.find(session[:user_id])) %>
+<% else %>
+<%= link_to 'Home', user_home_path(User.find(session[:user_id]))%>
+<% end %>

@@ -1,0 +1,18 @@
+<p>Financial Forms Page</p>
+
+<% if Rails.env.test? -%>
+<td><%= link_to 'Logout', login_path %></td> <br>
+<% else -%>
+<td><%= link_to 'Logout', logout_path, method: :destroy %></td> <br>
+<% end -%>
+
+<td><%= link_to 'Print Queue' %></td> <br>
+<td><%= link_to 'Reimbursement Request', requests_path(session[:user_id]) %></td> <br>
+<td><%= link_to 'Vendors', vendors_path(session[:user_id]) %></td> <br>
+<td><%= link_to 'New Revenue' %></td> <br>
+
+<% if User.find(session[:user_id]).permission_type == 'admin' %>
+<%= link_to 'Home', admin_home_path(User.find(session[:user_id])) %>
+<% else %>
+<%= link_to 'Home', user_home_path(User.find(session[:user_id]))%>
+<% end %>

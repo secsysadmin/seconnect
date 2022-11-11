@@ -77,6 +77,7 @@ class BudgetSubcategoriesController < ApplicationController
 
      # Use callbacks to share common setup or constraints between actions.
      def set_budget_subcategory
+          #  User.find(session[:user_id]).committee_id
           @budget_subcategory = BudgetSubcategory.find(params[:id])
      end
 

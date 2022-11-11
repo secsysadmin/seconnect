@@ -1,0 +1,47 @@
+<%= form_with(model: creditcard) do |form| %>
+  <% if creditcard.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(creditcard.errors.count, "error") %> prohibited this creditcard from being saved:</h2>
+
+      <ul>
+        <% creditcard.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= form.select :user_id, User.order(:first_name).map { |user| [user.first_name, user.id] }, include_blank: false, id: "id_of_the_user_id_select_box" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :committee %>
+    <%= form.select :committee, Committee.order(:committee_name).map { |committee| [committee.committee_name] }, include_blank: false, id: "id_of_the_user_id_select_box" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :start_time %>
+    <%= form.date_select :start_time %>
+  </div>
+
+  <div class="field">
+    <%= form.label :end_time %>
+    <%= form.date_select :end_time %>
+  </div>
+
+  <div class="field">
+    <%= form.label :reason %>
+    <%= form.text_field :reason %>
+  </div>
+
+  <div class="field">
+    <%= form.label :status %>
+    <%= form.text_field :status %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,3 +1,4 @@
+require 'pry'
 class ReceiptsController < ApplicationController
     before_action :set_request, only: %i[show edit update destroy]
 

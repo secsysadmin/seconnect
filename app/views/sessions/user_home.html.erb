@@ -4,8 +4,18 @@
 <% else -%>
 <td><%= link_to 'Logout', logout_path, method: :destroy %></td> <br>
 <% end -%>
+
 <td><%= link_to 'Profile', user_path(session[:user_id]) %></td> <br>
-<td><%= link_to 'Request', requests_path(session[:user_id]) %></td> <br>
+
+
+<td><%= link_to 'Financial Forms', financial_forms_path %></td> <br>
+<td><%= link_to 'Pending Documents' %></td> <br>
+<td><%= link_to 'Budget', committee_path(User.find(session[:user_id]).committee_id) %></td> <br>
+
+<% if false %>
+<td><%= link_to 'Reimbursement Request', requests_path(session[:user_id]) %></td> <br>
+<td><%= link_to 'Credit Card Request', creditcards_path(session[:user_id]) %></td> <br>
 <td><%= link_to 'Vendors', vendors_path(session[:user_id]) %></td> <br>
 <td><%= link_to 'Committee', committee_path(User.find(session[:user_id]).committee_id) %></td> <br>
-<td><%= link_to 'Budget', budget_subcategories_path(User.find(session[:user_id]).committee_id) %></td>
+<td><%= link_to 'Budget', budget_subcategories_path(User.find(session[:user_id]).committee_id) %></td> <br>
+<% end %>
