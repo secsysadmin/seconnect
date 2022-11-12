@@ -20,9 +20,7 @@ class SessionsController < ApplicationController
      end
 
      def createuser
-          @committee = Committee.find_or_create_by(committee_name: "default") do |c|
-               c.budget = 0.00
-          end
+          @committee = Committee.find_or_create_by(committee_name: "default")
           @user = User.find_or_create_by(uid: "100003231053752770743") do |u|
                u.first_name = "user"
                u.last_name = "brs"
@@ -47,9 +45,7 @@ class SessionsController < ApplicationController
      end
 
      def createadmin
-          @committee = Committee.find_or_create_by(committee_name: "default") do |c|
-               c.budget = 0.00
-          end
+          @committee = Committee.find_or_create_by(committee_name: "default")
           @user = User.find_or_create_by(uid: "109290679077990497398") do |u|
                u.first_name = "admin"
                u.last_name = "brs"

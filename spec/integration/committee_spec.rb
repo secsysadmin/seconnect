@@ -11,7 +11,6 @@ RSpec.describe('Admin create committee', type: :feature) do
         click_on 'New Committee'
         expect(page).to(have_content('New Committee'))
         fill_in 'Committee name', with: 'test committee'
-        fill_in 'Budget', with: 23.00
         click_on 'Create Committee'
         expect(page).to(have_content('Committee was successfully created.'))
         expect(page).to(have_content('Committee name: test committee'))
