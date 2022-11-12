@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_11_11_224552) do
+ActiveRecord::Schema.define(version: 2022_11_12_013252) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 2022_11_11_224552) do
     t.decimal "balance"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "budget_id"
   end
 
   create_table "budget_subcategories", force: :cascade do |t|
@@ -38,6 +39,7 @@ ActiveRecord::Schema.define(version: 2022_11_11_224552) do
     t.decimal "spent"
     t.decimal "pending"
     t.decimal "balance"
+    t.integer "budget_category_id"
   end
 
   create_table "budgets", force: :cascade do |t|

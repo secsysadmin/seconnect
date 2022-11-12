@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
 class BudgetSubcategory < ApplicationRecord
-     validates :name, :budgeted, presence: true
+     validates :name, :budgeted, :budget_category_id, presence: true
      has_many :request
 end

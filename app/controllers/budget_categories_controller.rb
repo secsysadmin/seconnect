@@ -65,6 +65,6 @@ class BudgetCategoriesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def budget_category_params
-      params.require(:budget_category).permit(:name, :budgeted, :spent, :pending, :balance)
+      params.require(:budget_category).permit(:name, :budgeted, :spent, :pending, :balance, :budget_id)
     end
 end
