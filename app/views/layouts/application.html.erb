@@ -7,107 +7,16 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag '/javascript/application.js', 'data-turbolinks-track': 'reload', defer: true %>
 
     <!-- Latest compiled and minified JavaScript --> 
   </head>
-
-  
   <body>
-    <% if user_signed_in? %>
-    <nav class="navbar navbar-expand-md navbar-dark bg-primary">
-      <% if User.find(session[:user_id]).permission_type == 'admin' %>
-      <%= link_to 'SEC-BRS', admin_home_path(User.find(session[:user_id])), class: "navbar-brand" %>
-      <% else %>
-      <%= link_to 'SEC-BRS', user_home_path(User.find(session[:user_id])), class: "navbar-brand" %>
-      <% end %>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="navbarColor01">
-        <ul class="navbar-nav mr-auto">
-          <% if User.find(session[:user_id]).permission_type == 'admin' %>
-            <li class="nav-item <%= admin_home_path(User.find(session[:user_id])) %>">
-              <%= link_to 'Home', admin_home_path(User.find(session[:user_id])), class: 'nav-link' %>
-            </li>
-          <% else %>
-            <li class="nav-item <%= user_home_path(User.find(session[:user_id])) %>">
-              <%= link_to 'Home', user_home_path(User.find(session[:user_id])), class: 'nav-link' %>
-            </li>
-          <% end %>
-
-          <% if User.find(session[:user_id]).permission_type == 'admin' %>
-            <li class="nav-item <%= admin_home_path(User.find(session[:user_id])) %>">
-              <%= link_to 'Pending Documents', admin_home_path(User.find(session[:user_id])), class: 'nav-link' %>
-            </li>
-          <% else %>
-            <li class="nav-item <%= user_home_path(User.find(session[:user_id])) %>">
-              <%= link_to 'Pending Documents', user_home_path(User.find(session[:user_id])), class: 'nav-link' %>
-            </li>
-          <% end %>
-
-          <li class="nav-item <%= financial_forms_path %>">
-            <%= link_to 'Financial Forms', financial_forms_path, class: 'nav-link' %>
-          </li>
-
-          <% if User.find(session[:user_id]).permission_type == 'admin' %>
-            <li class="nav-item <%= budget_subcategories_path(User.find(session[:user_id]).committee_id) %>">
-              <%= link_to 'Budget Management', budget_subcategories_path(User.find(session[:user_id]).committee_id), class: 'nav-link' %>
-            </li>
-          <% else %>
-            <li class="nav-item <%= committee_path(User.find(session[:user_id]).committee_id) %>">
-              <%= link_to 'Budget', committee_path(User.find(session[:user_id]).committee_id), class: 'nav-link' %>
-            </li>
-          <% end %>
+  <%= render 'layouts/navbar' %>
 
 
-          <% if User.find(session[:user_id]).permission_type == 'admin' %>
-            <li class="nav-item <%= users_path %>">
-              <%= link_to 'Sub Accounts', users_path, class: 'nav-link' %>
-            </li>
-            <li class="nav-item <%= vendors_path(session[:user_id]) %>">
-              <%= link_to 'Vendors', vendors_path(session[:user_id]), class: 'nav-link' %>
-            </li>
-            <li class="nav-item <%= committees_path %>">
-              <%= link_to 'Committees', committees_path, class: 'nav-link' %>
-            </li>
-          <% end %>
-        </ul>
-        <ul class="navbar-nav">
-          <% if user_signed_in? %>
-            <li class="nav-item <%= user_path(session[:user_id]) %>">
-            <%= link_to 'Profile', user_path(session[:user_id]), class: 'nav-link' %>
-          </li>
-            <li class="nav-item <%= user_path(session[:user_id]) %>">
-              <%= link_to "Hi, #{current_user.first_name}", user_path(session[:user_id]), class: 'nav-link' %>
-            </li>
+  <%= yield %>
 
-            <% if Rails.env.test? -%>
-            <li class="nav-item <%= login_path %>">
-              <%= link_to 'Logout', login_path, class: 'nav-link' %>
-            </li>
-            <% else -%>
-            <li class="nav-item <%= logout_path %>">
-              <%= link_to 'Logout', logout_path, method: :destroy, class: 'nav-link' %>
-            </li>
-            <% end %>
-          <% else %>
-          <% end %>
-        </ul>
-      </div>
-    </nav>
-    <% end %>
-
-
-
-    <div class="container-fluid">
-      <div class="row justify-content-center">
-        <div class="col-8">
-          <%= yield %>
-        </div>
-      </div>
-    </div>
 
   </body>
 

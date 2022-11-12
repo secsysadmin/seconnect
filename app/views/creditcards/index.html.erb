@@ -26,7 +26,7 @@
         <td><%= creditcard.status %></td>
         <td><%= link_to 'Show', creditcard %></td>
         <td><%= link_to 'Edit', edit_creditcard_path(creditcard) %></td>
-        <td><%= link_to 'Destroy', creditcard, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= button_to 'Destroy', creditcard, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -35,4 +35,4 @@
 <br>
 
 <%= link_to 'New Credit card', new_creditcard_path %>
-<%= link_to 'Back', :back%>
+<%= link_to 'Back', user_home_path %>
