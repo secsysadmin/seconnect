@@ -9,7 +9,9 @@ class VendorsController < ApplicationController
      end
 
      # GET /vendors/1 or /vendors/1.json
-     def show; end
+     def show;
+          
+     end
 
      # GET /vendors/new
      def new
@@ -57,13 +59,16 @@ class VendorsController < ApplicationController
 
      # DELETE /vendors/1 or /vendors/1.json
      def destroy
-          @vendor.destroy!
+          @vendor.destroy
 
+          # respond_to do |format|
+          #      format.html do
+          #           redirect_to(vendors_path, notice: 'Vendor was successfully destroyed.')
+          #      end
+          # end
           respond_to do |format|
-               format.html do
-                    redirect_to(vendors_url, notice: 'Vendor was successfully destroyed.')
-               end
-               format.json { head(:no_content) }
+               format.html { redirect_to(vendors_path, notice: 'Vendor was successfully destroyed.') }
+               format.json { render(:destroy, status: :delete, location: @vendor) }
           end
      end
 

@@ -26,6 +26,8 @@ Rails.application.routes.draw do
   get '/auth/google_oauth2/callback', to: 'sessions#omniauth'
 
   get '/financial_forms', to: 'sessions#financial_forms'
+  # delete 'vendors/:id', to: 'vendors#destroy' # destroy
+  # delete 'budget_subcategories/:id', to: 'budget_subcategories#destroy' # destroy
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 

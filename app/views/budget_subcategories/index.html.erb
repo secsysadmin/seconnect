@@ -24,7 +24,7 @@
         <td><%= budget_subcategory.balance %></td>
         <td><%= link_to 'Show', budget_subcategory %></td>
         <td><%= link_to 'Edit', edit_budget_subcategory_path(budget_subcategory) %></td>
-        <td><%= link_to 'Destroy', budget_subcategory, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= button_to 'Destroy', budget_subcategory, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
