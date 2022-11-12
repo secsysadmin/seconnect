@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_17_120524) do
+ActiveRecord::Schema.define(version: 2022_11_12_013252) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,21 +20,48 @@ ActiveRecord::Schema.define(version: 2022_10_17_120524) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "budget_subcategories", force: :cascade do |t|
-    t.integer "committee_id"
-    t.string "subcategory_name"
-    t.decimal "subcategory_amount"
+  create_table "budget_categories", force: :cascade do |t|
+    t.string "name"
+    t.decimal "budgeted"
+    t.decimal "spent"
+    t.decimal "pending"
+    t.decimal "balance"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "status"
+    t.integer "budget_id"
+  end
+
+  create_table "budget_subcategories", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
+    t.decimal "budgeted"
+    t.decimal "spent"
+    t.decimal "pending"
+    t.decimal "balance"
+    t.integer "budget_category_id"
+  end
+
+  create_table "budgets", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
+    t.decimal "budgeted"
+    t.decimal "spent"
+    t.decimal "pending"
+    t.decimal "balance"
+    t.string "fiscal_year"
+    t.boolean "active"
+    t.boolean "locked"
+    t.boolean "default"
   end
 
   create_table "committees", force: :cascade do |t|
     t.string "committee_name"
-    t.decimal "budget"
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "budget_id"
   end
 
   create_table "creditcards", force: :cascade do |t|

@@ -24,7 +24,7 @@
     <% @requests.each do |request|%>
       <tr>
         <td><%= User.where(id: request.user_id).last.first_name %></td>
-        <td><%= BudgetSubcategory.where(id: request.budget_id).last.subcategory_name %></td>
+        <td><%= BudgetSubcategory.where(id: request.budget_id).last.name %></td>
         <td><%= request.category %></td>
         <td><%= request.subcategory %></td>
         <td><%= request.tax_category %></td>

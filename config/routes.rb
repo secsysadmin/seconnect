@@ -1,5 +1,7 @@
 require 'pry'
 Rails.application.routes.draw do
+  resources :budget_categories
+  resources :budgets
   resources :creditcards
   resources :committees
   resources :vendors
