@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_11_12_013252) do
+ActiveRecord::Schema.define(version: 2022_11_14_034840) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -97,9 +97,6 @@ ActiveRecord::Schema.define(version: 2022_11_12_013252) do
 
   create_table "requests", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "budget_id"
-    t.string "category"
-    t.string "subcategory"
     t.string "tax_category"
     t.boolean "gift"
     t.decimal "cost"
@@ -109,6 +106,7 @@ ActiveRecord::Schema.define(version: 2022_11_12_013252) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "status"
+    t.integer "budget_subcategory_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -138,6 +136,7 @@ ActiveRecord::Schema.define(version: 2022_11_12_013252) do
     t.string "phone_number"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "tax_identification_number"
   end
 
 end
