@@ -10,12 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_11_12_013252) do
+ActiveRecord::Schema.define(version: 2022_11_14_185006) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "admin_receipts", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "admin_requests", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "admin_requests_completeds", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -77,12 +87,24 @@ ActiveRecord::Schema.define(version: 2022_11_12_013252) do
 
   create_table "invoices", force: :cascade do |t|
     t.string "vendor_title"
-    t.string "vendor_taxid"
-    t.string "vendor_address"
-    t.string "vendor_city"
-    t.string "vendor_state"
-    t.string "vendor_zip"
-    t.string "vendor_paymentmethod"
+    t.string "tax_id_number"
+    t.string "address"
+    t.string "city"
+    t.string "state"
+    t.string "zip"
+    t.string "payment_method"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "items", force: :cascade do |t|
+    t.string "items_purchased"
+    t.string "budget"
+    t.string "category"
+    t.string "subcategory"
+    t.string "taxcategory"
+    t.boolean "gift"
+    t.float "cost"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

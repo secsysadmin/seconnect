@@ -1,5 +1,9 @@
 require 'pry'
 Rails.application.routes.draw do
+  resources :admin_requests_completeds
+  resources :items
+  resources :invoices
+  resources :admin_receipts
   resources :budget_categories
   resources :budgets
   resources :creditcards
@@ -9,7 +13,6 @@ Rails.application.routes.draw do
   resources :users #, only: [:new, :create, :edit, :update, :show, :destroy]
   resources :requests
   resources :admin_requests
-  resources :invoices
   resources :receipts
 
   root 'sessions#login'
