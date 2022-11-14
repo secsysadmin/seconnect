@@ -11,6 +11,12 @@
     <h1>
 
     <h1 class="mb-3">Welcome!</h1>
-    <h3>This website serves as a budget request and reimbursement system for the Student Engineers' Council SEC.</h3>
-   	
+    <% if @committee.committee_name = 'default' %>
+      <h2 style="color:red;" >You must be assigned to a committee or have admin privileges to be able to use this website!</h2>
+      <p> Contact an admin of this website or the Student Engineering Council's Chief Financial Officer for more details. </p>
+      <p>This website serves as a budget request and reimbursement system for the Student Engineers' Council SEC.</p>
+      <a href="https://sec.tamu.edu/#executiveCouncil" target="_blank">SEC's Executive Council</a>
+   	<% end %>
+    
+
 </div>

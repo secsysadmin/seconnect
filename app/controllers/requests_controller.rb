@@ -5,7 +5,27 @@ class RequestsController < ApplicationController
 
      # GET /requests or /requests.json
      def index
-          @requests = Request.all
+          if session[:user_id]
+               @user = User.find(session[:user_id])
+               # check for proper permissions
+               if (@user.permission_type == 'admin')
+                    @requests = Request.all
+               else
+                    @requests = Request.where("user_id" => @user.id)
+               end
+          end
+     end
+
+     def pending
+          if session[:user_id]
+               @user = User.find(session[:user_id])
+               # check for proper permissions
+               if (@user.permission_type == 'admin')
+                    @requests = Request.where("status = 'pending'")
+               else
+                    @requests = Request.where("status = 'pending'").where("user_id" => @user.id)
+               end
+          end
      end
 
      # GET /requests/1 or /requests/1.json
@@ -17,17 +37,17 @@ class RequestsController < ApplicationController
 
      # GET /requests/new
      def new
-          @budgets = Budget.all
+          @budgets = Budget.where("locked = false")
           @budget_categories = BudgetCategory.where("budget_id" => params[:budget_id])
           @budget_subcategories = BudgetSubcategory.where("budget_category_id" => params[:budget_categor_id])
-          @request = Request.new(status: 'In Progress')
+          @request = Request.new(status: 'pending')
      end
 
      # GET /requests/1/edit
      def edit
-          @budgets = Budget.all
-          @budget_categories = BudgetCategory.where("budget_id" => params[:budget_id])
-          @budget_subcategories = BudgetSubcategory.where("budget_category_id" => params[:budget_category_id])
+          if session[:user_id]
+               @user = User.find(session[:user_id])
+          end
      end
 
      # POST /requests or /requests.json
