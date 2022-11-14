@@ -1,17 +1,6 @@
-### DEFAULT SEEDS
 vendor = Vendor.create!(
   {vendor_name: "no vendor", street_address: "na", city: "na", state: "na", zip_code: "na", email: "na", phone_number: "1", "tax_identification_number": "1"}
 )
-committee = Committee.create!(
-  {committee_name: "default", user_id: nil}
-)
-defaultUser = User.create!(
-  {first_name: "user", last_name: "brs", street_address: "123 street", city: "College Station", state: "Texas", zip_code: "77845", uin: 123, email: "secbrsuser@gmail.com", phone_number: "123-456-7890", committee_id: committee.id, permission_type: "user", uid: "100003231053752770743"}
-)
-defaultAdmin = User.create!(
-  {first_name: "admin", last_name: "brs", street_address: "123 street", city: "College Station", state: "Texas", zip_code: "77845", uin: 123, email: "secbrs23@gmail.com", phone_number: "123-456-7890", committee_id: committee.id, permission_type: "admin", uid: "109290679077990497398"}
-)
-###
 
 # EXAMPLE BUDGET SEEDS
 budget01 = Budget.create!(
@@ -77,6 +66,19 @@ budget03 = Budget.create (
       {name: "Online Services", budgeted: "50.0", budget_category_id: budget03_category02.id}
     )
 ###
+
+committee = Committee.create!(
+  {committee_name: "default"}
+)
+committee01 = Committee.create!(
+  {committee_name: "test committee", budget_id: budget01.id}
+)
+defaultUser = User.create!(
+  {first_name: "user", last_name: "brs", street_address: "123 street", city: "College Station", state: "Texas", zip_code: "77845", uin: 123, email: "secbrsuser@gmail.com", phone_number: "123-456-7890", committee_id: committee01.id, permission_type: "user", uid: "100003231053752770743"}
+)
+defaultAdmin = User.create!(
+  {first_name: "admin", last_name: "brs", street_address: "123 street", city: "College Station", state: "Texas", zip_code: "77845", uin: 123, email: "secbrs23@gmail.com", phone_number: "123-456-7890", committee_id: committee.id, permission_type: "admin", uid: "109290679077990497398"}
+)
 
 ### EXAMPLE REQUEST SEEDS
 request1 = Request.create!(
