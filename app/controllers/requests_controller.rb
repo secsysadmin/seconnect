@@ -9,19 +9,33 @@ class RequestsController < ApplicationController
      end
 
      # GET /requests/1 or /requests/1.json
-     def show; end
+     def show
+          @budget_subcategory = BudgetSubcategory.find(@request.budget_subcategory_id)
+          @budget_category = BudgetCategory.find(@budget_subcategory.budget_category_id)
+          @budget = @budget_category.budget
+     end
 
      # GET /requests/new
      def new
+          @budgets = Budget.all
+          @budget_categories = BudgetCategory.where("budget_id" => params[:budget_id])
+          @budget_subcategories = BudgetSubcategory.where("budget_category_id" => params[:budget_categor_id])
           @request = Request.new(status: 'In Progress')
      end
 
      # GET /requests/1/edit
-     def edit; end
+     def edit
+          @budgets = Budget.all
+          @budget_categories = BudgetCategory.where("budget_id" => params[:budget_id])
+          @budget_subcategories = BudgetSubcategory.where("budget_category_id" => params[:budget_category_id])
+     end
 
      # POST /requests or /requests.json
      def create
           @request = Request.new(request_params)
+          @budgets = Budget.all
+          @budget_categories = BudgetCategory.where("budget_id" => params[:budget_id])
+          @budget_subcategories = BudgetSubcategory.where("budget_category_id" => params[:budget_category_id])
 
           respond_to do |format|
                if @request.save
@@ -76,7 +90,7 @@ class RequestsController < ApplicationController
 
      # Only allow a list of trusted parameters through.
      def request_params
-          params.require(:request).permit(:user_id, :budget_id, :category, :subcategory, :subcategory_name,:tax_category,
+          params.require(:request).permit(:user_id, :budget_id, :budget_category_id, :budget_subcategory_id, :tax_category,
                                           :gift, :cost, :items_purchased, :type, :vendor_id, :vendor_name, :status
           )
      end

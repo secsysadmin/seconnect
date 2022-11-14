@@ -18,17 +18,12 @@
 
   <div class="field">
     <%= form.label :budget_id %>
-    <%= form.select :budget_id, BudgetSubcategory.order(:name).map { |budget_subcategory| [budget_subcategory.name, budget_subcategory.id] }, include_blank: true, id: "id_of_the_budget_id_select_box" %>
-  </div>
-
-  <div class="field">
-    <%= form.label :category %>
-    <%= form.text_field :category %>
-  </div>
-
-  <div class="field">
-    <%= form.label :subcategory %>
-    <%= form.text_field :subcategory %>
+    <%= select_tag :budget_id, options_from_collection_for_select(@budgets, "id", "name", params[:budget_id]), prompt: "- Please select -",
+    onchange: "this.form.submit()"%>
+    <%= select_tag :budget_category_id, options_from_collection_for_select(@budget_categories, "id", "name", params[:budget_category_id]), prompt: "- Category -",
+    onchange: "this.form.submit()"%>
+    <%= form.select :budget_subcategory_id, options_from_collection_for_select(@budget_subcategories, "id", "name", params[:budget_subcategory_id]), prompt: "- Subcategory -",
+    onchange: "this.form.submit()"%>
   </div>
 
   <div class="field">
