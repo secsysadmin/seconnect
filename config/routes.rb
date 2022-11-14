@@ -1,6 +1,8 @@
 require 'pry'
 Rails.application.routes.draw do
   resources :atcs
+  resources :budget_categories
+  resources :budgets
   resources :creditcards
   resources :committees
   resources :vendors
@@ -20,6 +22,7 @@ Rails.application.routes.draw do
   get '/atc_inprogress', to: 'atcs#inprogress'
   get '/request_approved', to: 'requests#approved'
   get '/request_inprogress', to: 'requests#inprogress'
+  get '/pending', to: 'requests#pending'
 
   # Sessions routes
   get '/login', to: 'sessions#login'
@@ -33,6 +36,8 @@ Rails.application.routes.draw do
   get '/auth/google_oauth2/callback', to: 'sessions#omniauth'
 
   get '/financial_forms', to: 'sessions#financial_forms'
+  # delete 'vendors/:id', to: 'vendors#destroy' # destroy
+  # delete 'budget_subcategories/:id', to: 'budget_subcategories#destroy' # destroy
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 

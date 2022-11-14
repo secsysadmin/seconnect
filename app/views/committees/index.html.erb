@@ -15,10 +15,10 @@
     <% @committees.each do |committee| %>
       <tr>
         <td><%= committee.committee_name %></td>
-        <td><%= committee.budget %></td>
+        <td><%= Budget.find_by(id: committee&.budget_id)&.name %></td>
         <td><%= link_to 'Show', committee %></td>
         <td><%= link_to 'Edit', edit_committee_path(committee) %></td>
-        <td><%= link_to 'Destroy', committee, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= button_to 'Destroy', committee, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -26,9 +26,4 @@
 
 <br>
 
-<%= link_to 'New Committee', new_committee_path %> |
-<% if @user.permission_type == 'admin' %>
-<%= link_to 'Home', admin_home_path(@user)%>
-<% else %>
-<%= link_to 'Home', user_home_path(@user)%>
-<% end %>
+<%= link_to 'New Committee', new_committee_path %>

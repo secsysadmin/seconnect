@@ -59,17 +59,14 @@ class BudgetSubcategoriesController < ApplicationController
           end
      end
 
-     # DELETE /budget_subcategories/1 or /budget_subcategories/1.json
+# DELETE /budget_subcategories/1 or /budget_subcategories/1.json
      def destroy
           @budget_subcategory.destroy!
 
           respond_to do |format|
                format.html do
-                    redirect_to(budget_subcategories_url,
-                                notice: 'Budget subcategory was successfully destroyed.'
-                               )
+                    redirect_to(budget_subcategories_url)
                end
-               format.json { head(:no_content) }
           end
      end
 
@@ -83,8 +80,6 @@ class BudgetSubcategoriesController < ApplicationController
 
      # Only allow a list of trusted parameters through.
      def budget_subcategory_params
-          params.require(:budget_subcategory).permit(:committee_id, :subcategory_name,
-                                                     :subcategory_amount, :status
-          )
+          params.require(:budget_subcategory).permit(:name, :budgeted, :budget_category_id)
      end
 end

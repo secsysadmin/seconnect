@@ -12,28 +12,23 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :user_id %>
-    <%= form.select :user_id, User.order(:first_name).map { |user| [user.first_name, user.id] }, include_blank: true, id: "id_of_the_user_id_select_box" %>
+    <%= form.label :recipient_name %>
+    <%= form.text_field :recipient_name %>
   </div>
 
   <div class="field">
     <%= form.label :budget_id %>
-    <%= form.select :budget_id, Committee.order(:committee_name).map { |committee| [committee.committee_name] }, include_blank: true, id: "id_of_the_budget_id_select_box" %>
-    </div>
-
-  <div class="field">
-    <%= form.label :category %>
-    <%= form.text_field :category %>
-  </div>
-
-  <div class="field">
-    <%= form.label :subcategory %>
-    <%= form.select :budget_id, BudgetSubcategory.order(:subcategory_name).map { |budget_subcategory| [budget_subcategory.subcategory_name, budget_subcategory.id] }, include_blank: true, id: "id_of_the_budget_id_select_box" %>
+    <%= select_tag :budget_id, options_from_collection_for_select(@budgets, "id", "name", params[:budget_id]), prompt: "- Please select -",
+    onchange: "this.form.submit()"%>
+    <%= select_tag :budget_category_id, options_from_collection_for_select(@budget_categories, "id", "name", params[:budget_category_id]), prompt: "- Category -",
+    onchange: "this.form.submit()"%>
+    <%= form.select :budget_subcategory_id, options_from_collection_for_select(@budget_subcategories, "id", "name", params[:budget_subcategory_id]), prompt: "- Subcategory -",
+    onchange: "this.form.submit()"%>
   </div>
 
   <div class="field">
     <%= form.label :tax_category %>
-    <%= form.select :tax_category, ['Travel','Food','Office Supplies','Utilities','Membership','Services & Other Income', 'Clothing', 'Rent','Other Expenses', 'Items for Resale'] %>
+    <%= form.select :tax_category, [['Travel'],['Food'],['Office Supplies'],['Utilities'],['Membership'],['Services & Other Income'],['Clothing'],['Rent'],['Other Expenses'],['Items for Resale ']], include_blank: true %>
   </div>
 
   <div class="field">
@@ -52,19 +47,14 @@
   </div>
 
   <div class="field">
-    <%= form.label :item %>
-    <%= form.text_field :item %>
-  </div>
-
-  <div class="field">
     <%= form.label :vendor_id %>
     <%= form.select :vendor_id, Vendor.order(:vendor_name).map { |vendor| [vendor.vendor_name, vendor.id] }, include_blank: true, id: "id_of_the_vendor_id_select_box" %>
   </div>
-
+  
   <% if User.find(session[:user_id]).permission_type == 'admin' %>
     <div class="field" >
       <%= form.label :status %>
-      <%= form.select :status, [['In Progress', 'in progress'], ['Approved', 'approved']] %>
+      <%= form.select :status, [['Pending', 'pending'], ['Approved', 'approved'], ['Denied', 'denied']] %>
     </div>
   <% else %>
   <div class="field" >

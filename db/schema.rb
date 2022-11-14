@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_11_10_074051) do
+ActiveRecord::Schema.define(version: 2022_11_14_213132) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,23 +59,48 @@ ActiveRecord::Schema.define(version: 2022_11_10_074051) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "status"
+    
+  create_table "budget_categories", force: :cascade do |t|
+    t.string "name"
+    t.decimal "budgeted"
+    t.decimal "spent"
+    t.decimal "pending"
+    t.decimal "balance"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "budget_id"
   end
 
   create_table "budget_subcategories", force: :cascade do |t|
-    t.integer "committee_id"
-    t.string "subcategory_name"
-    t.decimal "subcategory_amount"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "status"
+    t.string "name"
+    t.decimal "budgeted"
+    t.decimal "spent"
+    t.decimal "pending"
+    t.decimal "balance"
+    t.integer "budget_category_id"
+  end
+
+  create_table "budgets", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
+    t.decimal "budgeted"
+    t.decimal "spent"
+    t.decimal "pending"
+    t.decimal "balance"
+    t.string "fiscal_year"
+    t.boolean "active"
+    t.boolean "locked"
+    t.boolean "default"
   end
 
   create_table "committees", force: :cascade do |t|
     t.string "committee_name"
-    t.decimal "budget"
-    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "budget_id"
   end
 
   create_table "creditcards", force: :cascade do |t|
@@ -113,9 +138,6 @@ ActiveRecord::Schema.define(version: 2022_11_10_074051) do
 
   create_table "requests", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "budget_id"
-    t.string "category"
-    t.string "subcategory"
     t.string "tax_category"
     t.boolean "gift"
     t.decimal "cost"
@@ -126,6 +148,8 @@ ActiveRecord::Schema.define(version: 2022_11_10_074051) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "status"
     t.text "Notes"
+    t.integer "budget_subcategory_id"
+    t.string "recipient_name"
   end
 
   create_table "users", force: :cascade do |t|
@@ -155,6 +179,7 @@ ActiveRecord::Schema.define(version: 2022_11_10_074051) do
     t.string "phone_number"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "tax_identification_number"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

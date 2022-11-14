@@ -15,7 +15,7 @@
         <td><%= invoice.vendor_paymentmethod %></td>
         <td><%= link_to 'Show', invoice %></td>
         <td><%= link_to 'Edit', edit_invoice_path(invoice) %></td>
-        <td><%= link_to 'Destroy', invoice, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= button_to 'Destroy', invoice, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -25,5 +25,5 @@
 
 <br>
 <%= link_to 'New Invoice', new_invoice_path %>
-
+<%= link_to 'Back', user_home_path %>
 

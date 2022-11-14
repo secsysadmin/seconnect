@@ -119,6 +119,6 @@ class CommitteesController < ApplicationController
 
      # Only allow a list of trusted parameters through.
      def committee_params
-          params.require(:committee).permit(:committee_name, :budget, :user_id)
+          params.require(:committee).permit(:committee_name, :budget_id, :user_id)
      end
 end
