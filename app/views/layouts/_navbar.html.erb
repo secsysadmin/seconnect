@@ -24,17 +24,29 @@
           <% end %>
 
           <% if User.find(session[:user_id]).permission_type == 'admin' %>
-            <li class="nav-item <%= admin_home_path(User.find(session[:user_id])) %>">
-              <%= link_to 'Pending Documents', admin_home_path(User.find(session[:user_id])), class: 'nav-link' %>
+            <li class="nav-item <%= requests_path(session[:user_id]) %>">
+              <%= link_to 'Pending Documents', pending_path , class: 'nav-link' %>
             </li>
           <% else %>
-            <li class="nav-item <%= user_home_path(User.find(session[:user_id])) %>">
-              <%= link_to 'Pending Documents', user_home_path(User.find(session[:user_id])), class: 'nav-link' %>
-            </li>
+            <% if Committee.find(User.find(session[:user_id]).committee_id).committee_name != 'default' %>
+              <li class="nav-item <%= requests_path(session[:user_id]) %>">
+                <%= link_to 'Pending Documents', pending_path , class: 'nav-link' %>
+              </li>
+            <% end %>
           <% end %>
 
           <li class="nav-item <%= financial_forms_path %>">
-            <%= link_to 'Financial Forms', financial_forms_path, class: 'nav-link' %>
+            <% if User.find(session[:user_id]).permission_type == 'admin' %>
+                <li class="nav-item <%= financial_forms_path %>">
+                  <%= link_to 'Financial Forms', financial_forms_path, class: 'nav-link' %>
+                </li>
+            <% else %>
+              <% if Committee.find(User.find(session[:user_id]).committee_id).committee_name != 'default' %>
+                <li class="nav-item <%= financial_forms_path %>">
+                  <%= link_to 'Financial Forms', financial_forms_path, class: 'nav-link' %>
+                </li>
+              <% end %>
+            <% end %>
           </li>
 
           <% if User.find(session[:user_id]).permission_type == 'admin' %>

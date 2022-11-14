@@ -2,7 +2,8 @@
 
 <p>
   <strong>User:</strong>
-  <%= @request.user_id %>
+  <%= User.find(@request.user_id).first_name %>
+  <%= User.find(@request.user_id).last_name %>
 </p>
 
 <p>
@@ -47,7 +48,12 @@
 
 <p>
   <strong>Vendor:</strong>
-  <%= @request.vendor_id %>
+  <%= Vendor.find(@request.vendor_id).vendor_name %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @request.status %>
 </p>
 
 <%= link_to 'Edit', edit_request_path(@request) %> |

@@ -105,8 +105,18 @@ class SessionsController < ApplicationController
                redirect_to(login_path, notice: message)
           end
      end 
+
+     def user_home
+          if session[:user_id]
+               @user = User.find(session[:user_id])
+               @committee = Committee.find(@user.committee_id);
+          end
+     end
      
      def financial_forms
+          if session[:user_id]
+               @user = User.find(session[:user_id])
+          end
           respond_to do |format|
                format.html { render :financial_forms }
           end

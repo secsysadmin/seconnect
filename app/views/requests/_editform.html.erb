@@ -11,10 +11,12 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :status %>
-    <%= form.text_field :status %>
-  </div>
+  <% if @user.permission_type == 'admin' %>
+    <div class="field">
+      <%= form.label :status %>
+      <%= form.select :status, [['Pending','pending'],['Completed','completed'],['Denied','denied']] %>
+    </div>
+  <% end %>
 
   <div class="actions">
     <%= form.submit %>

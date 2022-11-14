@@ -4,7 +4,7 @@ vendor = Vendor.create!(
 
 # EXAMPLE BUDGET SEEDS
 budget01 = Budget.create!(
-  {name: "Executive", fiscal_year: "2022-2023"}
+  {name: "Executive", fiscal_year: "2022-2023", active: "true", default: "false", locked: "false"}
 )
   budget01_category01 = BudgetCategory.create!(
     {name: "Assistant", budget_id: budget01.id}
@@ -23,7 +23,7 @@ budget01 = Budget.create!(
     )
 
 budget02 = Budget.create!(
-  {name: "Legislation", fiscal_year: "2022-2023"}
+  {name: "Legislation", fiscal_year: "2022-2023", active: "true", default: "false", locked: "false"}
 )
   budget02_category01 = BudgetCategory.create!(
     {name: "Company Showcase", budget_id: budget02.id}
@@ -42,7 +42,7 @@ budget02 = Budget.create!(
     )
 
 budget03 = Budget.create (
-  {name: "Student Relations", fiscal_year: "2022-2023"}
+  {name: "Student Relations (locked)", fiscal_year: "2021-2022", active: "false", default: "false", locked: "true"}
 ) 
   budget03_category01 = BudgetCategory.create!(
     {name: "Hospitality", budget_id: budget03.id}
@@ -82,14 +82,14 @@ defaultAdmin = User.create!(
 
 ### EXAMPLE REQUEST SEEDS
 request1 = Request.create!(
-  {user_id: defaultUser.id, tax_category: "na", gift: "false", cost: "50.00", items_purchased: "na", request_type: "na", vendor_id: vendor.id, status: "In Progress", budget_subcategory_id: budget01_category01_subcategory01.id}
+  {user_id: defaultUser.id, tax_category: "na", gift: "false", cost: "50.00", items_purchased: "na", request_type: "na", vendor_id: vendor.id, status: "pending", budget_subcategory_id: budget01_category01_subcategory01.id}
 )
 
 request1 = Request.create!(
-  {user_id: defaultUser.id, tax_category: "na", gift: "false", cost: "40.00", items_purchased: "na", request_type: "na", vendor_id: vendor.id, status: "Approved", budget_subcategory_id: budget01_category01_subcategory01.id}
+  {user_id: defaultUser.id, tax_category: "na", gift: "false", cost: "40.00", items_purchased: "na", request_type: "na", vendor_id: vendor.id, status: "completed", budget_subcategory_id: budget01_category01_subcategory01.id}
 )
 
 request1 = Request.create!(
-  {user_id: defaultUser.id, tax_category: "na", gift: "false", cost: "40.00", items_purchased: "na", request_type: "na", vendor_id: vendor.id, status: "Denied", budget_subcategory_id: budget01_category01_subcategory01.id}
+  {user_id: defaultUser.id, tax_category: "na", gift: "false", cost: "40.00", items_purchased: "na", request_type: "na", vendor_id: vendor.id, status: "denied", budget_subcategory_id: budget01_category01_subcategory01.id}
 )
 ###

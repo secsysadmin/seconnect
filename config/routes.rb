@@ -14,6 +14,8 @@ Rails.application.routes.draw do
 
   root 'sessions#login'
 
+  get '/pending', to: 'requests#pending'
+
   # Sessions routes
   get '/login', to: 'sessions#login'
   post '/login', to: 'sessions#create'
