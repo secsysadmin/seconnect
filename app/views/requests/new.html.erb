@@ -2,4 +2,4 @@
 
 <%= render 'form', request: @request %>
 
-<%= link_to 'Back', :back %>
+<%= link_to 'Back', requests_path(session[:user_id]) %>

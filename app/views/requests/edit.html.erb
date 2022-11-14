@@ -3,4 +3,4 @@
 <%= render 'editform', request: @request %>
 
 <%= link_to 'Show', @request %> |
-<%= link_to 'Back', :back %>
+<%= link_to 'Back', requests_path(session[:user_id]) %>

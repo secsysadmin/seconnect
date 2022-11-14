@@ -12,7 +12,16 @@
     <h1 class="mb-3">Financial Forms</h1>
 </div>
 
-<p><%= link_to 'Print Queue' %> - View documents that are in the Print Queue</p> <br>
+<td><%= link_to 'Reimbursement Request', requests_path(session[:user_id]) %></td> <br>
+<td><%= link_to 'Vendors', vendors_path(session[:user_id]) %></td> <br>
+<td><%= link_to 'Credit Card Request', creditcards_path(session[:user_id]) %></td> <br>
+<td><%= link_to 'Approval To Charge', atcs_path(session[:user_id]) %></td> <br>
+
+<% if User.find(session[:user_id]).permission_type == 'admin' %>
+<%= link_to 'Home', admin_home_path(User.find(session[:user_id])) %>
+<% else %>
+<%= link_to 'Home', user_home_path(User.find(session[:user_id]))%>
+<% end %>
+
 <p><%= link_to 'Reimbursement Request', requests_path(session[:user_id]) %> - View or Create a Reimbursement Request</p> <br>
 <p><%= link_to 'Vendors', vendors_path(session[:user_id]) %> - View or Create a Vendor</p> <br>
-<p><%= link_to 'New Revenue' %>- Create a Revenue</p> <br>

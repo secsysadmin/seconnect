@@ -42,8 +42,8 @@
 </p>
 
 <p>
-  <strong>Request type:</strong>
-  <%= @request.request_type %>
+  <strong>Item:</strong>
+  <%= @request.item %>
 </p>
 
 <p>
@@ -61,5 +61,8 @@
     <%= @request.notes %>
 </p>
 
+<%= link_to 'View file', @request.file %>
+<%= link_to 'Download file', @request.file, download: '' %>
+
 <%= link_to 'Edit', edit_request_path(@request) %> |
-<%= link_to 'Back', requests_path %>
+<%= link_to 'Back', requests_path(session[:user_id]) %>

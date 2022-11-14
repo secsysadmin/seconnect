@@ -1,10 +1,10 @@
-<%= form_with(model: creditcard) do |form| %>
-  <% if creditcard.errors.any? %>
+<%= form_with(model: atc) do |form| %>
+  <% if atc.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(creditcard.errors.count, "error") %> prohibited this creditcard from being saved:</h2>
+      <h2><%= pluralize(atc.errors.count, "error") %> prohibited this atc from being saved:</h2>
 
       <ul>
-        <% creditcard.errors.each do |error| %>
+        <% atc.errors.each do |error| %>
           <li><%= error.full_message %></li>
         <% end %>
       </ul>
@@ -12,18 +12,13 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :user_id %>
-    <%= form.select :user_id, User.order(:first_name).map { |user| [user.first_name, user.id] }, include_blank: true, id: "id_of_the_user_id_select_box" %>
-  </div>
-
-  <div class="field">
     <%= form.label :vendor_id %>
     <%= form.select :vendor_id, Vendor.order(:vendor_name).map { |vendor| [vendor.vendor_name, vendor.id] }, include_blank: true, id: "id_of_the_vendor_select_box" %>
   </div>
 
   <div class="field">
-    <%= form.label :payment_link %>
-    <%= form.text_field :payment_link %>
+    <%= form.label :contact_name %>
+    <%= form.text_field :contact_name %>
   </div>
 
   <div class="field">
@@ -32,13 +27,18 @@
   </div>
 
   <div class="field">
-    <%= form.label :Confirmation_order %>
-    <%= form.text_field :Confirmation_order %>
+    <%= form.label :email %>
+    <%= form.text_field :email %>
   </div>
 
   <div class="field">
-    <%= form.label :reservation_name %>
-    <%= form.text_field :reservation_name %>
+    <%= form.label :purchase_info %>
+    <%= form.text_field :purchase_info %>
+  </div>
+
+  <div class="field">
+    <%= form.label :amount %>
+    <%= form.number_field :amount %>
   </div>
 
   <div class="field">
@@ -46,6 +46,12 @@
     <%= form.file_field :file %>
   </div>
 
+  <div class="field">
+    <%= form.label :notes %>
+    <%= form.text_field :notes %>
+  </div>
+
+  
   <% if User.find(session[:user_id]).permission_type == 'admin' %>
     <div class="field" >
       <%= form.label :status %>
@@ -57,11 +63,6 @@
     <%= form.text_field :status, :readonly => true %>
   </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label :notes %>
-    <%= form.text_field :notes %>
-  </div>
 
   <div class="actions">
     <%= form.submit %>

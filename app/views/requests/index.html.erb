@@ -1,6 +1,10 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Requests</h1>
+<% if User.find(session[:user_id]).permission_type == 'admin' %>
+  <%= link_to 'Approved Reimbursement Requests', request_approved_path %>
+  <%= link_to 'In Progress Reimbursement Requests', request_inprogress_path %>
+<% end %>
 
 <table>
   <thead>
@@ -21,6 +25,9 @@
   </thead>
 
   <tbody>
+  <% if User.find(session[:user_id]).permission_type == 'user' %>
+    <% @requests = @requests.where('user_id = ?', User.find(session[:user_id]).id) %>
+  <% end %>
     <% @requests.each do |request|%>
       <tr>
         <td><%= User.where(id: request.user_id).last.first_name %></td>
@@ -31,7 +38,7 @@
         <td><%= request.gift %></td>
         <td><%= request.cost %></td>
         <td><%= request.items_purchased %></td>
-        <td><%= request.request_type %></td>
+        <td><%= request.item %></td>
         <td><%= Vendor.where(id: request.vendor_id).last.vendor_name %></td>
         <td><%= request.status %></td>
         <td><%= link_to 'Show', request %></td>
@@ -40,7 +47,9 @@
           link_to 'Edit', edit_request_path(request) 
         end
         %></td>
-        <td><%= button_to 'Destroy', request, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', request, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'View file', request.file %></td>
+        <td><%= link_to 'Download file', request.file, download: '' %></td>
       </tr>
     <% end %>
   </tbody>
@@ -49,4 +58,4 @@
 <br>
 
 <%= link_to 'New Request', new_request_path %>
-<%= link_to 'Back', user_home_path %>
+<%= link_to 'Back', financial_forms_path %>
