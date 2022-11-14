@@ -13,6 +13,11 @@
 
   <% if @user.permission_type == 'admin' %>
     <div class="field">
+      <%= form.label :notes %>
+      <%= form.text_area :notes, :cols => 50, :rows => 20 %>
+    </div>
+
+    <div class="field">
       <%= form.label :status %>
       <%= form.select :status, [['Pending','pending'],['Completed','completed'],['Denied','denied']] %>
     </div>

@@ -37,10 +37,11 @@ class RequestsController < ApplicationController
 
      # GET /requests/new
      def new
+          @user = User.find(session[:user_id])
           @budgets = Budget.where("locked = false")
           @budget_categories = BudgetCategory.where("budget_id" => params[:budget_id])
           @budget_subcategories = BudgetSubcategory.where("budget_category_id" => params[:budget_categor_id])
-          @request = Request.new(status: 'pending')
+          @request = Request.new(user_id: @user.id, status: 'pending')
      end
 
      # GET /requests/1/edit
@@ -111,7 +112,7 @@ class RequestsController < ApplicationController
      # Only allow a list of trusted parameters through.
      def request_params
           params.require(:request).permit(:user_id, :budget_id, :budget_category_id, :budget_subcategory_id, :tax_category,
-                                          :gift, :cost, :items_purchased, :request_type, :vendor_id, :vendor_name, :status
+                                          :gift, :cost, :items_purchased, :request_type, :vendor_id, :vendor_name, :status, :notes
           )
      end
 end

@@ -12,8 +12,8 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :user_id %>
-    <%= form.select :user_id, User.order(:first_name).map { |user| [user.first_name, user.id] }, include_blank: true, id: "id_of_the_user_id_select_box" %>
+    <%= form.label :recipient_name %>
+    <%= form.text_field :recipient_name %>
   </div>
 
   <div class="field">
@@ -28,7 +28,7 @@
 
   <div class="field">
     <%= form.label :tax_category %>
-    <%= form.text_field :tax_category %>
+    <%= form.select :tax_category, [['Travel'],['Food'],['Office Supplies'],['Utilities'],['Membership'],['Services & Other Income'],['Clothing'],['Rent'],['Other Expenses'],['Items for Resale ']], include_blank: true %>
   </div>
 
   <div class="field">
@@ -54,6 +54,11 @@
   <div class="field">
     <%= form.label :vendor_id %>
     <%= form.select :vendor_id, Vendor.order(:vendor_name).map { |vendor| [vendor.vendor_name, vendor.id] }, include_blank: true, id: "id_of_the_vendor_id_select_box" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :notes %>
+    <%= form.text_area :notes, :cols => 50, :rows => 20 %>
   </div>
 
   <div class="actions">
