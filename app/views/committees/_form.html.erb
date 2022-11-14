@@ -18,7 +18,7 @@
 
   <div class="field">
     <%= form.label :budget_id %>
-    <%= form.text_field :budget_id %>
+    <%= form.select :budget_id, Budget.order(:name).map { |budget| [budget.name, budget.id] }, include_blank: true, id: "id_of_the_budget_id_select_box" %>
   </div>
 
   <div class="actions">

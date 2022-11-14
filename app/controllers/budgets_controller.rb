@@ -9,6 +9,7 @@ class BudgetsController < ApplicationController
   # GET /budgets/1 or /budgets/1.json
   def show
     @budget_categories = @budget.budget_category_ids
+    @user = User.find(session[:user_id])
   end
 
   # GET /budgets/new

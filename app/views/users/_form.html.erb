@@ -56,7 +56,7 @@
     <%= form.text_field :phone_number %>
   </div>
 
-  <% if @user.permission_type == 'admin' -%>
+  <% if @current_user.permission_type == 'admin' %>
 
   <div class="field">
     <%= form.label :committee %>
@@ -67,7 +67,7 @@
     <%= form.label :permission_type %>
     <%= form.select :permission_type, [['Admin','admin'],['User','user']] %>
   </div>
-  <% end -%>
+  <% end %>
 
   <div class="actions">
     <%= form.submit %>

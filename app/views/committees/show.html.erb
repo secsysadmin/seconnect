@@ -7,7 +7,7 @@
 
 <p>
   <strong>Budget:</strong>
-  <%= @committee.budget_id %>
+  <%= Budget.find_by(id: @committee.budget_id)&.name %>
 </p>
 
 <% if @user.permission_type == 'admin' %>
