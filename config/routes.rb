@@ -22,7 +22,6 @@ Rails.application.routes.draw do
   get '/atc_inprogress', to: 'atcs#inprogress'
   get '/request_approved', to: 'requests#approved'
   get '/request_inprogress', to: 'requests#inprogress'
-  get '/pending', to: 'requests#pending'
 
   # Sessions routes
   get '/login', to: 'sessions#login'

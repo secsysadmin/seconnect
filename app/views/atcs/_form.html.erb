@@ -11,6 +11,11 @@
     </div>
   <% end %>
 
+  <div class="field" >
+    <%= form.label :user_id %>
+    <%= form.text_field :user_id, :readonly => true %>
+  </div>
+
   <div class="field">
     <%= form.label :vendor_id %>
     <%= form.select :vendor_id, Vendor.order(:vendor_name).map { |vendor| [vendor.vendor_name, vendor.id] }, include_blank: true, id: "id_of_the_vendor_select_box" %>
@@ -55,7 +60,7 @@
   <% if User.find(session[:user_id]).permission_type == 'admin' %>
     <div class="field" >
       <%= form.label :status %>
-      <%= form.select :status, [['In Progress', 'in progress'], ['Approved', 'approved']] %>
+      <%= form.select :status, [['Pending', 'pending'], ['Completed', 'completed'],['Denied', 'denied']] %>
     </div>
   <% else %>
   <div class="field" >

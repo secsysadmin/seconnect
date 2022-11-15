@@ -20,7 +20,8 @@ class AtcsController < ApplicationController
 
   # GET /atcs/new
   def new
-    @atc = Atc.new(status: 'In Progress')
+    @user = User.find(session[:user_id])
+    @atc = Atc.new(user_id: @user.id, status: 'pending')
   end
 
   # GET /atcs/1/edit
@@ -73,6 +74,6 @@ class AtcsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def atc_params
-      params.require(:atc).permit(:vendor_id, :contact_name, :phone, :email, :purchase_info, :amount, :notes, :file, :status)
+      params.require(:atc).permit(:vendor_id, :user_id, :contact_name, :phone, :email, :purchase_info, :amount, :notes, :file, :status)
     end
 end

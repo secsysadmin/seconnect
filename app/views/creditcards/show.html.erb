@@ -1,13 +1,19 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>User:</strong>
-  <%= @creditcard.user_id %>
+  <strong>Request Submitted By:</strong>
+  <%= User.find_by(id: @creditcard.user_id).first_name %>
+  <%= User.find_by(id: @creditcard.user_id).last_name %>
+</p>
+
+<p>
+  <strong>Recipient Name:</strong>
+  <%= @creditcard.recipient_name %>
 </p>
 
 <p>
   <strong>Vendor:</strong>
-  <%= @creditcard.vendor_id %>
+  <%= Vendor.find_by(id: @creditcard.vendor_id).vendor_name %>
 </p>
 
 <p>

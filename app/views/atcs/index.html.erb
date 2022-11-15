@@ -1,15 +1,16 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Atcs</h1>
+<h1>Approval To Charge Requests</h1>
 
 <% if User.find(session[:user_id]).permission_type == 'admin' %>
-  <%= link_to 'Approved Approval To Charge Requests', atc_approved_path %>
-  <%= link_to 'In Progress Approval To Charge Requests', atc_inprogress_path %>
+  <%= link_to 'Completed Approval To Charge Requests', atc_approved_path %>
+  <%= link_to 'Pending Approval To Charge Requests', atc_inprogress_path %>
 <% end %>
 
 <table>
   <thead>
     <tr>
+      <th>Request Submitted By</th>
       <th>Vendor</th>
       <th>Contact name</th>
       <th>Phone</th>
@@ -25,7 +26,8 @@
   <tbody>
     <% @atcs.each do |atc| %>
       <tr>
-      <td><%= Vendor.where(id: atc.vendor_id).last.vendor_name%></td>
+        <td><%= User.find_by(id: atc.user_id).first_name %></td>
+        <td><%= Vendor.where(id: atc.vendor_id).last.vendor_name%></td>
         <td><%= atc.contact_name %></td>
         <td><%= atc.phone %></td>
         <td><%= atc.email %></td>
@@ -35,7 +37,7 @@
         <td><%= atc.notes %></td>
         <td><%= link_to 'Show', atc %></td>
         <td><%= link_to 'Edit', edit_atc_path(atc) %></td>
-        <td><%= link_to 'Destroy', atc, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= button_to 'Destroy', atc, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <td><%= link_to 'View file', atc.file %></td>
         <td><%= link_to 'Download file', atc.file, download: '' %></td>
       </tr>

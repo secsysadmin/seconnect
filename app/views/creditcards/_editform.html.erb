@@ -1,0 +1,34 @@
+<%= form_with(model: creditcard) do |form| %>
+  <% if creditcard.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(creditcard.errors.count, "error") %> prohibited this creditcard from being saved:</h2>
+
+      <ul>
+        <% creditcard.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <% if User.find(session[:user_id]).permission_type == 'admin' %>
+    <div class="field" >
+      <%= form.label :status %>
+      <%= form.select :status, [['Pending', 'pending'], ['Completed', 'completed'],['Denied', 'denied']] %>
+    </div>
+  <% else %>
+  <div class="field" >
+    <%= form.label :status %>
+    <%= form.text_field :status, :readonly => true %>
+  </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :notes %>
+    <%= form.text_field :notes %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

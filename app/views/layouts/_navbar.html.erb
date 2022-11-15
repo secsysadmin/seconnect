@@ -23,18 +23,6 @@
             </li>
           <% end %>
 
-          <% if User.find(session[:user_id]).permission_type == 'admin' %>
-            <li class="nav-item <%= requests_path(session[:user_id]) %>">
-              <%= link_to 'Pending Documents', pending_path , class: 'nav-link' %>
-            </li>
-          <% else %>
-            <% if Committee.find(User.find(session[:user_id]).committee_id).committee_name != 'default' %>
-              <li class="nav-item <%= requests_path(session[:user_id]) %>">
-                <%= link_to 'Pending Documents', pending_path , class: 'nav-link' %>
-              </li>
-            <% end %>
-          <% end %>
-
           <li class="nav-item <%= financial_forms_path %>">
             <% if User.find(session[:user_id]).permission_type == 'admin' %>
                 <li class="nav-item <%= financial_forms_path %>">
