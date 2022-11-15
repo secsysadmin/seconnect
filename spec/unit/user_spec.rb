@@ -4,43 +4,43 @@
 require 'rails_helper'
 
 RSpec.describe(User, type: :model) do
-     subject {
-          committee = Committee.create(committee_name: "Test")
-          described_class.new(first_name: "user", last_name: "brs", street_address: "123 street", city: "College Station", state: "Texas", zip_code: "77845", uin: 123, email: "secbrsuser@gmail.com", phone_number: "123-456-7890", committee_id: committee.id, permission_type: "user", uid: "100003231053752770743"
+     subject do
+          committee = Committee.create!(committee_name: 'Test')
+          described_class.new(first_name: 'user', last_name: 'brs', street_address: '123 street', city: 'College Station', state: 'Texas', zip_code: '77845', uin: 123, email: 'secbrsuser@gmail.com', phone_number: '123-456-7890', committee_id: committee.id, permission_type: 'user', uid: '100003231053752770743'
           )
-     }
+     end
 
      it 'is valid with valid attributes' do
           expect(subject).to(be_valid)
      end
 
      it 'is not valid without a first name' do
-          subject.first_name = "user"
+          subject.first_name = 'user'
           expect(subject).to(be_valid)
      end
 
      it 'is not valid without a last name' do
-          subject.last_name = "brs"
+          subject.last_name = 'brs'
           expect(subject).to(be_valid)
      end
 
      it 'is not valid without an address' do
-          subject.street_address = "123 street"
+          subject.street_address = '123 street'
           expect(subject).to(be_valid)
      end
 
      it 'is not valid without a city' do
-          subject.city = "College Station"
+          subject.city = 'College Station'
           expect(subject).to(be_valid)
      end
 
      it 'is not valid without a state' do
-          subject.state = "Texas"
+          subject.state = 'Texas'
           expect(subject).to(be_valid)
      end
 
      it 'is not valid without a zip_code' do
-          subject.zip_code = 77845
+          subject.zip_code = 77_845
           expect(subject).to(be_valid)
      end
 
@@ -50,12 +50,12 @@ RSpec.describe(User, type: :model) do
      end
 
      it 'is not valid without a email' do
-          subject.email = "secbrsuser@gmail.com"
+          subject.email = 'secbrsuser@gmail.com'
           expect(subject).to(be_valid)
      end
 
      it 'is not valid without a phone_number' do
-          subject.phone_number = "123-456-7890"
+          subject.phone_number = '123-456-7890'
           expect(subject).to(be_valid)
      end
 
@@ -65,54 +65,54 @@ RSpec.describe(User, type: :model) do
      end
 
      it 'is not valid without a permission_type' do
-          subject.permission_type = "user"
+          subject.permission_type = 'user'
           expect(subject).to(be_valid)
      end
 
      it 'is not valid without a uid' do
-          subject.uid = 100003231053752770743
+          subject.uid = 100_003_231_053_752_770_743
           expect(subject).to(be_valid)
      end
 end
 
 RSpec.describe(User, type: :model) do
-     subject {
-          committee = Committee.create(committee_name: "Test")
-          described_class.new(first_name: "admin", last_name: "brs", street_address: "123 street", city: "College Station", state: "Texas", zip_code: "77845", uin: 123, email: "secbrs23@gmail.com", phone_number: "123-456-7890", committee_id: committee.id, permission_type: "admin", uid: "109290679077990497398"
-               )
-     }
+     subject do
+          committee = Committee.create!(committee_name: 'Test')
+          described_class.new(first_name: 'admin', last_name: 'brs', street_address: '123 street', city: 'College Station', state: 'Texas', zip_code: '77845', uin: 123, email: 'secbrs23@gmail.com', phone_number: '123-456-7890', committee_id: committee.id, permission_type: 'admin', uid: '109290679077990497398'
+          )
+     end
 
      it 'is valid with valid attributes' do
           expect(subject).to(be_valid)
      end
 
      it 'is not valid without a first name' do
-          subject.first_name = "admin"
+          subject.first_name = 'admin'
           expect(subject).to(be_valid)
      end
 
      it 'is not valid without a last name' do
-          subject.last_name = "brs"
+          subject.last_name = 'brs'
           expect(subject).to(be_valid)
      end
 
      it 'is not valid without an address' do
-          subject.street_address = "123 street"
+          subject.street_address = '123 street'
           expect(subject).to(be_valid)
      end
 
      it 'is not valid without a city' do
-          subject.city = "College Station"
+          subject.city = 'College Station'
           expect(subject).to(be_valid)
      end
 
      it 'is not valid without a state' do
-          subject.state = "Texas"
+          subject.state = 'Texas'
           expect(subject).to(be_valid)
      end
 
      it 'is not valid without a zip_code' do
-          subject.zip_code = 77845
+          subject.zip_code = 77_845
           expect(subject).to(be_valid)
      end
 
@@ -122,12 +122,12 @@ RSpec.describe(User, type: :model) do
      end
 
      it 'is not valid without a email' do
-          subject.email = "secbrs23@gmail.com"
+          subject.email = 'secbrs23@gmail.com'
           expect(subject).to(be_valid)
      end
 
      it 'is not valid without a phone_number' do
-          subject.phone_number = "123-456-7890"
+          subject.phone_number = '123-456-7890'
           expect(subject).to(be_valid)
      end
 
@@ -137,12 +137,12 @@ RSpec.describe(User, type: :model) do
      end
 
      it 'is not valid without a permission_type' do
-          subject.permission_type = "admin"
+          subject.permission_type = 'admin'
           expect(subject).to(be_valid)
      end
 
      it 'is not valid without a uid' do
-          subject.uid = 109290679077990497398
+          subject.uid = 109_290_679_077_990_497_398
           expect(subject).to(be_valid)
      end
 end

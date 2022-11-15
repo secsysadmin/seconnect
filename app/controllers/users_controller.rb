@@ -1,12 +1,13 @@
 # frozen_string_literal: true
+
 require 'pry'
 class UsersController < ApplicationController
-
-     def index # ADMIN ONLY
+     # ADMIN ONLY
+     def index
           if session[:user_id]
                @user = User.find(session[:user_id])
                # check for proper permissions
-               if (@user.permission_type == 'admin')
+               if @user.permission_type == 'admin'
                     @users = User.all
                else
                     redirect_to(root_url) and return
@@ -17,11 +18,12 @@ class UsersController < ApplicationController
      end
 
      # GET /users/1 or /users/1.json
-     def show # ADMIN AND USER
+     # ADMIN AND USER
+     def show
           if session[:user_id]
                @current_user = User.find(session[:user_id]) # keep track of session user
                # check for proper permissions
-               if (@current_user.permission_type == 'admin' || @current_user.permission_type == 'user')
+               if @current_user.permission_type == 'admin' || @current_user.permission_type == 'user'
                     @user = User.find(params[:id])
                else
                     redirect_to(root_url) and return
@@ -41,7 +43,7 @@ class UsersController < ApplicationController
           if session[:user_id]
                @current_user = User.find(session[:user_id]) # keep track of session user
                # check for proper permissions
-               if (@current_user.permission_type == 'admin' || @current_user.permission_type == 'user')
+               if @current_user.permission_type == 'admin' || @current_user.permission_type == 'user'
                     @user = User.find(params[:id])
                else
                     redirect_to(root_url) and return
@@ -56,7 +58,7 @@ class UsersController < ApplicationController
           @user = User.new(user_params)
           if @user.save
                session[:user_id] = @user.id
-               redirect_to root_path, notice: "Successfully created account"
+               redirect_to(root_path, notice: 'Successfully created account')
           else
                render(:new)
           end
@@ -72,8 +74,7 @@ class UsersController < ApplicationController
           respond_to do |format|
                if @user.update(user_params)
                     format.html do
-                         
-                         if (@current_user.permission_type == 'admin')
+                         if @current_user.permission_type == 'admin'
                               redirect_to(users_path, notice: 'User was successfully updated.')
                          else
                               redirect_to(user_url(@user), notice: 'User was successfully updated.')
@@ -90,10 +91,10 @@ class UsersController < ApplicationController
      # DELETE /users/1 or /users/1.json
      def destroy
           @user = User.find(params[:id])
-          @user.destroy
+          @user.destroy!
 
           respond_to do |format|
-               format.html { redirect_to users_url, notice: "User was successfully destroyed." }
+               format.html { redirect_to(users_url, notice: 'User was successfully destroyed.') }
                # format.json { head :no_content }
           end
      end

@@ -21,7 +21,7 @@ class InvoicesControllerTest < ActionDispatch::IntegrationTest
           assert_difference('Invoice.count') do
                post invoice_url,
                     params: {
-          invoice: {
+                         invoice: {
                               budget: @invoice.budget,
                               committee_name: @invoice.invoice_name,
                               user_id: @invoice.user_id
