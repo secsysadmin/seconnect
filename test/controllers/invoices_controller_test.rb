@@ -17,14 +17,19 @@ class InvoicesControllerTest < ActionDispatch::IntegrationTest
           assert_response :success
      end
 
-     test 'should create committee' do
+     test 'should create invoice' do
           assert_difference('Invoice.count') do
                post invoice_url,
                     params: {
-                         invoice: {
-                              budget: @invoice.budget,
-                              committee_name: @invoice.invoice_name,
-                              user_id: @invoice.user_id
+          invoice: {
+                              vendor_id: @invoice.vendor_id,
+                              vendor_title: @invoice.vendor_title,
+                              tax_id_number: @invoice.tax_id_number
+                              city: @invoice.city
+                              state: @invoice.state
+                              zip: @invoice.zip
+                              payment_method: @invoice.payment_method
+                              notes: @invoice.notes
                          }
                     }
           end
@@ -32,7 +37,7 @@ class InvoicesControllerTest < ActionDispatch::IntegrationTest
           assert_redirected_to invoice_url(Invoice.last)
      end
 
-     test 'should show committee' do
+     test 'should show invoice' do
           get invoice_url(@invoice)
           assert_response :success
      end
@@ -42,23 +47,28 @@ class InvoicesControllerTest < ActionDispatch::IntegrationTest
           assert_response :success
      end
 
-     test 'should update committee' do
+     test 'should update invoice' do
           patch invoice_url(@invoice),
                 params: {
-                     committee: {
-                          budget: @invoice.budget,
-                          committee_name: @committee.committee_name,
-                          user_id: @committee.user_id
+     invoice: {
+                          vendor_id: @invoice.vendor_id,
+                          vendor_title: @invoice.vendor_title,
+                          tax_id_number: @invoice.tax_id_number
+                          city: @invoice.city
+                          state: @invoice.state
+                          zip: @invoice.zip
+                          payment_method: @invoice.payment_method
+                          notes: @invoice.notes
                      }
                 }
-          assert_redirected_to committee_url(@committee)
+          assert_redirected_to invoice_url(@invoice)
      end
 
-     test 'should destroy committee' do
-          assert_difference('Committee.count', -1) do
-               delete committee_url(@committee)
+     test 'should destroy invoice' do
+          assert_difference('Invoice.count', -1) do
+               delete invoice_url(@invoice)
           end
 
-          assert_redirected_to committees_url
+          assert_redirected_to invoices_url
      end
 end

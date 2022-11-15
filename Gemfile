@@ -31,6 +31,8 @@ gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'rexml'
 
+gem 'bootstrap-sass', '~> 2.3.2'
+gem 'carrierwave', '~> 0.9'
 gem 'dotenv-rails'
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
