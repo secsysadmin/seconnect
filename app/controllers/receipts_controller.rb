@@ -2,7 +2,7 @@
 
 require 'pry'
 class ReceiptsController < ApplicationController
-     before_action :set_request, only: %i[show edit update destroy]
+     before_action :set_receipt, only: %i[show edit update destroy]
 
      def index
           @receipts = Receipt.all
@@ -71,7 +71,7 @@ class ReceiptsController < ApplicationController
 
      # Only allow a list of trusted parameters through.
      def receipt_params
-          params.require(:receipt).permit(:user_id, :vendor_id, :details, :attachment
+          params.require(:receipt).permit(:user_id, :vendor_id, :details
           )
      end
 end

@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   resources :users #, only: [:new, :create, :edit, :update, :show, :destroy]
   resources :requests
   resources :admin_requests
-  resources :receipts
+  resources :receipts, only: [:index, :new, :create, :destroy]
 
   root 'sessions#login'
 
