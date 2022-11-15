@@ -4,11 +4,12 @@ class CommitteesController < ApplicationController
      before_action :set_committee, only: %i[show edit update destroy]
 
      # GET /committees or /committees.json
-     def index # ADMIN ONLY
+     # ADMIN ONLY
+     def index
           if session[:user_id]
                @user = User.find(session[:user_id])
                # check for proper permissions
-               if (@user.permission_type == 'admin')
+               if @user.permission_type == 'admin'
                     @committees = Committee.all
                else
                     redirect_to(root_url) and return
@@ -19,11 +20,12 @@ class CommitteesController < ApplicationController
      end
 
      # GET /committees/1 or /committees/1.json
-     def show # ADMIN AND USER
-          if @committee != nil && session[:user_id]
+     # ADMIN AND USER
+     def show
+          if !@committee.nil? && session[:user_id]
                @user = User.find(session[:user_id])
                # check for proper permissions
-               if (@user.permission_type == 'admin' || @user.permission_type == 'user')
+               if @user.permission_type == 'admin' || @user.permission_type == 'user'
                     @users = @committee.users
                else
                     redirect_to(root_url) and return
@@ -34,11 +36,12 @@ class CommitteesController < ApplicationController
      end
 
      # GET /committees/new
-     def new # ADMIN ONLY
+     # ADMIN ONLY
+     def new
           if session[:user_id]
                @user = User.find(session[:user_id])
                # check for proper permissions
-               if (@user.permission_type == 'admin')
+               if @user.permission_type == 'admin'
                     @committee = Committee.new
                else
                     redirect_to(root_url) and return
@@ -49,11 +52,12 @@ class CommitteesController < ApplicationController
      end
 
      # GET /committees/1/edit
-     def edit # ADMIN ONLY
-          if @committee != nil && session[:user_id]
+     # ADMIN ONLY
+     def edit
+          if !@committee.nil? && session[:user_id]
                @user = User.find(session[:user_id])
                # check for proper permissions
-               if (@user.permission_type == 'admin')
+               if @user.permission_type == 'admin'
                     @users = @committee.users
                else
                     redirect_to(root_url) and return

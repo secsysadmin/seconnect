@@ -1,20 +1,17 @@
-require 'rails_helper'
+# frozen_string_literal: true
 
+# require 'rails_helper'
 
-#Create Budget Subcategory
-# RSpec.describe('Budget Subcat Spec', type: :feature) do
-#     it 'new budget subcategory' do
+# RSpec.describe('Budget Category Integration Test', type: :feature) do
+#     it 'new budget category' do
 #          visit login_admin_path
 #          click_on 'Budget Management'
-#          click_on 'New Budget Subcategory'
-#          fill_in 'Committee', with: '1'
-#          fill_in 'Subcategory name', with: 'meeting snacks'
-#          fill_in 'Subcategory amount', with: '15'
-#          fill_in 'Status', with: 'Pending'
-#          click_on 'Create Budget subcategory'
-#          expect(page).to(have_content('meeting snacks'))
+#          click_on 'Edit Categories'
+#          click_on 'New Budget Category'
+#          expect(page).to(have_content('New Budget Category'))
 #     end
 # end
+
 # RSpec.describe('Create Budget Subcategory 2', type: :feature) do
 #     it 'new budget subcategory' do
 #          visit login_admin_path
