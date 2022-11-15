@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_11_14_213132) do
+ActiveRecord::Schema.define(version: 2022_11_15_003852) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,7 +59,9 @@ ActiveRecord::Schema.define(version: 2022_11_14_213132) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "status"
-    
+    t.integer "user_id"
+  end
+
   create_table "budget_categories", force: :cascade do |t|
     t.string "name"
     t.decimal "budgeted"
@@ -105,15 +107,16 @@ ActiveRecord::Schema.define(version: 2022_11_14_213132) do
 
   create_table "creditcards", force: :cascade do |t|
     t.integer "user_id"
-    t.string "vendor_id"
     t.string "payment_link"
-    t.decimal "phone"
     t.string "Confirmation_order"
     t.string "reservation_name"
     t.string "status"
     t.string "notes"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "recipient_name"
+    t.integer "vendor_id"
+    t.integer "phone"
   end
 
   create_table "invoices", force: :cascade do |t|
@@ -142,12 +145,11 @@ ActiveRecord::Schema.define(version: 2022_11_14_213132) do
     t.boolean "gift"
     t.decimal "cost"
     t.string "items_purchased"
-    t.string "item"
     t.integer "vendor_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "status"
-    t.text "Notes"
+    t.text "notes"
     t.integer "budget_subcategory_id"
     t.string "recipient_name"
   end

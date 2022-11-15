@@ -81,15 +81,15 @@ defaultAdmin = User.create!(
 )
 
 ### EXAMPLE REQUEST SEEDS
-request1 = Request.create!(
-  {user_id: defaultUser.id, tax_category: "na", gift: "false", cost: "50.00", items_purchased: "na", request_type: "na", vendor_id: vendor.id, status: "pending", budget_subcategory_id: budget01_category01_subcategory01.id}
-)
+# request1 = Request.create!(
+#   {user_id: defaultUser.id, tax_category: "na", gift: "false", cost: "50.00", items_purchased: "na", request_type: "na", vendor_id: vendor.id, status: "pending", budget_subcategory_id: budget01_category01_subcategory01.id}
+# )
 
-request1 = Request.create!(
-  {user_id: defaultUser.id, tax_category: "na", gift: "false", cost: "40.00", items_purchased: "na", request_type: "na", vendor_id: vendor.id, status: "completed", budget_subcategory_id: budget01_category01_subcategory01.id}
-)
+# request1 = Request.create!(
+#   {user_id: defaultUser.id, tax_category: "na", gift: "false", cost: "40.00", items_purchased: "na", request_type: "na", vendor_id: vendor.id, status: "completed", budget_subcategory_id: budget01_category01_subcategory01.id}
+# )
 
-request1 = Request.create!(
-  {user_id: defaultUser.id, tax_category: "na", gift: "false", cost: "40.00", items_purchased: "na", request_type: "na", vendor_id: vendor.id, status: "denied", budget_subcategory_id: budget01_category01_subcategory01.id}
-)
+# request1 = Request.create!(
+#   {user_id: defaultUser.id, tax_category: "na", gift: "false", cost: "40.00", items_purchased: "na", request_type: "na", vendor_id: vendor.id, status: "denied", budget_subcategory_id: budget01_category01_subcategory01.id}
+# )
 ###

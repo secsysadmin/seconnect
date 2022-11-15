@@ -11,9 +11,9 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :recipient_name %>
-    <%= form.text_field :recipient_name %>
+  <div class="field" >
+    <%= form.label :user_id %>
+    <%= form.text_field :user_id, :readonly => true %>
   </div>
 
   <div class="field">
@@ -24,6 +24,11 @@
     onchange: "this.form.submit()"%>
     <%= form.select :budget_subcategory_id, options_from_collection_for_select(@budget_subcategories, "id", "name", params[:budget_subcategory_id]), prompt: "- Subcategory -",
     onchange: "this.form.submit()"%>
+  </div>
+
+  <div class="field">
+    <%= form.label :recipient_name %>
+    <%= form.text_field :recipient_name %>
   </div>
 
   <div class="field">
@@ -54,7 +59,7 @@
   <% if User.find(session[:user_id]).permission_type == 'admin' %>
     <div class="field" >
       <%= form.label :status %>
-      <%= form.select :status, [['Pending', 'pending'], ['Approved', 'approved'], ['Denied', 'denied']] %>
+      <%= form.select :status, [['Pending', 'pending'], ['Completed', 'completed'], ['Denied', 'denied']] %>
     </div>
   <% else %>
   <div class="field" >

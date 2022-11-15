@@ -2,14 +2,15 @@
 
 <h1>Creditcards</h1>
 <% if User.find(session[:user_id]).permission_type == 'admin' %>
-  <%= link_to 'Approved Credit Card Requests', creditcard_approved_path %>
-  <%= link_to 'In Progress Credit Card Requests', creditcard_inprogress_path %>
+  <%= link_to 'Completed Credit Card Requests', creditcard_approved_path %>
+  <%= link_to 'Pending Credit Card Requests', creditcard_inprogress_path %>
 <% end %>
 
 <table>
   <thead>
     <tr>
-      <th>User</th>
+      <th>Request Submitted By</th>
+      <th>Recipient Name</th>
       <th>Vendor</th>
       <th>Payment link</th>
       <th>Phone</th>
@@ -23,12 +24,12 @@
 
   <tbody>
   <% if User.find(session[:user_id]).permission_type == 'user' %>
-    <%= link_to 'Approved Credit Card Requests', creditcard_approved_path %>
     <% @creditcards = @creditcards.where('user_id = ?', User.find(session[:user_id]).id) %>
   <% end %>
     <% @creditcards.each do |creditcard| %>
       <tr>
-        <td><%= User.where(id: creditcard.user_id).last.first_name %></td>
+        <td><%= User.find_by(id: creditcard.user_id).first_name %></td>
+        <td><%= creditcard.recipient_name %></td>
         <td><%= Vendor.where(id: creditcard.vendor_id).last.vendor_name%></td>
         <td><%= creditcard.payment_link %></td>
         <td><%= creditcard.phone %></td>
@@ -38,7 +39,7 @@
         <td><%= creditcard.notes %></td>
         <td><%= link_to 'Show', creditcard %></td>
         <td><%= link_to 'Edit', edit_creditcard_path(creditcard) %></td>
-        <td><%= link_to 'Destroy', creditcard, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= button_to 'Destroy', creditcard, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <td><%= link_to 'View file', creditcard.file %></td>
         <td><%= link_to 'Download file', creditcard.file, download: '' %></td>
       </tr>

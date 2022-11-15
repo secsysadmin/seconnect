@@ -1,6 +1,12 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <strong>Request Submitted By:</strong>
+  <%= User.find_by(id: @atc.user_id).first_name %>
+  <%= User.find_by(id: @atc.user_id).last_name %>
+</p>
+
+<p>
   <strong>Vendor:</strong>
   <%= @atc.vendor_id %>
 </p>

@@ -21,23 +21,20 @@
   </thead>
 
   <tbody>
-    <% @requests = @requests.where("status = 'In Progress'") %>
+    <% @requests = @requests.where("status = 'pending'") %>
     <% @requests.each do |request|%>
       <tr>
         <td><%= User.where(id: request.user_id).last.first_name %></td>
-        <td><%= BudgetSubcategory.where(id: request.budget_id).last.subcategory_name %></td>
-        <td><%= request.category %></td>
-        <td><%= request.subcategory %></td>
+        <td><%= BudgetSubcategory.find_by(id: request.budget_subcategory_id).name %></td>
         <td><%= request.tax_category %></td>
         <td><%= request.gift %></td>
         <td><%= request.cost %></td>
         <td><%= request.items_purchased %></td>
-        <td><%= request.item %></td>
         <td><%= Vendor.where(id: request.vendor_id).last.vendor_name %></td>
         <td><%= request.status %></td>
         <td><%= link_to 'Show', request %></td>
         <td><%= link_to 'Edit', edit_request_path(request) %></td>
-        <td><%= link_to 'Destroy', request, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= button_to 'Destroy', request, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <td><%= link_to 'View file', request.file %></td>
         <td><%= link_to 'Download file', request.file, download: '' %></td>
       </tr>

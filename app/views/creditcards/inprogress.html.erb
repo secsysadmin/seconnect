@@ -1,11 +1,12 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Creditcards</h1>
+<h1>Pending Credit Card Requests</h1>
 
 <table>
   <thead>
     <tr>
-      <th>User</th>
+      <th>Request Submitted By</th>
+      <th>Recipient Name</th>
       <th>Vendor</th>
       <th>Payment link</th>
       <th>Phone</th>
@@ -18,10 +19,11 @@
   </thead>
 
   <tbody>
-    <% @creditcards = @creditcards.where("status = 'In Progress'") %>
+    <% @creditcards = @creditcards.where("status = 'pending'") %>
     <% @creditcards.each do |creditcard| %>
       <tr>
         <td><%= User.where(id: creditcard.user_id).last.first_name %></td>
+        <td><%= creditcard.recipient_name %></td>
         <td><%= Vendor.where(id: creditcard.vendor_id).last.vendor_name%></td>
         <td><%= creditcard.payment_link %></td>
         <td><%= creditcard.phone %></td>
@@ -31,7 +33,7 @@
         <td><%= creditcard.notes %></td>
         <td><%= link_to 'Show', creditcard %></td>
         <td><%= link_to 'Edit', edit_creditcard_path(creditcard) %></td>
-        <td><%= link_to 'Destroy', creditcard, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= button_to 'Destroy', creditcard, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <td><%= link_to 'View file', creditcard.file %></td>
         <td><%= link_to 'Download file', creditcard.file, download: '' %></td>
       </tr>

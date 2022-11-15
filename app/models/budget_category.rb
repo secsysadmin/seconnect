@@ -9,11 +9,11 @@ class BudgetCategory < ApplicationRecord
     end
 
     def spent
-        self.requests.where("status = 'Approved'").sum('cost')
+        self.requests.where("status = 'completed'").sum('cost')
     end
 
     def pending
-        self.requests.where("status = 'In Progress'").sum('cost')
+        self.requests.where("status = 'pending'").sum('cost')
     end
 
     def balance
