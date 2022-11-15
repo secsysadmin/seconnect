@@ -1,1 +1,3 @@
-json.array! @admin_receipts, partial: "admin_receipts/admin_receipt", as: :admin_receipt
+# frozen_string_literal: true
+
+json.array!(@receipts, partial: 'receipts/receipt', as: :receipt)

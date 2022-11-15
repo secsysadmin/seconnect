@@ -1,4 +1,20 @@
 <p id="notice"><%= notice %></p>
 
-<%= link_to 'Edit', edit_admin_receipt_path(@admin_receipt) %> |
-<%= link_to 'Back', admin_receipts_path %>
+
+<p>
+  <strong>User:</strong>
+  <%= @receipt.user_id %>
+</p>
+
+<p>
+  <strong>Vendor:</strong>
+  <%= @receipt.vendor_id %>
+</p>
+
+<p>
+  <strong>Details:</strong>
+  <%= @receipt.details %>
+</p>
+
+<%= link_to 'Edit', edit_receipt_path(@receipt) %> |
+<%= link_to 'Back', :back %>

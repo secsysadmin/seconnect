@@ -1,2 +1,0 @@
-class AdminRequestsCompleted < ApplicationRecord
-end
