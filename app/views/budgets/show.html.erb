@@ -1,9 +1,7 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @budget.name %>
-</p>
+<h1> <%= @budget.name %> Budget </h1>
+
 <p>
   <strong>Fiscal year:</strong>
   <%= @budget.fiscal_year %>
@@ -56,18 +54,23 @@
     </tr>
   </thead>
 
+  <p> ------------------------------ </p>
+
   <tbody>
     <% @budget_categories.each do |category_id| %>
-      <tr>
-        <td><%= BudgetCategory.find(category_id).name %></td>
-        <td><%= BudgetCategory.find(category_id).budgeted %></td>
-        <td><%= BudgetCategory.find(category_id).spent %></td>
-        <td><%= BudgetCategory.find(category_id).pending %></td>
-        <td><%= BudgetCategory.find(category_id).balance %></td>
-      </tr>
 
       <tr>
-        <td> --- </td>
+        <td> ------------------------------ </td>
+      </tr>
+      <tr>
+        <td><strong><%= BudgetCategory.find(category_id).name %></strong></td>
+        <td><strong><%= BudgetCategory.find(category_id).budgeted %></strong></td>
+        <td><strong><%= BudgetCategory.find(category_id).spent %></strong></td>
+        <td><strong><%= BudgetCategory.find(category_id).pending %></strong></td>
+        <td><strong><%= BudgetCategory.find(category_id).balance %></strong></td>
+      </tr>
+      <tr>
+        <td> ------------------------------ </td>
       </tr>
 
       <% BudgetCategory.find(category_id).budget_subcategory_ids.each do |subcategory_id| %>
