@@ -10,11 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
+ActiveRecord::Schema.define(version: 2022_11_15_011515) do
+=======
 ActiveRecord::Schema.define(version: 2022_11_15_003852) do
+>>>>>>> e47df5ad8b5be0cecd011281d31934dbf7c10f45
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+<<<<<<< HEAD
+  create_table "admin_receipts", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+=======
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -41,6 +50,7 @@ ActiveRecord::Schema.define(version: 2022_11_15_003852) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+>>>>>>> e47df5ad8b5be0cecd011281d31934dbf7c10f45
   end
 
   create_table "admin_requests", force: :cascade do |t|
@@ -48,6 +58,11 @@ ActiveRecord::Schema.define(version: 2022_11_15_003852) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+<<<<<<< HEAD
+  create_table "admin_requests_completeds", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+=======
   create_table "atcs", force: :cascade do |t|
     t.integer "vendor_id"
     t.string "contact_name"
@@ -60,6 +75,7 @@ ActiveRecord::Schema.define(version: 2022_11_15_003852) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "status"
     t.integer "user_id"
+>>>>>>> e47df5ad8b5be0cecd011281d31934dbf7c10f45
   end
 
   create_table "budget_categories", force: :cascade do |t|
@@ -120,13 +136,27 @@ ActiveRecord::Schema.define(version: 2022_11_15_003852) do
   end
 
   create_table "invoices", force: :cascade do |t|
+    t.string "vendor_id"
     t.string "vendor_title"
-    t.string "vendor_taxid"
-    t.string "vendor_address"
-    t.string "vendor_city"
-    t.string "vendor_state"
-    t.string "vendor_zip"
-    t.string "vendor_paymentmethod"
+    t.string "tax_id_number"
+    t.string "address"
+    t.string "city"
+    t.string "state"
+    t.string "zip"
+    t.string "payment_method"
+    t.string "notes"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "items", force: :cascade do |t|
+    t.string "items_purchased"
+    t.string "budget"
+    t.string "category"
+    t.string "subcategory"
+    t.string "taxcategory"
+    t.boolean "gift"
+    t.float "cost"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

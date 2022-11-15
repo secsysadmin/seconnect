@@ -1,0 +1,2 @@
+module AdminReceiptsHelper
+end
