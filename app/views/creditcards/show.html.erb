@@ -1,28 +1,39 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>User:</strong>
-  <%= @creditcard.user_id %>
+  <strong>Request Submitted By:</strong>
+  <%= User.find_by(id: @creditcard.user_id).first_name %>
+  <%= User.find_by(id: @creditcard.user_id).last_name %>
 </p>
 
 <p>
-  <strong>Committee:</strong>
-  <%= @creditcard.committee %>
+  <strong>Recipient Name:</strong>
+  <%= @creditcard.recipient_name %>
 </p>
 
 <p>
-  <strong>Start time:</strong>
-  <%= @creditcard.start_time %>
+  <strong>Vendor:</strong>
+  <%= Vendor.find_by(id: @creditcard.vendor_id).vendor_name %>
 </p>
 
 <p>
-  <strong>End time:</strong>
-  <%= @creditcard.end_time %>
+  <strong>Payment link:</strong>
+  <%= @creditcard.payment_link %>
 </p>
 
 <p>
-  <strong>Reason:</strong>
-  <%= @creditcard.reason %>
+  <strong>Phone:</strong>
+  <%= @creditcard.phone %>
+</p>
+
+<p>
+  <strong>Confirmation order:</strong>
+  <%= @creditcard.Confirmation_order %>
+</p>
+
+<p>
+  <strong>Reservation name:</strong>
+  <%= @creditcard.reservation_name %>
 </p>
 
 <p>
@@ -30,5 +41,13 @@
   <%= @creditcard.status %>
 </p>
 
+<p>
+  <strong>Notes:</strong>
+  <%= @creditcard.notes %>
+</p>
+
+<%= link_to 'View file', @creditcard.file %>
+<%= link_to 'Download file', @creditcard.file, download: '' %>
+
 <%= link_to 'Edit', edit_creditcard_path(@creditcard) %> |
-<%= link_to 'Back', creditcards_path %>
+<%= link_to 'Back', creditcards_path(session[:user_id]) %>

@@ -23,18 +23,18 @@
             </li>
           <% end %>
 
-          <% if User.find(session[:user_id]).permission_type == 'admin' %>
-            <li class="nav-item <%= admin_home_path(User.find(session[:user_id])) %>">
-              <%= link_to 'Pending Documents', admin_home_path(User.find(session[:user_id])), class: 'nav-link' %>
-            </li>
-          <% else %>
-            <li class="nav-item <%= user_home_path(User.find(session[:user_id])) %>">
-              <%= link_to 'Pending Documents', user_home_path(User.find(session[:user_id])), class: 'nav-link' %>
-            </li>
-          <% end %>
-
           <li class="nav-item <%= financial_forms_path %>">
-            <%= link_to 'Financial Forms', financial_forms_path, class: 'nav-link' %>
+            <% if User.find(session[:user_id]).permission_type == 'admin' %>
+                <li class="nav-item <%= financial_forms_path %>">
+                  <%= link_to 'Financial Forms', financial_forms_path, class: 'nav-link' %>
+                </li>
+            <% else %>
+              <% if Committee.find(User.find(session[:user_id]).committee_id).committee_name != 'default' %>
+                <li class="nav-item <%= financial_forms_path %>">
+                  <%= link_to 'Financial Forms', financial_forms_path, class: 'nav-link' %>
+                </li>
+              <% end %>
+            <% end %>
           </li>
 
           <% if User.find(session[:user_id]).permission_type == 'admin' %>
@@ -42,11 +42,13 @@
               <%= link_to 'Budget Management', budgets_path, class: 'nav-link' %>
             </li>
           <% else %>
-            <li class="nav-item <%= committee_path(User.find(session[:user_id]).committee_id) %>">
-              <%= link_to 'Budget', committee_path(User.find(session[:user_id]).committee_id), class: 'nav-link' %>
-            </li>
+            <% if Budget.find_by(id: Committee.find(User.find(session[:user_id]).committee_id).budget_id) # for users that belong to a committee %> 
+              <li class="nav-item <%= budget_path(Budget.find(Committee.find(User.find(session[:user_id]).committee_id).budget_id)) %>">
+                <%= link_to 'Budget', budget_path(Budget.find(Committee.find(User.find(session[:user_id]).committee_id).budget_id)), class: 'nav-link' %>
+              </li>
+            <% else # for users that dont belong to a committee %>
+            <% end %>
           <% end %>
-
 
           <% if User.find(session[:user_id]).permission_type == 'admin' %>
             <li class="nav-item <%= users_path %>">

@@ -1,0 +1,75 @@
+<%= form_with(model: atc) do |form| %>
+  <% if atc.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(atc.errors.count, "error") %> prohibited this atc from being saved:</h2>
+
+      <ul>
+        <% atc.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field" >
+    <%= form.label :user_id %>
+    <%= form.text_field :user_id, :readonly => true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :vendor_id %>
+    <%= form.select :vendor_id, Vendor.order(:vendor_name).map { |vendor| [vendor.vendor_name, vendor.id] }, include_blank: true, id: "id_of_the_vendor_select_box" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :contact_name %>
+    <%= form.text_field :contact_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :phone %>
+    <%= form.text_field :phone %>
+  </div>
+
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.text_field :email %>
+  </div>
+
+  <div class="field">
+    <%= form.label :purchase_info %>
+    <%= form.text_field :purchase_info %>
+  </div>
+
+  <div class="field">
+    <%= form.label :amount %>
+    <%= form.number_field :amount %>
+  </div>
+
+  <div class="field">
+    <%= form.label :file %>
+    <%= form.file_field :file %>
+  </div>
+
+  <div class="field">
+    <%= form.label :notes %>
+    <%= form.text_field :notes %>
+  </div>
+
+  
+  <% if User.find(session[:user_id]).permission_type == 'admin' %>
+    <div class="field" >
+      <%= form.label :status %>
+      <%= form.select :status, [['Pending', 'pending'], ['Completed', 'completed'],['Denied', 'denied']] %>
+    </div>
+  <% else %>
+  <div class="field" >
+    <%= form.label :status %>
+    <%= form.text_field :status, :readonly => true %>
+  </div>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

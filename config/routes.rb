@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :admin_requests_completeds
   resources :items
   resources :admin_receipts
+  resources :atcs
   resources :budget_categories
   resources :budgets
   resources :creditcards
@@ -16,6 +17,14 @@ Rails.application.routes.draw do
   resources :receipts
 
   root 'sessions#login'
+
+  #filtered pages
+  get '/creditcard_approved', to: 'creditcards#approved'
+  get '/creditcard_inprogress', to: 'creditcards#inprogress'
+  get '/atc_approved', to: 'atcs#approved'
+  get '/atc_inprogress', to: 'atcs#inprogress'
+  get '/request_approved', to: 'requests#approved'
+  get '/request_inprogress', to: 'requests#inprogress'
 
   # Sessions routes
   get '/login', to: 'sessions#login'

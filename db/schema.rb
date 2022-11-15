@@ -10,14 +10,47 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2022_11_15_011515) do
+=======
+ActiveRecord::Schema.define(version: 2022_11_15_003852) do
+>>>>>>> e47df5ad8b5be0cecd011281d31934dbf7c10f45
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+<<<<<<< HEAD
   create_table "admin_receipts", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+=======
+  create_table "active_storage_attachments", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "active_storage_blobs", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.string "service_name", null: false
+    t.bigint "byte_size", null: false
+    t.string "checksum", null: false
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "active_storage_variant_records", force: :cascade do |t|
+    t.bigint "blob_id", null: false
+    t.string "variation_digest", null: false
+    t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+>>>>>>> e47df5ad8b5be0cecd011281d31934dbf7c10f45
   end
 
   create_table "admin_requests", force: :cascade do |t|
@@ -25,9 +58,24 @@ ActiveRecord::Schema.define(version: 2022_11_15_011515) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+<<<<<<< HEAD
   create_table "admin_requests_completeds", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+=======
+  create_table "atcs", force: :cascade do |t|
+    t.integer "vendor_id"
+    t.string "contact_name"
+    t.decimal "phone"
+    t.string "email"
+    t.string "purchase_info"
+    t.integer "amount"
+    t.string "notes"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "status"
+    t.integer "user_id"
+>>>>>>> e47df5ad8b5be0cecd011281d31934dbf7c10f45
   end
 
   create_table "budget_categories", force: :cascade do |t|
@@ -68,7 +116,6 @@ ActiveRecord::Schema.define(version: 2022_11_15_011515) do
 
   create_table "committees", force: :cascade do |t|
     t.string "committee_name"
-    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "budget_id"
@@ -76,13 +123,16 @@ ActiveRecord::Schema.define(version: 2022_11_15_011515) do
 
   create_table "creditcards", force: :cascade do |t|
     t.integer "user_id"
-    t.string "committee"
-    t.date "start_time"
-    t.date "end_time"
-    t.string "reason"
+    t.string "payment_link"
+    t.string "Confirmation_order"
+    t.string "reservation_name"
     t.string "status"
+    t.string "notes"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "recipient_name"
+    t.integer "vendor_id"
+    t.integer "phone"
   end
 
   create_table "invoices", force: :cascade do |t|
@@ -121,18 +171,17 @@ ActiveRecord::Schema.define(version: 2022_11_15_011515) do
 
   create_table "requests", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "budget_id"
-    t.string "category"
-    t.string "subcategory"
     t.string "tax_category"
     t.boolean "gift"
     t.decimal "cost"
     t.string "items_purchased"
-    t.string "type"
     t.integer "vendor_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "status"
+    t.text "notes"
+    t.integer "budget_subcategory_id"
+    t.string "recipient_name"
   end
 
   create_table "users", force: :cascade do |t|
@@ -162,6 +211,9 @@ ActiveRecord::Schema.define(version: 2022_11_15_011515) do
     t.string "phone_number"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "tax_identification_number"
   end
 
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
 end
