@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @budget_category.name %>
+</p>
+
+<p>
+  <strong>Budgeted:</strong>
+  <%= @budget_category.budgeted %>
+</p>
+
+<p>
+  <strong>Spent:</strong>
+  <%= @budget_category.spent %>
+</p>
+
+<p>
+  <strong>Pending:</strong>
+  <%= @budget_category.pending %>
+</p>
+
+<p>
+  <strong>Balance:</strong>
+  <%= @budget_category.balance %>
+</p>
+
+<%= link_to 'Edit', edit_budget_category_path(@budget_category) %> |
+<%= link_to 'Back', budget_categories_path %>

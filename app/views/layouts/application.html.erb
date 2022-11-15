@@ -7,10 +7,17 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+    <%= javascript_include_tag '/javascript/application.js', 'data-turbolinks-track': 'reload', defer: true %>
 
+    <!-- Latest compiled and minified JavaScript --> 
+  </head>
   <body>
-    <%= yield %>
+  <%= render 'layouts/navbar' %>
+
+
+  <%= yield %>
+
+
   </body>
+
 </html>

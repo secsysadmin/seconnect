@@ -53,7 +53,7 @@
 <p>
   <strong>Status:</strong>
   <%= @request.status %>
-  <% Post::STATUSES.each do |status| %>
+  <% Request::STATUSES.each do |status| %>
     <%= link_to_unless @request.status.eql?(status.to_s), status, update_status_post_path(@request, status: status), method: :patch %>
   <% end %>
 </p>

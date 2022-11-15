@@ -1,32 +1,47 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Credit Cards</h1>
+<h1>Creditcards</h1>
+<% if User.find(session[:user_id]).permission_type == 'admin' %>
+  <%= link_to 'Completed Credit Card Requests', creditcard_approved_path %>
+  <%= link_to 'Pending Credit Card Requests', creditcard_inprogress_path %>
+<% end %>
 
 <table>
   <thead>
     <tr>
-      <th>User</th>
-      <th>Committee</th>
-      <th>Start time</th>
-      <th>End time</th>
-      <th>Reason</th>
+      <th>Request Submitted By</th>
+      <th>Recipient Name</th>
+      <th>Vendor</th>
+      <th>Payment link</th>
+      <th>Phone</th>
+      <th>Confirmation order</th>
+      <th>Reservation name</th>
       <th>Status</th>
+      <th>Notes</th>
       <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
+  <% if User.find(session[:user_id]).permission_type == 'user' %>
+    <% @creditcards = @creditcards.where('user_id = ?', User.find(session[:user_id]).id) %>
+  <% end %>
     <% @creditcards.each do |creditcard| %>
       <tr>
-        <td><%= User.where(id: creditcard.user_id).last.first_name %></td>
-        <td><%= creditcard.committee %></td>
-        <td><%= creditcard.start_time %></td>
-        <td><%= creditcard.end_time %></td>
-        <td><%= creditcard.reason %></td>
+        <td><%= User.find_by(id: creditcard.user_id).first_name %></td>
+        <td><%= creditcard.recipient_name %></td>
+        <td><%= Vendor.where(id: creditcard.vendor_id).last.vendor_name%></td>
+        <td><%= creditcard.payment_link %></td>
+        <td><%= creditcard.phone %></td>
+        <td><%= creditcard.Confirmation_order %></td>
+        <td><%= creditcard.reservation_name %></td>
         <td><%= creditcard.status %></td>
+        <td><%= creditcard.notes %></td>
         <td><%= link_to 'Show', creditcard %></td>
         <td><%= link_to 'Edit', edit_creditcard_path(creditcard) %></td>
-        <td><%= link_to 'Destroy', creditcard, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= button_to 'Destroy', creditcard, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'View file', creditcard.file %></td>
+        <td><%= link_to 'Download file', creditcard.file, download: '' %></td>
       </tr>
     <% end %>
   </tbody>
@@ -34,5 +49,6 @@
 
 <br>
 
-<%= link_to 'New Credit card', new_creditcard_path %>
-<%= link_to 'Back', :back%>
+<%= link_to 'New Creditcard', new_creditcard_path %>
+<%= link_to 'Back', financial_forms_path %>
+

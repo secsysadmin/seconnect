@@ -2,22 +2,23 @@
 
 <p>
   <strong>User:</strong>
-  <%= @request.user_id %>
+  <%= User.find(@request.user_id).first_name %>
+  <%= User.find(@request.user_id).last_name %>
 </p>
 
 <p>
   <strong>Budget:</strong>
-  <%= @request.budget_id %>
+  <%= @budget.name %>
 </p>
 
 <p>
-  <strong>Category:</strong>
-  <%= @request.category %>
+  <strong>Budget Category:</strong>
+  <%= @budget_category.name %>
 </p>
 
 <p>
-  <strong>Subcategory:</strong>
-  <%= @request.subcategory %>
+  <strong>Budget Subcategory:</strong>
+  <%= @budget_subcategory.name %>
 </p>
 
 <p>
@@ -41,14 +42,22 @@
 </p>
 
 <p>
-  <strong>Type:</strong>
-  <%= @request.type %>
+  <strong>Vendor:</strong>
+  <%= Vendor.find(@request.vendor_id).vendor_name %>
 </p>
 
 <p>
-  <strong>Vendor:</strong>
-  <%= @request.vendor_id %>
+  <strong>Status:</strong>
+  <%= @request.status %>
 </p>
 
+<p>
+  <strong>Notes:</strong>
+    <%= @request.notes %>
+</p>
+
+<%= link_to 'View file', @request.file %>
+<%= link_to 'Download file', @request.file, download: '' %>
+
 <%= link_to 'Edit', edit_request_path(@request) %> |
-<%= link_to 'Back', :back %>
+<%= link_to 'Back', requests_path(session[:user_id]) %>

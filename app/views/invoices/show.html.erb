@@ -1,40 +1,49 @@
 <p id="notice"><%= notice %></p>
 
+<p>
+  <strong>Vendor:</strong>
+  <%= @invoice.vendor_id %>
+</p>
 
 <p>
-  <strong>User:</strong>
+  <strong>Vendor title:</strong>
   <%= @invoice.vendor_title %>
 </p>
 
 <p>
-  <strong>Vendor:</strong>
-  <%= @invoice.vendor_taxid %>
+  <strong>Tax id number:</strong>
+  <%= @invoice.tax_id_number %>
 </p>
 
 <p>
-  <strong>Details:</strong>
-  <%= @invoice.vendor_address %>
+  <strong>Address:</strong>
+  <%= @invoice.address %>
 </p>
 
 <p>
-  <strong>Details:</strong>
-  <%= @invoice.vendor_city %>
+  <strong>City:</strong>
+  <%= @invoice.city %>
 </p>
 
 <p>
-  <strong>Details:</strong>
-  <%= @invoice.vendor_state %>
+  <strong>State:</strong>
+  <%= @invoice.state %>
 </p>
 
 <p>
-  <strong>Details:</strong>
-  <%= @invoice.vendor_zip %>
+  <strong>Zip:</strong>
+  <%= @invoice.zip %>
 </p>
 
 <p>
-  <strong>Details:</strong>
-  <%= @invoice.vendor_paymentmethod %>
+  <strong>Payment method:</strong>
+  <%= @invoice.payment_method %>
+</p>
+
+<p>
+  <strong>Notes:</strong>
+  <%= @invoice.notes %>
 </p>
 
 <%= link_to 'Edit', edit_invoice_path(@invoice) %> |
-<%= link_to 'Back', :back %>
+<%= link_to 'Back', invoices_path %>

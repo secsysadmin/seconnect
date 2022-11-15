@@ -5,23 +5,66 @@ class RequestsController < ApplicationController
 
      # GET /requests or /requests.json
      def index
+          if session[:user_id]
+               @user = User.find(session[:user_id])
+               # check for proper permissions
+               if (@user.permission_type == 'admin')
+                    @requests = Request.all
+               else
+                    @requests = Request.where("user_id" => @user.id)
+               end
+          end
+     end
+
+     def pending
+          if session[:user_id]
+               @user = User.find(session[:user_id])
+               # check for proper permissions
+               if (@user.permission_type == 'admin')
+                    @requests = Request.where("status = 'pending'")
+               else
+                    @requests = Request.where("status = 'pending'").where("user_id" => @user.id)
+               end
+          end
+     end
+
+     def approved
+          @requests = Request.all
+     end
+     
+     def inprogress
           @requests = Request.all
      end
 
      # GET /requests/1 or /requests/1.json
-     def show; end
+     def show
+          @budget_subcategory = BudgetSubcategory.find(@request.budget_subcategory_id)
+          @budget_category = BudgetCategory.find(@budget_subcategory.budget_category_id)
+          @budget = @budget_category.budget
+     end
 
      # GET /requests/new
      def new
-          @request = Request.new(status: 'In Progress')
+          @user = User.find(session[:user_id])
+          @budgets = Budget.where("locked = false")
+          @budget_categories = BudgetCategory.where("budget_id" => params[:budget_id])
+          @budget_subcategories = BudgetSubcategory.where("budget_category_id" => params[:budget_categor_id])
+          @request = Request.new(user_id: @user.id, status: 'pending')
      end
 
      # GET /requests/1/edit
-     def edit; end
+     def edit
+          if session[:user_id]
+               @user = User.find(session[:user_id])
+          end
+     end
 
      # POST /requests or /requests.json
      def create
           @request = Request.new(request_params)
+          @budgets = Budget.all
+          @budget_categories = BudgetCategory.where("budget_id" => params[:budget_id])
+          @budget_subcategories = BudgetSubcategory.where("budget_category_id" => params[:budget_category_id])
 
           respond_to do |format|
                if @request.save
@@ -76,8 +119,9 @@ class RequestsController < ApplicationController
 
      # Only allow a list of trusted parameters through.
      def request_params
-          params.require(:request).permit(:user_id, :budget_id, :category, :subcategory, :subcategory_name,:tax_category,
-                                          :gift, :cost, :items_purchased, :type, :vendor_id, :vendor_name, :status
+
+          params.require(:request).permit(:user_id, :budget_id, :budget_category_id, :budget_subcategory_id, :tax_category,
+                                          :gift, :cost, :items_purchased, :request_type, :vendor_id, :vendor_name, :status, :notes, :file
           )
      end
 end

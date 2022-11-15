@@ -28,7 +28,7 @@
         <td><%= vendor.phone_number %></td>
         <td><%= link_to 'Show', vendor %></td>
         <td><%= link_to 'Edit', edit_vendor_path(vendor) %></td>
-        <td><%= link_to 'Destroy', vendor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= button_to 'Destroy', vendor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -37,4 +37,4 @@
 <br>
 
 <%= link_to 'New Vendor', new_vendor_path %>
-<%= link_to 'Back', :back%>
+<%= link_to 'Vendor Invoices', invoices_path %> <br>

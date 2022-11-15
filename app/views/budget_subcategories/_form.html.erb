@@ -12,23 +12,18 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :committee_id %>
-    <%= form.number_field :committee_id %>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
   </div>
 
   <div class="field">
-    <%= form.label :subcategory_name %>
-    <%= form.text_field :subcategory_name %>
+    <%= form.label :budgeted %>
+    <%= form.text_field :budgeted %>
   </div>
 
   <div class="field">
-    <%= form.label :subcategory_amount %>
-    <%= form.text_field :subcategory_amount %>
-  </div>
-  
-  <div class="field">
-    <%= form.label :status %>
-    <%= form.text_field :status %>
+    <%= form.label :budget_category_id %>
+    <%= form.select :budget_category_id, BudgetCategory.order(:name).map { |budget_category| [budget_category.name, budget_category.id] }, include_blank: true, id: "id_of_the_budget_category_id_select_box" %>
   </div>
 
   <div class="actions">

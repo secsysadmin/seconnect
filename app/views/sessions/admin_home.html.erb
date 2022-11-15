@@ -1,9 +1,17 @@
-<p>Admin Home Page</p>
-<% if Rails.env.test? -%>
-<td><%= link_to 'Logout', login_path %></td> <br>
-<% else -%>
-<td><%= link_to 'Logout', logout_path, method: :destroy %></td> <br>
-<% end -%>
-<td><%= link_to 'Profile', user_path(session[:user_id]) %></td> <br>
-<td><%= link_to 'Committees', committees_path %></td> <br>
-<td><%= link_to 'Members', users_path %></td> <br>
+<div>
+	<div class="p-5 text-center bg-light">
+    <h1 class="mb-3">Student Engineers' Council</h1>
+    <h4 class="mb-3">Budget Request and Reimbursement</h4>
+  </div>
+    <div class="text-center">
+   	<h1>
+   		
+   	</h1>
+    <%= image_tag "LogoFull_Maroon.webp", height: 300 %>
+    <h1>
+
+    <h1 class="mb-3">Welcome!</h1>
+    <h3>This website serves as a budget request and reimbursement system for the Student Engineers' Council SEC.</h3>
+   	
+</div>
+nm 

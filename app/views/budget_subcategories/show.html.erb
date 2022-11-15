@@ -1,24 +1,29 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Committee:</strong>
-  <%= @budget_subcategory.committee_id %>
+  <strong>Name:</strong>
+  <%= @budget_subcategory.name %>
 </p>
 
 <p>
-  <strong>Subcategory name:</strong>
-  <%= @budget_subcategory.subcategory_name %>
+  <strong>Budgeted:</strong>
+  <%= @budget_subcategory.budgeted %>
 </p>
 
 <p>
-  <strong>Subcategory amount:</strong>
-  <%= @budget_subcategory.subcategory_amount %>
+  <strong>Spent:</strong>
+  <%= @budget_subcategory.spent %>
 </p>
 
 <p>
-  <strong>Status:</strong>
-  <%= @budget_subcategory.status %>
+  <strong>Pending:</strong>
+  <%= @budget_subcategory.pending %>
+</p>
+
+<p>
+  <strong>Balance:</strong>
+  <%= @budget_subcategory.balance %>
 </p>
 
 <%= link_to 'Edit', edit_budget_subcategory_path(@budget_subcategory) %> |
-<%= link_to 'Back', budget_subcategories_path %>
+<%= link_to 'Back', :back %>

@@ -1,6 +1,10 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Requests</h1>
+<% if User.find(session[:user_id]).permission_type == 'admin' %>
+  <%= link_to 'Completed Reimbursement Requests', request_approved_path %>
+  <%= link_to 'Pending Reimbursement Requests', request_inprogress_path %>
+<% end %>
 
 <table>
   <thead>
@@ -21,22 +25,30 @@
   </thead>
 
   <tbody>
+  <% if User.find(session[:user_id]).permission_type == 'user' %>
+    <% @requests = @requests.where('user_id = ?', User.find(session[:user_id]).id) %>
+  <% end %>
     <% @requests.each do |request|%>
       <tr>
         <td><%= User.where(id: request.user_id).last.first_name %></td>
-        <td><%= BudgetSubcategory.where(id: request.budget_id).last.subcategory_name %></td>
-        <td><%= request.category %></td>
-        <td><%= request.subcategory %></td>
+        <td><%= Budget.find(BudgetCategory.find(BudgetSubcategory.find(request.budget_subcategory_id).budget_category_id).budget_id).name %></td>
+        <td><%= BudgetCategory.find(BudgetSubcategory.find(request.budget_subcategory_id).budget_category_id).name %></td>
+        <td><%= BudgetSubcategory.find(request.budget_subcategory_id).name %></td>
         <td><%= request.tax_category %></td>
         <td><%= request.gift %></td>
         <td><%= request.cost %></td>
         <td><%= request.items_purchased %></td>
-        <td><%= request.type %></td>
         <td><%= Vendor.where(id: request.vendor_id).last.vendor_name %></td>
         <td><%= request.status %></td>
         <td><%= link_to 'Show', request %></td>
-        <td><%= link_to 'Edit', edit_request_path(request) %></td>
-        <td><%= link_to 'Destroy', request, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= 
+        if @user.permission_type == 'admin'
+          link_to 'Edit', edit_request_path(request) 
+        end
+        %></td>
+        <td><%= button_to 'Destroy', request, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'View file', request.file %></td>
+        <td><%= link_to 'Download file', request.file, download: '' %></td>
       </tr>
     <% end %>
   </tbody>
@@ -45,4 +57,4 @@
 <br>
 
 <%= link_to 'New Request', new_request_path %>
-<%= link_to 'Back', :back%>
+<%= link_to 'Back', financial_forms_path %>

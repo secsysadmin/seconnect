@@ -56,6 +56,8 @@
     <%= form.text_field :phone_number %>
   </div>
 
+  <% if User.find(session[:user_id]).permission_type == 'admin' %>
+
   <div class="field">
     <%= form.label :committee %>
     <%= form.select :committee_id, Committee.order(:committee_name).map { |committee| [committee.committee_name, committee.id] }, include_blank: true, id: "id_of_the_committee_id_select_box" %>
@@ -65,6 +67,7 @@
     <%= form.label :permission_type %>
     <%= form.select :permission_type, [['Admin','admin'],['User','user']] %>
   </div>
+  <% end %>
 
   <div class="actions">
     <%= form.submit %>

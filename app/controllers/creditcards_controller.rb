@@ -6,13 +6,22 @@ class CreditcardsController < ApplicationController
     @creditcards = Creditcard.all
   end
 
+  def approved
+    @creditcards = Creditcard.all
+  end
+
+  def inprogress
+    @creditcards = Creditcard.all
+  end
+
   # GET /creditcards/1 or /creditcards/1.json
   def show
   end
 
   # GET /creditcards/new
   def new
-    @creditcard = Creditcard.new
+    @user = User.find(session[:user_id])
+    @creditcard = Creditcard.new(user_id: @user.id, status: 'pending')
   end
 
   # GET /creditcards/1/edit
@@ -65,6 +74,6 @@ class CreditcardsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def creditcard_params
-      params.require(:creditcard).permit(:user_id, :committee, :start_time, :end_time, :reason, :status, :first_name, :user_id, :committee_name)
+      params.require(:creditcard).permit(:user_id, :recipient_name, :payment_link, :phone, :Confirmation_order, :reservation_name, :status, :notes, :file, :vendor_id)
     end
 end
