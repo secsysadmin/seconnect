@@ -12,6 +12,11 @@
   <% end %>
 
   <div class="field">
+    <%= form.label :vendor_id %>
+    <%= form.select :vendor_id, Vendor.order(:vendor_name).map { |vendor| [vendor.vendor_name, vendor.id] }, include_blank: true, id: "id_of_the_vendor_id_select_box" %>
+  </div>
+
+  <div class="field">
     <%= form.label :vendor_title %>
     <%= form.text_field :vendor_title %>
   </div>
@@ -44,6 +49,16 @@
   <div class="field">
     <%= form.label :payment_method %>
     <%= form.text_field :payment_method %>
+  </div>
+
+  <div class="field">
+    <%= form.label :items_purchased %>
+    <%= form.text_field :items_purchased %>
+  </div>
+
+  <div class="field">
+    <%= form.label :notes %>
+    <%= form.text_field :notes %>
   </div>
 
   <div class="actions">

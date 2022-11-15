@@ -1,6 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <strong>Vendor:</strong>
+  <%= @invoice.vendor_id %>
+</p>
+
+<p>
   <strong>Vendor title:</strong>
   <%= @invoice.vendor_title %>
 </p>
@@ -33,6 +38,11 @@
 <p>
   <strong>Payment method:</strong>
   <%= @invoice.payment_method %>
+</p>
+
+<p>
+  <strong>Notes:</strong>
+  <%= @invoice.notes %>
 </p>
 
 <%= link_to 'Edit', edit_invoice_path(@invoice) %> |

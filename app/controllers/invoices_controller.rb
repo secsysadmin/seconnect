@@ -4,7 +4,6 @@ class InvoicesController < ApplicationController
   # GET /invoices or /invoices.json
   def index
     @invoices = Invoice.all
-    @items = Item.all
   end
 
   # GET /invoices/1 or /invoices/1.json
@@ -14,7 +13,6 @@ class InvoicesController < ApplicationController
   # GET /invoices/new
   def new
     @invoice = Invoice.new
-    @item = Item.new
   end
 
   # GET /invoices/1/edit
@@ -24,7 +22,6 @@ class InvoicesController < ApplicationController
   # POST /invoices or /invoices.json
   def create
     @invoice = Invoice.new(invoice_params)
-    @item = Item.new(item_params)
 
     respond_to do |format|
       if @invoice.save
@@ -33,13 +30,6 @@ class InvoicesController < ApplicationController
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @invoice.errors, status: :unprocessable_entity }
-      end
-      if @item.save
-        format.html { redirect_to invoice_url(@item), notice: "Invoice was successfully created." }
-        format.json { render :show, status: :created, location: @item }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @item.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -54,23 +44,7 @@ class InvoicesController < ApplicationController
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @invoice.errors, status: :unprocessable_entity }
       end
-      if @item.update(invoice_params)
-        format.html { redirect_to invoice_url(@item), notice: "Invoice was successfully updated." }
-        format.json { render :show, status: :ok, location: @item }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @item.errors, status: :unprocessable_entity }
-      end
     end
-  end
-  def self.up
-    execute "INSERT INTO invoices(vendor_title, tax_id_number, address, city, state, zip, payment_method)
-             SELECT vendor_title, tax_id_number, address, city, state, zip, payment_method FROM invoices
-             UNION
-             SELECT items_purchased, budget, category, subcategory, taxcategory, gift, cost FROM items"
-
-    drop_table :invoices
-    drop_table :items
   end
 
   # DELETE /invoices/1 or /invoices/1.json
@@ -87,14 +61,10 @@ class InvoicesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_invoice
       @invoice = Invoice.find(params[:id])
-      @item = Item.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
     def invoice_params
-      params.require(:invoice).permit(:vendor_title, :tax_id_number, :address, :city, :state, :zip, :payment_method)
-    end
-    def item_params
-      params.require(:item).permit(:items_purchased, :budget, :category, :subcategory, :taxcategory, :gift, :cost)
+      params.require(:invoice).permit(:vendor_id, :vendor_title, :tax_id_number, :address, :city, :state, :zip, :payment_method, :notes)
     end
 end

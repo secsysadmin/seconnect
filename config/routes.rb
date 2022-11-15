@@ -1,8 +1,8 @@
 require 'pry'
 Rails.application.routes.draw do
+  resources :invoices
   resources :admin_requests_completeds
   resources :items
-  resources :invoices
   resources :admin_receipts
   resources :budget_categories
   resources :budgets
