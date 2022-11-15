@@ -56,7 +56,7 @@
     <%= form.text_field :phone_number %>
   </div>
 
-  <% if @current_user.permission_type == 'admin' %>
+  <% if User.find(session[:user_id]).permission_type == 'admin' %>
 
   <div class="field">
     <%= form.label :committee %>
