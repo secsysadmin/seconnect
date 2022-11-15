@@ -31,14 +31,14 @@ gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'rexml'
 
+gem 'bootstrap-sass', '~> 2.3.2'
+gem 'carrierwave', '~> 0.9'
 gem 'dotenv-rails'
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
-gem 'omniauth-rails_csrf_protection' , '~> 1.0'
+gem 'omniauth-rails_csrf_protection', '~> 1.0'
 gem 'pry'
 gem 'seed_dump'
-gem 'carrierwave', '~> 0.9'
-gem 'bootstrap-sass', '~> 2.3.2'
 
 group :development, :test do
      # Call 'byebug' anywhere in the code to stop execution and get a debugger console

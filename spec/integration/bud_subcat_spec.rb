@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-
-#Create Budget Subcategory
+# Create Budget Subcategory
 # RSpec.describe('Budget Subcat Spec', type: :feature) do
 #     it 'new budget subcategory' do
 #          visit login_admin_path

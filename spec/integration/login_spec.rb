@@ -3,7 +3,6 @@
 require 'rails_helper'
 
 RSpec.describe('Login user', type: :feature) do
-
      it 'new or existing user' do
           visit login_user_path
           click_on 'Profile'
@@ -16,7 +15,6 @@ RSpec.describe('Login user', type: :feature) do
 end
 
 RSpec.describe('Login admin', type: :feature) do
-
      it 'existing user' do
           visit login_admin_path
           click_on 'Profile'

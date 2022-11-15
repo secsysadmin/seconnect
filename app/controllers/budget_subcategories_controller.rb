@@ -59,7 +59,7 @@ class BudgetSubcategoriesController < ApplicationController
           end
      end
 
-# DELETE /budget_subcategories/1 or /budget_subcategories/1.json
+     # DELETE /budget_subcategories/1 or /budget_subcategories/1.json
      def destroy
           @budget_subcategory.destroy!
 

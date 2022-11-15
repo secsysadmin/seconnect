@@ -16,6 +16,9 @@
 <p><%= link_to 'Credit Card Request', creditcards_path(session[:user_id]) %> - View or Create a Credit Card Request</p> <br>
 <p><%= link_to 'Approval To Charge', atcs_path(session[:user_id]) %> - View or Create an Approval To Charge Request</p> <br>
 <p><%= link_to 'Vendors', vendors_path(session[:user_id]) %> - View or Create a Vendor</p> <br>
+<p><%= link_to 'Forward Receipts', receipts_path(session[:user_id]) %> - Create and forward a receipt</p> <br>
+<p><%= link_to 'Invoices', invoices_path(session[:admin_id]) %> - Create and forward a receipt</p> <br>
+
 
 <% if User.find(session[:user_id]).permission_type == 'admin' %>
 <%= link_to 'Home', admin_home_path(User.find(session[:user_id])) %>
