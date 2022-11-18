@@ -18,9 +18,9 @@
         <td><%= User.where(id: receipt.user_id).last.first_name %></td>
         <td><%= Vendor.where(id: receipt.vendor_id).last.vendor_name %></td>
         <td><%= receipt.details %></td>
-        <td><%= link_to 'Show', request %></td>
-        <td><%= link_to 'Edit', edit_request_path(request) %></td>
-        <td><%= button_to 'Destroy', request, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', receipt %></td>
+        <td><%= link_to 'Edit', edit_receipt_path(receipt) %></td>
+        <td><%= button_to 'Destroy', receipt, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

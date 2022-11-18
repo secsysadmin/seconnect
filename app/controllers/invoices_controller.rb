@@ -14,6 +14,12 @@ class InvoicesController < ApplicationController
      # GET /invoices/new
      def new
           @invoice = Invoice.new
+          @invoice.items << Item.new
+          @invoice.items << Item.new
+          @invoice.items << Item.new
+          @invoice.items << Item.new
+          @invoice.items << Item.new
+          @invoice.items << Item.new
      end
 
      # GET /invoices/1/edit
@@ -22,7 +28,7 @@ class InvoicesController < ApplicationController
      # POST /invoices or /invoices.json
      def create
           @invoice = Invoice.new(invoice_params)
-
+         
           respond_to do |format|
                if @invoice.save
                     format.html do
@@ -58,7 +64,7 @@ class InvoicesController < ApplicationController
      # DELETE /invoices/1 or /invoices/1.json
      def destroy
           @invoice.destroy!
-
+          
           respond_to do |format|
                format.html do
                     redirect_to(invoices_url, notice: 'Invoice was successfully destroyed.')
@@ -77,7 +83,7 @@ class InvoicesController < ApplicationController
      # Only allow a list of trusted parameters through.
      def invoice_params
           params.require(:invoice).permit(:vendor_id, :vendor_title, :tax_id_number, :address, :city,
-                                          :state, :zip, :payment_method, :notes
+                                          :state, :zip, :payment_method, :attachement, :notes, items_attributes:[:items_purchased, :budget, :category, :subcategory, :taxcategory, :gift, :cost]
           )
      end
 end
