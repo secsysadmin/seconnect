@@ -16,5 +16,7 @@
   <%= @receipt.details %>
 </p>
 
+<%= link_to 'View file', @receipt.attachment %>
+<%= link_to 'Download file', @receipt.attachment, download: '' %>
 <%= link_to 'Edit', edit_receipt_path(@receipt) %> |
 <%= link_to 'Back', :back %>

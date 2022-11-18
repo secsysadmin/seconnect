@@ -24,9 +24,13 @@
 
   <div class="field">
     <%= form.label :receipt_details %>
-    <%= form.text_field :details %>
+    <%= form.text_area :details %>
   </div>
 
+  <div class="field">
+  <%= form.label :file_upload %>
+  <%= form.file_field :attachment%>
+</div>
  
   
   <div class="actions">
