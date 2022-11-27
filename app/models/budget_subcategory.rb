@@ -6,7 +6,7 @@ class BudgetSubcategory < ApplicationRecord
      has_many :request
 
      def spent
-          request.where("status = 'complete'").sum('cost')
+          request.where("status = 'completed'").sum('cost')
      end
 
      def pending
