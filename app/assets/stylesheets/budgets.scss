@@ -1,3 +1,87 @@
 // Place all the styles related to the Budgets controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.headRow {
+    background-color: dodgerblue;
+    color: white;
+    font-weight: 300;
+}
+
+p {
+    font-size: 20px;
+}
+
+table {
+    font-size: 20px;
+}
+
+.strongRow {
+    background-color: navy;
+    color: white;
+}
+
+th {
+    padding-right: 1em;
+}
+
+tr.normalRow:nth-child(odd) {
+    background-color: #bebef0;
+}
+
+tr.normalRow:nth-child(even) {
+    background-color: #D8D8F3;
+}
+
+.totals {
+    background-color: #BA002E;
+    color: white;
+}
+
+.newSubcategory {
+    background-color:#D8D8F3;
+    line-height: 50px;
+}
+
+.newSubcategoryLink {
+    margin-left: 20px;
+    margin-bottom: 10px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 10px;
+    padding-right: 10px;
+    outline: 2px solid black;
+    border-radius: 10px;
+    text-decoration: none;
+    background-color: white;
+    color: black;
+}
+
+.newSubcategoryLink:hover {
+    background-color: lightgray;
+    color: black;
+}
+
+.newCategory {
+    background-color: navy;
+    line-height: 50px;
+}
+
+.newCategoryLink {
+    margin-left: 20px;
+    margin-bottom: 10px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 10px;
+    padding-right: 10px;
+    outline: 2px solid white;
+    border-radius: 10px;
+    text-decoration: none;
+    background-color: navy;
+    color: white;
+}
+
+.newCategoryLink:hover {
+    background-color: white;
+    color: black;
+}

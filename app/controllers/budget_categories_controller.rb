@@ -13,7 +13,7 @@ class BudgetCategoriesController < ApplicationController
 
      # GET /budget_categories/new
      def new
-          @budget_category = BudgetCategory.new
+          @budget_category = BudgetCategory.new 
      end
 
      # GET /budget_categories/1/edit
@@ -61,6 +61,12 @@ class BudgetCategoriesController < ApplicationController
 
      # DELETE /budget_categories/1 or /budget_categories/1.json
      def destroy
+          # delete all subcategories for category
+          @budget_category.budget_subcategory_ids.each do |subcategory_id|
+               BudgetSubcategory.find(subcategory_id).destroy!
+          end
+
+          # then delete category
           @budget_category.destroy!
 
           respond_to do |format|

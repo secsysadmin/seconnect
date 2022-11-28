@@ -25,7 +25,7 @@
 
       <div class="field">
         <%= form.label :budget_category_id %>
-        <%= form.select :budget_category_id, BudgetCategory.order(:name).map { |budget_category| [budget_category.name, budget_category.id] }, include_blank: true, :selected => params[:budget_category_id], id: "id_of_the_budget_category_id_select_box" %>
+        <%= form.select :budget_category_id, BudgetCategory.order(:name).map { |budget_category| [budget_category.name, budget_category.id] }, include_blank: true, id: "id_of_the_budget_category_id_select_box" %>
       </div>
 
       <div class="actions">

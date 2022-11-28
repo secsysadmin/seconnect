@@ -25,5 +25,10 @@
   <%= @budget_category.balance %>
 </p>
 
+<p>
+  <strong>Budget:</strong>
+  <%= Budget.find_by(id: @budget_category.budget_id).name %>
+</p>
+
 <%= link_to 'Edit', edit_budget_category_path(@budget_category) %> |
-<%= link_to 'Back', budget_categories_path %>
+<%= link_to 'Back', :back %>

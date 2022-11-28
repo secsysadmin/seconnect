@@ -1,6 +1,11 @@
-<h1>Editing Budget</h1>
+<div class="page-wrapper">
+    <div class="banner">
+        <h1>Editing Budget</h1>
+    </div>
 
-<%= render 'form', budget: @budget %>
+    <%= render 'form', budget: @budget %>
 
-<%= link_to 'Show', @budget %> |
-<%= link_to 'Back', :back %>
+    <div class="card-stack">
+        <%= link_to 'Back', :back, {:class => "button"} %>
+    </div>
+</div>

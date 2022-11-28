@@ -60,6 +60,17 @@ class BudgetsController < ApplicationController
 
      # DELETE /budgets/1 or /budgets/1.json
      def destroy
+
+          # delete all subcategories in budget
+          @budget.budget_subcategory_ids.each do |subcategory_id|
+               BudgetSubcategory.find(subcategory_id).destroy!
+          end
+
+          # delete all categories for budget
+          @budget.budget_category_ids.each do |category_id|
+               BudgetCategory.find(category_id).destroy!
+          end
+
           @budget.destroy!
 
           respond_to do |format|

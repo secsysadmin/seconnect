@@ -6,7 +6,136 @@ body {
   margin: 33px; }
 
 body, p, ol, ul, td {
-  font-family: verdana, arial, helvetica, sans-serif; }
+  font-family: "Open Sans", sans-serif; }
+
+.banner {
+  background-color: orange;
+  color: white;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  padding-left: 4em;
+  padding-right: 4em;
+}
+
+.headRow {
+    background-color: dodgerblue;
+    color: white;
+    font-weight: 300;
+}
+
+p {
+    font-size: 20px;
+}
+
+table {
+    font-size: 20px;
+}
+
+.strongRow {
+    background-color: navy;
+    color: white;
+}
+
+th {
+    padding-right: 1em;
+}
+
+td {
+  padding-right: 1em;
+}
+
+td.noSpace {
+  padding-right: 0px;
+}
+
+tr.normalRow:nth-child(odd) {
+    background-color: #bebef0;
+}
+
+tr.normalRow:nth-child(even) {
+    background-color: #D8D8F3;
+}
+
+.crudButton {
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-right: 10px;
+  outline: darkgrey;
+  border-radius: 10px;
+  text-decoration: none;
+  background-color: white;
+  color: black;
+}
+
+.crudButton:hover {
+  outline: white;
+  background-color: lightgrey;
+  color: black;
+}
+
+.button {
+  text-decoration: none;
+  background-color: dodgerblue;
+  font-size: 20px;
+  border-radius: 10px;
+  border: none;
+  color: white;
+  padding: 10px;
+  margin: 10px;
+}
+
+.button:hover {
+  text-decoration: none;
+  background-color: navy;
+  font-size: 20px;;
+  border-radius: 10px;
+  border: none;
+  color: white;
+  padding: 10px;
+  margin: 10px;
+}
+
+.page-wrapper {
+  margin:0px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+}
+
+.card-stack {
+  padding-left: 4em;
+  padding-right: 4em;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  height: auto;
+  margin-bottom: 50px;
+  width: 100%;
+  float: left;
+}
+
+.card {
+  margin: 10px;
+  vertical-align: middle;
+  margin-top: 50px;
+  border-radius: 15px;
+  padding: 15px;
+}
+
+.field {
+  margin-top: 3px;
+  font-size: 20px;
+}
+
+.actions {
+  margin-top: 3px;
+  font-size: 20px;
+}
+
 
 /*
 pre {

@@ -1,5 +1,11 @@
-<h1>New Budget Category</h1>
+<div class="page-wrapper">  
+    <div class="banner">
+        <h1>New Budget Category</h1>
+    </div>
 
-<%= render 'form', budget_category: @budget_category %>
+    <%= render 'form', budget_category: @budget_category %>
 
-<%= link_to 'Back', budget_categories_path %>
+    <div class = "card-stack">
+        <%= link_to 'Back', :back, {:class => "button"} %>
+    </div>
+</div>
