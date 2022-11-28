@@ -36,7 +36,9 @@
             <th>Spent</th>
             <th>Pending</th>
             <th>Balance</th>
-            <th colspan="2"></th>
+            <% if @user.permission_type == "admin" %>
+              <th colspan="2"></th>
+            <% end %>
           </tr>
         </thead>
 
@@ -49,8 +51,10 @@
               <td><strong><%= BudgetCategory.find(category_id).spent %></strong></td>
               <td><strong><%= BudgetCategory.find(category_id).pending %></strong></td>
               <td><strong><%= BudgetCategory.find(category_id).balance %></strong></td>
-              <td class="noSpace"><%= link_to 'Edit', edit_budget_category_path(BudgetCategory.find(category_id)), {:class => "crudButton"} %></td>
-              <td class="noSpace"><%= button_to 'Destroy', BudgetCategory.find(category_id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <% if @user.permission_type == "admin" %>
+                <td class="noSpace"><%= link_to 'Edit', edit_budget_category_path(BudgetCategory.find(category_id)), {:class => "crudButton"} %></td>
+                <td class="noSpace"><%= button_to 'Destroy', BudgetCategory.find(category_id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <% end %>
             </tr>
 
             <% BudgetCategory.find(category_id).budget_subcategory_ids.each do |subcategory_id| %>
@@ -60,22 +64,28 @@
                 <td><%= BudgetSubcategory.find(subcategory_id).spent %></td>
                 <td><%= BudgetSubcategory.find(subcategory_id).pending %></td>
                 <td><%= BudgetSubcategory.find(subcategory_id).balance %></td>
-                <td class="noSpace"><%= link_to 'Edit', edit_budget_subcategory_path(BudgetSubcategory.find_by(id: subcategory_id)), {:class => "crudButton"}  %></td>
-                <td class="noSpace"><%= button_to 'Destroy', BudgetSubcategory.find(subcategory_id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                <% if @user.permission_type == "admin" %>
+                  <td class="noSpace"><%= link_to 'Edit', edit_budget_subcategory_path(BudgetSubcategory.find_by(id: subcategory_id)), {:class => "crudButton"}  %></td>
+                  <td class="noSpace"><%= button_to 'Destroy', BudgetSubcategory.find(subcategory_id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                <% end %>
               </tr>
             <% end %>
 
-            <tr class="newSubcategory">
-              <td><%= link_to 'Add New Subcategory +', new_budget_subcategory_path(:budget_category_id => category_id), {:class => "newSubcategoryLink"} %></td>
-              <td colspan="6"></td>
-            </tr>
+            <% if @user.permission_type == "admin" %>
+              <tr class="newSubcategory">
+                <td><%= link_to 'Add New Subcategory +', new_budget_subcategory_path(:budget_category_id => category_id), {:class => "newSubcategoryLink"} %></td>
+                <td colspan="6"></td>
+              </tr>
+            <% end %>
 
           <% end %>
 
-          <tr class="newCategory">
-            <td><strong><%= link_to 'Add New Category +', new_budget_category_path(:budget_id => @budget.id), {:class => "newCategoryLink"} %></strong></td>
-            <td colspan="6"></td>
-          </tr>
+          <% if @user.permission_type == "admin" %>
+            <tr class="newCategory">
+              <td><strong><%= link_to 'Add New Category +', new_budget_category_path(:budget_id => @budget.id), {:class => "newCategoryLink"} %></strong></td>
+              <td colspan="6"></td>
+            </tr>
+          <% end %>
 
           <tr class="totals">
             <td><strong>Total</strong></td>
@@ -83,7 +93,9 @@
             <td><strong><%= @budget.spent %></strong></td>
             <td><strong><%= @budget.pending %></strong></td>
             <td><strong><%= @budget.balance %></strong></td>
-            <td colspan="2"></td>
+            <% if @user.permission_type == "admin" %>
+              <td colspan="2"></td>
+            <% end %>
           </tr>
 
         </tbody>
