@@ -1,48 +1,57 @@
-<p id="notice"><%= notice %></p>
+<div class='page-wrapper'>
+  
+  <div class='banner'>
+    <h1>Requests</h1>
+  </div>
+  <p id="notice"><%= notice %></p>
 
-<h1>Requests</h1>
+  <div class='card-stack'>
+    <div class='card'>
+      <table>
+        <thead>
+          <tr class='strongRow'>
+            <th>User</th>
+            <th>Budget</th>
+            <th>Category</th>
+            <th>Subcategory</th>
+            <th>Tax category</th>
+            <th>Gift</th>
+            <th>Cost</th>
+            <th>Items purchased</th>
+            <th>Vendor</th>
+            <th>Status</th>
+            <th colspan="5"></th>
+          </tr>
+        </thead>
 
-<table>
-  <thead>
-    <tr>
-      <th>User</th>
-      <th>Budget</th>
-      <th>Category</th>
-      <th>Subcategory</th>
-      <th>Tax category</th>
-      <th>Gift</th>
-      <th>Cost</th>
-      <th>Items purchased</th>
-      <th>Type</th>
-      <th>Vendor</th>
-      <th>Status</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+        <tbody>
+          <% @requests = @requests.where("status = 'completed'") %>
+          <% @requests.each do |request|%>
+            <tr class='normalRow'>
+              <td><%= User.where(id: request.user_id).last.first_name %></td>
+              <td><%= BudgetSubcategory.find_by(id: request.budget_subcategory_id).name %></td>
+              <td><%= BudgetCategory.find(BudgetSubcategory.find(request.budget_subcategory_id).budget_category_id).name %></td>
+              <td><%= BudgetSubcategory.find(request.budget_subcategory_id).name %></td>
+              <td><%= request.tax_category %></td>
+              <td><%= request.gift %></td>
+              <td><%= request.cost %></td>
+              <td><%= request.items_purchased %></td>
+              <td><%= Vendor.where(id: request.vendor_id).last.vendor_name %></td>
+              <td><%= request.status %></td>
+              <td class='noSpace'><%= link_to 'Show', request, {:class => 'crudButton'} %></td>
+              <td class='noSpace'><%= link_to 'Edit', edit_request_path(request), {:class => 'crudButton'} %></td>
+              <td class='noSpace'><%= link_to 'View file', request.file, {:class => 'crudButton'} %></td>
+              <td class='noSpace'><%= link_to 'Download file', request.file, download: '', class: 'crudButton' %></td>
+              <td class='noSpace'><%= button_to 'Destroy', request, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
 
-  <tbody>
-    <% @requests = @requests.where("status = 'completed'") %>
-    <% @requests.each do |request|%>
-      <tr>
-        <td><%= User.where(id: request.user_id).last.first_name %></td>
-        <td><%= BudgetSubcategory.find_by(id: request.budget_subcategory_id).name %></td>
-        <td><%= request.tax_category %></td>
-        <td><%= request.gift %></td>
-        <td><%= request.cost %></td>
-        <td><%= request.items_purchased %></td>
-        <td><%= Vendor.where(id: request.vendor_id).last.vendor_name %></td>
-        <td><%= request.status %></td>
-        <td><%= link_to 'Show', request %></td>
-        <td><%= link_to 'Edit', edit_request_path(request) %></td>
-        <td><%= button_to 'Destroy', request, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <td><%= link_to 'View file', request.file %></td>
-        <td><%= link_to 'Download file', request.file, download: '' %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Request', new_request_path %>
-<%= link_to 'Back', requests_path(session[:user_id]) %>
+  <div class='card-stack'>
+    <%= link_to 'New Request', new_request_path, {:class => 'button'} %>
+    <%= link_to 'Back', requests_path(session[:user_id]), {:class => 'button'} %>
+  </div>
+</div>

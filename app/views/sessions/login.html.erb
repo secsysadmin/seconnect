@@ -1,31 +1,19 @@
+<div class="page-wrapper">
+	
+	<div class="login-banner">
+		<h1 class="mb-3">Student Engineers' Council</h1>
+		<h4 class="mb-3">Budget Reimbursement System</h4>
+	</div>
 
-<style>
-	p {
-	  padding: 20px;
-	  background-color: #800000; /* Red */
-	  color: white;
-	  margin-bottom: 15px;
-	  font: serif;
-	}
-</style>
-
-<p id="notice"><%= notice %></p>
-
-
-<div>
-	<div class="p-5 text-center bg-light">
-    <h1 class="mb-3">Student Engineers' Council</h1>
-    <h4 class="mb-3">Budget Request and Reimbursement</h4>
-  </div>
-    <div class="text-center">
-   	<h1>
-   		
-   	</h1>
-    <%= image_tag "LogoFull_Maroon.webp", height: 300 %>
-    <h1>
-   		
-   	</h1>
-    <%= button_to 'Login with Google Account', '/auth/google_oauth2', method: :post %>
-    </div>
+	<p id="notice"><%= notice %></p>
+			
+	<div class="login-container">
+		<div class="img-card">
+			<%= image_tag "LogoFull_Maroon.png", {:class => "logo"} %>
+		</div>
+		<div class="info-card">
+			<%= button_to 'Login with Google Account', '/auth/google_oauth2', method: :post, class: 'button' %>
+		</div>
+	</div>
 </div>
 

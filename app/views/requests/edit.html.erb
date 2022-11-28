@@ -1,6 +1,12 @@
-<h1>Editing Request</h1>
+<div class='page-wrapper'>
+    <div class='banner'>
+        <h1>Editing Request</h1>
+    </div>
 
-<%= render 'editform', request: @request %>
+    <%= render 'editform', request: @request %>
 
-<%= link_to 'Show', @request %> |
-<%= link_to 'Back', requests_path(session[:user_id]) %>
+    <div class='card-stack'>
+        <%= link_to 'Show', @request, {:class => 'button'} %>
+        <%= link_to 'Back', requests_path(session[:user_id]), {:class => 'button'} %>
+    </div>
+</div>

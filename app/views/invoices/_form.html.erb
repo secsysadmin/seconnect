@@ -11,90 +11,96 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :vendor_id %>
-    <%= form.select :vendor_id, Vendor.order(:vendor_name).map { |vendor| [vendor.vendor_name, vendor.id] }, include_blank: true, id: "id_of_the_vendor_id_select_box" %>
-  </div>
+  <div class="card-stack">
+    <div class="card">
+      <div class="field">
+        <%= form.label :vendor_id %>
+        <%= form.select :vendor_id, Vendor.order(:vendor_name).map { |vendor| [vendor.vendor_name, vendor.id] }, include_blank: true, id: "id_of_the_vendor_id_select_box" %>
+      </div>
 
-  <div class="field">
-    <%= form.label :vendor_title %>
-    <%= form.text_field :vendor_title %>
-  </div>
+      <div class="field">
+        <%= form.label :vendor_title %>
+        <%= form.text_field :vendor_title %>
+      </div>
 
-  <div class="field">
-    <%= form.label :tax_id_number %>
-    <%= form.text_field :tax_id_number %>
-  </div>
+      <div class="field">
+        <%= form.label :tax_id_number %>
+        <%= form.text_field :tax_id_number %>
+      </div>
 
-  <div class="field">
-    <%= form.label :address %>
-    <%= form.text_field :address %>
-    <%= form.text_field :address %>
-    <%= form.text_field :address %>
-  </div>
+      <div class="field">
+        <%= form.label :address %>
+        <%= form.text_field :address %>
+        <%= form.text_field :address %>
+        <%= form.text_field :address %>
+      </div>
 
-  <div class="field">
-    <%= form.label :city %>
-    <%= form.text_field :city %>
-  </div>
+      <div class="field">
+        <%= form.label :city %>
+        <%= form.text_field :city %>
+      </div>
 
-  <div class="field">
-    <%= form.label :state %>
-    <%= form.text_field :state %>
-  </div>
+      <div class="field">
+        <%= form.label :state %>
+        <%= form.text_field :state %>
+      </div>
 
-  <div class="field">
-    <%= form.label :zip %>
-    <%= form.text_field :zip %>
-  </div>
+      <div class="field">
+        <%= form.label :zip %>
+        <%= form.text_field :zip %>
+      </div>
 
-  <div class="field">
-    <%= form.label :payment_method %>
-    <%= form.text_field :payment_method %>
-  </div>
+      <div class="field">
+        <%= form.label :payment_method %>
+        <%= form.text_field :payment_method %>
+      </div>
 
-  <div class="field">
-    <%= form.label :file_upload %>
-    <%= form.file_field :attachement %>
-  </div>
+      <div class="field">
+        <%= form.label :file_upload %>
+        <%= form.file_field :attachement %>
+      </div>
+    </div>
 
-  Items:
-  <ul>
-    <%= form.fields_for :items do |items_form| %>
-      <li>
-        <%= items_form.label :items_purchased %>
-        <%= items_form.text_field :items_purchased %>
- 
-        <%= items_form.label :budget %>
-        <%= items_form.select :budget, Budget.order(:name).map{ |budget| [budget.name, budget.id] }, include_blank: true, id: "id_of_the_budget_id_select_box" %>
+    <div class="card">
+      <div class="field">
+        <%= form.text_area :notes, placeholder:"total cost of items" %>
+      </div>
+      <div class="field">
+        <%= form.text_area :notes, placeholder:"Notes", rows:10, class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="card">
+      Items:
+      <ul>
+        <%= form.fields_for :items do |items_form| %>
+          <li>
+            <%= items_form.label :items_purchased %>
+            <%= items_form.text_field :items_purchased %>
     
-        <%= items_form.label :category %>
-        <%= items_form.text_field :category%>
+            <%= items_form.label :budget %>
+            <%= items_form.select :budget, Budget.order(:name).map{ |budget| [budget.name, budget.id] }, include_blank: true, id: "id_of_the_budget_id_select_box" %>
         
-        <%= items_form.label :subcategory %>
-        <%= items_form.text_field :subcategory%>
-        
-        <%= items_form.label :taxcategory %>
-        <%= items_form.text_field :taxcategory %>
-        
-        <%= items_form.label :gift %>
-        <%= items_form.check_box :gift%>
-        
-        <%= items_form.label :cost %>
-        <%= items_form.text_field :cost %>
+            <%= items_form.label :category %>
+            <%= items_form.text_field :category%>
+            
+            <%= items_form.label :subcategory %>
+            <%= items_form.text_field :subcategory%>
+            
+            <%= items_form.label :taxcategory %>
+            <%= items_form.text_field :taxcategory %>
+            
+            <%= items_form.label :gift %>
+            <%= items_form.check_box :gift%>
+            
+            <%= items_form.label :cost %>
+            <%= items_form.text_field :cost %>
 
-      </li>
-    <% end %>
-  </ul>
-
-  <div class="field">
-    <%= form.text_area :notes, placeholder:"total cost of items" %>
-  </div>
-  <div class="field">
-    <%= form.text_area :notes, placeholder:"Notes", rows:10, class: "form-control" %>
-  </div>
-  
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+          </li>
+        <% end %>
+      </ul>
+      <div class="actions">
+        <%= form.submit %>
+      </div>
+    </div>
 <% end %>

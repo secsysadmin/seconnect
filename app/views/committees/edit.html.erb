@@ -1,29 +1,37 @@
-<h1>Editing Committee</h1>
+<div class='page-wrapper'>
+  <div class='banner'>
+    <h1>Editing Committee</h1>
+  </div>
 
-<%= render 'form', committee: @committee %>
+  <%= render 'form', committee: @committee %>
 
-  <table>
-    <thead>
-      <tr>
-        <th>Member(s)</th>
-        <th>UIN</th>
-        <th>Phone Number</th>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
+  <div class='card-stack'>
+    <div class='card'>
+      <table>
+        <thead class='strongRow'>
+          <tr>
+            <th>Member(s)</th>
+            <th>UIN</th>
+            <th>Phone Number</th>
+          </tr>
+        </thead>
 
-    <tbody>
-      <% @users.each do |user| %>
-        <tr>
-          <td><%= user.first_name %> <%= user.last_name %></td>
-          <td><%= user.uin %></td>
-          <td><%= user.phone_number%></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+        <tbody>
+          <% @users.each do |user| %>
+            <tr class='normalRow'>
+              <td><%= user.first_name %> <%= user.last_name %></td>
+              <td><%= user.uin %></td>
+              <td><%= user.phone_number%></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
 
-<%= link_to 'Show', @committee %> |
-<%= link_to 'Back', committees_path %>
-
+  <div class='card-stack'>
+    <%= link_to 'Show', @committee, {:class => "button"} %>
+    <%= link_to 'Back', committees_path, {:class => "button"} %>
+  </div>
+</div>
 

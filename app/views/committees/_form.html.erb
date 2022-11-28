@@ -11,17 +11,21 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :committee_name %>
-    <%= form.text_field :committee_name %>
-  </div>
+  <div class='card-stack'>
+    <div class='card'>
+      <div class="field">
+        <%= form.label :committee_name %>
+        <%= form.text_field :committee_name %>
+      </div>
 
-  <div class="field">
-    <%= form.label :budget_id %>
-    <%= form.select :budget_id, Budget.order(:name).map { |budget| [budget.name, budget.id] }, include_blank: true, id: "id_of_the_budget_id_select_box" %>
-  </div>
+      <div class="field">
+        <%= form.label :budget_id %>
+        <%= form.select :budget_id, Budget.order(:name).map { |budget| [budget.name, budget.id] }, include_blank: true, id: "id_of_the_budget_id_select_box" %>
+      </div>
 
-  <div class="actions">
-    <%= form.submit %>
+      <div class="actions">
+        <%= form.submit %>
+      </div>
+    </div>
   </div>
 <% end %>

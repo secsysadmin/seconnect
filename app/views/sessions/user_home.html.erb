@@ -1,22 +1,25 @@
-<div>
-	<div class="p-5 text-center bg-light">
-    <h1 class="mb-3">Student Engineers' Council</h1>
-    <h4 class="mb-3">Budget Request and Reimbursement</h4>
+<div class="page-wrapper">
+	<div class="banner">
+    <h1 >Student Engineers' Council</h1>
+    <h4 >Budget Reimbursement System</h4>
   </div>
-    <div class="text-center">
-   	<h1>
-   		
-   	</h1>
-    <%= image_tag "LogoFull_Maroon.webp", height: 300 %>
-    <h1>
 
-    <h1 class="mb-3">Welcome!</h1>
-    <% if @committee.committee_name == "default" %>
-      <h2 style="color:red;" >You must be assigned to a committee or have admin privileges to be able to use this website!</h2>
-      <p> Contact an admin of this website or the Student Engineering Council's Chief Financial Officer for more details. </p>
-      <p>This website serves as a budget request and reimbursement system for the Student Engineers' Council SEC.</p>
-      <a href="https://sec.tamu.edu/#executiveCouncil" target="_blank">SEC's Executive Council</a>
-   	<% end %>
-    
+    <div class="container">
+
+      <div class="info-card">
+        <h1 class="welcome">Welcome!</h1>
+        <h3 class="info">This website serves as a budget reimbursement system for the Student Engineers' Council SEC.</h3>
+        <% if @committee.committee_name == "default" %>
+          <h2 style="color:red;" >You must be assigned to a committee or have admin privileges to be able to use this website!</h2>
+          <p> Contact an admin of this website or the Student Engineering Council's Chief Financial Officer for more details. </p>
+          <a href="https://sec.tamu.edu/#executiveCouncil" target="_blank">Link to SEC's Executive Council</a>
+        <% end %>
+      </div>
+
+      <div class="img-card">
+        <%= image_tag "LogoFull_Maroon.png", {:class => "logo"} %>
+      </div>
+
+    </div>
 
 </div>
