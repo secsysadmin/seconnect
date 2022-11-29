@@ -1,48 +1,58 @@
-<p id="notice"><%= notice %></p>
+<div class='page-wrapper'>
+  <div class='banner'>
+    <h1>Approval To Charge Request</h1>
+  </div>
+  <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Request Submitted By:</strong>
-  <%= User.find_by(id: @atc.user_id).first_name %>
-  <%= User.find_by(id: @atc.user_id).last_name %>
-</p>
+  <div class='card-stack'>
+    <div class='card'>
+      <p>
+        <strong>Request Submitted By:</strong>
+        <%= User.find_by(id: @atc.user_id).first_name %>
+        <%= User.find_by(id: @atc.user_id).last_name %>
+      </p>
 
-<p>
-  <strong>Vendor:</strong>
-  <%= @atc.vendor_id %>
-</p>
+      <p>
+        <strong>Vendor:</strong>
+        <%= @atc.vendor_id %>
+      </p>
 
-<p>
-  <strong>Contact name:</strong>
-  <%= @atc.contact_name %>
-</p>
+      <p>
+        <strong>Contact name:</strong>
+        <%= @atc.contact_name %>
+      </p>
 
-<p>
-  <strong>Phone:</strong>
-  <%= @atc.phone %>
-</p>
+      <p>
+        <strong>Phone:</strong>
+        <%= @atc.phone %>
+      </p>
 
-<p>
-  <strong>Email:</strong>
-  <%= @atc.email %>
-</p>
+      <p>
+        <strong>Email:</strong>
+        <%= @atc.email %>
+      </p>
 
-<p>
-  <strong>Purchase info:</strong>
-  <%= @atc.purchase_info %>
-</p>
+      <p>
+        <strong>Purchase info:</strong>
+        <%= @atc.purchase_info %>
+      </p>
 
-<p>
-  <strong>Amount:</strong>
-  <%= @atc.amount %>
-</p>
+      <p>
+        <strong>Amount:</strong>
+        <%= @atc.amount %>
+      </p>
 
-<p>
-  <strong>Notes:</strong>
-  <%= @atc.notes %>
-</p>
+      <p>
+        <strong>Notes:</strong>
+        <%= @atc.notes %>
+      </p>
+    </div>
+  </div>
 
-<%= link_to 'View file', @atc.file %>
-<%= link_to 'Download file', @atc.file, download: '' %>
-
-<%= link_to 'Edit', edit_atc_path(@atc) %> |
-<%= link_to 'Back', atcs_path(session[:user_id]) %>
+  <div class='card-stack'>
+    <%= link_to 'View file', @atc.file, {:class => 'button'} %>
+    <%= link_to 'Download file', @atc.file, download: '', class: 'button'%>
+    <%= link_to 'Edit', edit_atc_path(@atc), {:class => 'button'} %>
+    <%= link_to 'Back', atcs_path(session[:user_id]), {:class => 'button'} %>
+  </div>
+</div>

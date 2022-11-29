@@ -11,25 +11,28 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :notes %>
-    <%= form.text_field :notes %>
-  </div>
+  <div class='card-stack'>
+    <div class='card'>
+      <div class="field">
+        <%= form.label :notes %>
+        <%= form.text_field :notes %>
+      </div>
+      
+      <% if User.find(session[:user_id]).permission_type == 'admin' %>
+        <div class="field" >
+          <%= form.label :status %>
+          <%= form.select :status, [['Pending', 'pending'], ['Completed', 'completed'],['Denied', 'denied']] %>
+        </div>
+      <% else %>
+      <div class="field" >
+        <%= form.label :status %>
+        <%= form.text_field :status, :readonly => true %>
+      </div>
+      <% end %>
 
-  
-  <% if User.find(session[:user_id]).permission_type == 'admin' %>
-    <div class="field" >
-      <%= form.label :status %>
-      <%= form.select :status, [['Pending', 'pending'], ['Completed', 'completed'],['Denied', 'denied']] %>
+      <div class="actions">
+        <%= form.submit %>
+      </div>
     </div>
-  <% else %>
-  <div class="field" >
-    <%= form.label :status %>
-    <%= form.text_field :status, :readonly => true %>
-  </div>
-  <% end %>
-
-  <div class="actions">
-    <%= form.submit %>
   </div>
 <% end %>

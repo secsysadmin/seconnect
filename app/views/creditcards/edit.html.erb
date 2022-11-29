@@ -1,6 +1,12 @@
-<h1>Editing Creditcard</h1>
+<div class='page-wrapper'>
+    <div class='banner'>
+        <h1>Editing Creditcard</h1>
+    </div>
 
-<%= render 'editform', creditcard: @creditcard %>
+    <%= render 'editform', creditcard: @creditcard %>
 
-<%= link_to 'Show', @creditcard %> |
-<%= link_to 'Back', creditcards_path(session[:user_id]) %>
+    <div class='card-stack'>
+        <%= link_to 'Show', @creditcard, {:class => "button"} %>
+        <%= link_to 'Back', creditcards_path(session[:user_id]), {:class => "button"} %>
+    </div>
+</div>

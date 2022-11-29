@@ -1,53 +1,63 @@
-<p id="notice"><%= notice %></p>
+<div class='page-wrapper'>
+  <div class='banner'>
+    <h1>Credit Card Request</h1>
+  </div>
+  <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Request Submitted By:</strong>
-  <%= User.find_by(id: @creditcard.user_id).first_name %>
-  <%= User.find_by(id: @creditcard.user_id).last_name %>
-</p>
+  <div class='card-stack'>
+    <div class='card'>
+      <p>
+        <strong>Request Submitted By:</strong>
+        <%= User.find_by(id: @creditcard.user_id).first_name %>
+        <%= User.find_by(id: @creditcard.user_id).last_name %>
+      </p>
 
-<p>
-  <strong>Recipient Name:</strong>
-  <%= @creditcard.recipient_name %>
-</p>
+      <p>
+        <strong>Recipient Name:</strong>
+        <%= @creditcard.recipient_name %>
+      </p>
 
-<p>
-  <strong>Vendor:</strong>
-  <%= Vendor.find_by(id: @creditcard.vendor_id).vendor_name %>
-</p>
+      <p>
+        <strong>Vendor:</strong>
+        <%= Vendor.find_by(id: @creditcard.vendor_id).vendor_name %>
+      </p>
 
-<p>
-  <strong>Payment link:</strong>
-  <%= @creditcard.payment_link %>
-</p>
+      <p>
+        <strong>Payment link:</strong>
+        <%= @creditcard.payment_link %>
+      </p>
 
-<p>
-  <strong>Phone:</strong>
-  <%= @creditcard.phone %>
-</p>
+      <p>
+        <strong>Phone:</strong>
+        <%= @creditcard.phone %>
+      </p>
 
-<p>
-  <strong>Confirmation order:</strong>
-  <%= @creditcard.Confirmation_order %>
-</p>
+      <p>
+        <strong>Confirmation order:</strong>
+        <%= @creditcard.Confirmation_order %>
+      </p>
 
-<p>
-  <strong>Reservation name:</strong>
-  <%= @creditcard.reservation_name %>
-</p>
+      <p>
+        <strong>Reservation name:</strong>
+        <%= @creditcard.reservation_name %>
+      </p>
 
-<p>
-  <strong>Status:</strong>
-  <%= @creditcard.status %>
-</p>
+      <p>
+        <strong>Status:</strong>
+        <%= @creditcard.status %>
+      </p>
 
-<p>
-  <strong>Notes:</strong>
-  <%= @creditcard.notes %>
-</p>
+      <p>
+        <strong>Notes:</strong>
+        <%= @creditcard.notes %>
+      </p>
+    </div>
+  </div>
 
-<%= link_to 'View file', @creditcard.file %>
-<%= link_to 'Download file', @creditcard.file, download: '' %>
-
-<%= link_to 'Edit', edit_creditcard_path(@creditcard) %> |
-<%= link_to 'Back', creditcards_path(session[:user_id]) %>
+  <div class='card-stack'>
+    <%= link_to 'View file', @creditcard.file, {:class => 'button'}%>
+    <%= link_to 'Download file', @creditcard.file, download: '', class: 'button' %>  
+    <%= link_to 'Edit', edit_creditcard_path(@creditcard), {:class => 'button'} %>
+    <%= link_to 'Back', creditcards_path(session[:user_id]), {:class => 'button'} %>
+  </div>
+</div>
