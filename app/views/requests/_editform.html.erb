@@ -11,19 +11,23 @@
     </div>
   <% end %>
 
-  <% if @user.permission_type == 'admin' %>
-    <div class="field">
-      <%= form.label :notes %>
-      <%= form.text_area :notes, :cols => 50, :rows => 20 %>
-    </div>
+  <div class="card-stack">
+    <div class="card">
+      <% if @user.permission_type == 'admin' %>
+        <div class="field">
+          <%= form.label :notes %>
+          <%= form.text_area :notes, :cols => 50, :rows => 20 %>
+        </div>
 
-    <div class="field">
-      <%= form.label :status %>
-      <%= form.select :status, [['Pending','pending'],['Completed','completed'],['Denied','denied']] %>
-    </div>
-  <% end %>
+        <div class="field">
+          <%= form.label :status %>
+          <%= form.select :status, [['Pending','pending'],['Completed','completed'],['Denied','denied']] %>
+        </div>
+      <% end %>
 
-  <div class="actions">
-    <%= form.submit %>
+      <div class="actions">
+        <%= form.submit %>
+      </div>
+    </div>
   </div>
 <% end %>

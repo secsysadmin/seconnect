@@ -1,39 +1,50 @@
-<p id="notice"><%= notice %></p>
+<div class="page-wrapper">
+  <div class="banner">
+      <h1>Vendor</h1>
+  </div>
+  <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Vendor name:</strong>
-  <%= @vendor.vendor_name %>
-</p>
+  <div class="card-stack">
+    <div class="card">
+      <p>
+        <strong>Vendor name:</strong>
+        <%= @vendor.vendor_name %>
+      </p>
 
-<p>
-  <strong>Street address:</strong>
-  <%= @vendor.street_address %>
-</p>
+      <p>
+        <strong>Street address:</strong>
+        <%= @vendor.street_address %>
+      </p>
 
-<p>
-  <strong>City:</strong>
-  <%= @vendor.city %>
-</p>
+      <p>
+        <strong>City:</strong>
+        <%= @vendor.city %>
+      </p>
 
-<p>
-  <strong>State:</strong>
-  <%= @vendor.state %>
-</p>
+      <p>
+        <strong>State:</strong>
+        <%= @vendor.state %>
+      </p>
 
-<p>
-  <strong>Zip code:</strong>
-  <%= @vendor.zip_code %>
-</p>
+      <p>
+        <strong>Zip code:</strong>
+        <%= @vendor.zip_code %>
+      </p>
 
-<p>
-  <strong>Email:</strong>
-  <%= @vendor.email %>
-</p>
+      <p>
+        <strong>Email:</strong>
+        <%= @vendor.email %>
+      </p>
 
-<p>
-  <strong>Phone number:</strong>
-  <%= @vendor.phone_number %>
-</p>
+      <p>
+        <strong>Phone number:</strong>
+        <%= @vendor.phone_number %>
+      </p>
+    </div>
+  </div>
 
-<%= link_to 'Edit', edit_vendor_path(@vendor) %> <br>
-<%= link_to 'Back', vendors_path %>
+  <div class="card-stack">
+    <%= link_to 'Edit', edit_vendor_path(@vendor), {:class => "button"} %> <br>
+    <%= link_to 'Back', vendors_path, {:class => "button"} %>
+  </div>
+</div>

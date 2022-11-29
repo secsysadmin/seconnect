@@ -1,45 +1,51 @@
-<p id="notice"><%= notice %></p>
+<div class="page-wrapper">
 
-<h1>Budgets</h1>
+  <div class="banner">
+    <h1>Budgets</h1>
+  </div>
+  <p id="notice"><%= notice %></p>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Fiscal Year</th>
-      <th>Budgeted</th>
-      <th>Spent</th>
-      <th>Pending</th>
-      <th>Balance</th>
-      <th>Active</th>
-      <th>Locked</th>
-      <th>Default</th>
-      <th colspan="2"></th>
-    </tr>
-  </thead>
+  <div class="card-stack">
+    <div class="card">
+      <table>
+        <thead>
+          <tr class="strongRow">
+            <th>Name</th>
+            <th>Fiscal Year</th>
+            <th>Budgeted</th>
+            <th>Spent</th>
+            <th>Pending</th>
+            <th>Balance</th>
+            <th>Active</th>
+            <th>Locked</th>
+            <th>Default</th>
+            <th colspan="2"></th>
+          </tr>
+        </thead>
 
-  <tbody>
-    <% @budgets.each do |budget| %>
-      <tr>
-        <td><%= budget.name %></td>
-        <td><%= budget.fiscal_year %></td>
-        <td><%= budget.budgeted %></td>
-        <td><%= budget.spent %></td>
-        <td><%= budget.pending %></td>
-        <td><%= budget.balance %></td>
-        <td><%= budget.active %></td>
-        <td><%= budget.locked %></td>
-        <td><%= budget.default %></td>
-        <td><%= link_to 'Show', budget %></td>
-        <td><%= button_to 'Destroy', budget, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+        <tbody>
+          <% @budgets.each do |budget| %>
+            <tr class="normalRow">
+              <td><%= budget.name %></td>
+              <td><%= budget.fiscal_year %></td>
+              <td><%= budget.budgeted %></td>
+              <td><%= budget.spent %></td>
+              <td><%= budget.pending %></td>
+              <td><%= budget.balance %></td>
+              <td><%= budget.active %></td>
+              <td><%= budget.locked %></td>
+              <td><%= budget.default %></td>
+              <td class="noSpace"><%= link_to 'Show', budget, {:class => "crudButton"} %></td>
+              <td class="noSpace"><%= button_to 'Destroy', budget, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
 
-<br>
+  <div class="card-stack">
+    <%= link_to 'New Budget', new_budget_path, {:class => "button"} %>
+  </div>
 
-<%= link_to 'Edit Categories', budget_categories_path %> <br>
-<%= link_to 'Edit Subcategories', budget_subcategories_path %> <br>
-
-<%= link_to 'New Budget', new_budget_path %>
+</div>

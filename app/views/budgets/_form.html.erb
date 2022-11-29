@@ -11,37 +11,36 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
+  <div class="card-stack">
+    <div class="card">
+      <div class="field">
+        <%= form.label :name %>
+        <%= form.text_field :name %>
+      </div>
 
-  <div class="field">
-    <%= form.label :fiscal_year %>
-    <%= form.text_field :fiscal_year %>
-  </div>
+      <div class="field">
+        <%= form.label :fiscal_year %>
+        <%= form.text_field :fiscal_year %>
+      </div>
 
-  <div class="field">
-    <%= form.label :budgeted %>
-    <%= form.text_field :budgeted %>
-  </div>
+      <div class="field">
+        <%= form.label :active %>
+        <%= form.check_box :active %>
+      </div>
 
-  <div class="field">
-    <%= form.label :active %>
-    <%= form.check_box :active %>
-  </div>
+      <div class="field">
+        <%= form.label :locked %>
+        <%= form.check_box :locked %>
+      </div>
 
-  <div class="field">
-    <%= form.label :locked %>
-    <%= form.check_box :locked %>
-  </div>
+      <div class="field">
+        <%= form.label :default %>
+        <%= form.check_box :default %>
+      </div>
 
-  <div class="field">
-    <%= form.label :default %>
-    <%= form.check_box :default %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
+      <div class="actions">
+        <%= form.submit %>
+      </div>
+    </div>
   </div>
 <% end %>

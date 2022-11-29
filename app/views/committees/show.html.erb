@@ -1,17 +1,52 @@
-<p id="notice"><%= notice %></p>
+<div class="page-wrapper">
+  <div class="banner">
+    <h1>Committee</h1>
+  </div>
+  <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Committee name:</strong>
-  <%= @committee.committee_name %>
-</p>
+  <div class="card-stack">
+    <div class="card">
+      <p>
+        <strong>Committee name:</strong>
+        <%= @committee.committee_name %>
+      </p>
 
-<p>
-  <strong>Budget:</strong>
-  <%= Budget.find_by(id: @committee.budget_id)&.name %>
-</p>
+      <p>
+        <strong>Budget:</strong>
+        <%= Budget.find_by(id: @committee.budget_id)&.name %>
+      </p>
+    </div>
+  </div>
 
-<% if @user.permission_type == 'admin' %>
-<%= link_to 'Edit', edit_committee_path(@committee) %>
-<% end %>
+  <div class='card-stack'>
+    <div class='card'>
+      <table>
+        <thead class='strongRow'>
+          <tr>
+            <th>Member(s)</th>
+            <th>UIN</th>
+            <th>Phone Number</th>
+          </tr>
+        </thead>
 
-<%= link_to 'Back', :back %>
+        <tbody>
+          <% @users.each do |user| %>
+            <tr class='normalRow'>
+              <td><%= user.first_name %> <%= user.last_name %></td>
+              <td><%= user.uin %></td>
+              <td><%= user.phone_number%></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card-stack">
+    <% if @user.permission_type == 'admin' %>
+    <%= link_to 'Edit', edit_committee_path(@committee), {:class => "button"} %>
+    <% end %>
+
+    <%= link_to 'Back', :back, {:class => "button"} %>
+  </div>
+</div>

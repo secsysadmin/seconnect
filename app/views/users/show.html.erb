@@ -1,57 +1,70 @@
-<p>
-  <strong>First name:</strong>
-  <%= @user.first_name %>
-</p>
+<div class="page-wrapper">
+  <div class="banner">
+    <h1>User Profile</h1>
+  </div>
 
-<p>
-  <strong>Last name:</strong>
-  <%= @user.last_name %>
-</p>
+  <div class="card-stack">
+    <div class="card">
+      <p>
+        <strong>First name:</strong>
+        <%= @user.first_name %>
+      </p>
 
-<p>
-  <strong>Street address:</strong>
-  <%= @user.street_address %>
-</p>
+      <p>
+        <strong>Last name:</strong>
+        <%= @user.last_name %>
+      </p>
 
-<p>
-  <strong>City:</strong>
-  <%= @user.city %>
-</p>
+      <p>
+        <strong>Street address:</strong>
+        <%= @user.street_address %>
+      </p>
 
-<p>
-  <strong>State:</strong>
-  <%= @user.state %>
-</p>
+      <p>
+        <strong>City:</strong>
+        <%= @user.city %>
+      </p>
 
-<p>
-  <strong>Zip code:</strong>
-  <%= @user.zip_code %>
-</p>
+      <p>
+        <strong>State:</strong>
+        <%= @user.state %>
+      </p>
 
-<p>
-  <strong>Uin:</strong>
-  <%= @user.uin %>
-</p>
+      <p>
+        <strong>Zip code:</strong>
+        <%= @user.zip_code %>
+      </p>
 
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
+      <p>
+        <strong>Uin:</strong>
+        <%= @user.uin %>
+      </p>
 
-<p>
-  <strong>Phone number:</strong>
-  <%= @user.phone_number %>
-</p>
+      <p>
+        <strong>Email:</strong>
+        <%= @user.email %>
+      </p>
 
-<p>
-  <strong>Committee:</strong>
-  <%= @user.committee.committee_name %>
-</p>
+      <p>
+        <strong>Phone number:</strong>
+        <%= @user.phone_number %>
+      </p>
 
-<p>
-  <strong>Permission type:</strong>
-  <%= @user.permission_type %>
-</p>
+      <p>
+        <strong>Committee:</strong>
+        <%= @user.committee.committee_name %>
+      </p>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', :back %>
+      <p>
+        <strong>Permission type:</strong>
+        <%= @user.permission_type %>
+      </p>
+    </div>
+  </div>
+
+  <div class="card-stack">
+    <%= link_to 'Edit', edit_user_path(@user), {:class => "button"} %>
+    <%= link_to 'Back', :back, {:class => "button"} %>
+  </div>
+
+</div>

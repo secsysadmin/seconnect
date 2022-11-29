@@ -1,63 +1,73 @@
-<p id="notice"><%= notice %></p>
+<div class="page-wrapper">
+  <div class="banner">
+    <h1>Request</h1>
+  </div>
+  <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>User:</strong>
-  <%= User.find(@request.user_id).first_name %>
-  <%= User.find(@request.user_id).last_name %>
-</p>
+  <div class='card-stack'>
+    <div class='card'>
+      <p>
+        <strong>User:</strong>
+        <%= User.find(@request.user_id).first_name %>
+        <%= User.find(@request.user_id).last_name %>
+      </p>
 
-<p>
-  <strong>Budget:</strong>
-  <%= @budget.name %>
-</p>
+      <p>
+        <strong>Budget:</strong>
+        <%= @budget.name %>
+      </p>
 
-<p>
-  <strong>Budget Category:</strong>
-  <%= @budget_category.name %>
-</p>
+      <p>
+        <strong>Budget Category:</strong>
+        <%= @budget_category.name %>
+      </p>
 
-<p>
-  <strong>Budget Subcategory:</strong>
-  <%= @budget_subcategory.name %>
-</p>
+      <p>
+        <strong>Budget Subcategory:</strong>
+        <%= @budget_subcategory.name %>
+      </p>
 
-<p>
-  <strong>Tax category:</strong>
-  <%= @request.tax_category %>
-</p>
+      <p>
+        <strong>Tax category:</strong>
+        <%= @request.tax_category %>
+      </p>
 
-<p>
-  <strong>Gift:</strong>
-  <%= @request.gift %>
-</p>
+      <p>
+        <strong>Gift:</strong>
+        <%= @request.gift %>
+      </p>
 
-<p>
-  <strong>Cost:</strong>
-  <%= @request.cost %>
-</p>
+      <p>
+        <strong>Cost:</strong>
+        <%= @request.cost %>
+      </p>
 
-<p>
-  <strong>Items purchased:</strong>
-  <%= @request.items_purchased %>
-</p>
+      <p>
+        <strong>Items purchased:</strong>
+        <%= @request.items_purchased %>
+      </p>
 
-<p>
-  <strong>Vendor:</strong>
-  <%= Vendor.find(@request.vendor_id).vendor_name %>
-</p>
+      <p>
+        <strong>Vendor:</strong>
+        <%= Vendor.find(@request.vendor_id).vendor_name %>
+      </p>
 
-<p>
-  <strong>Status:</strong>
-  <%= @request.status %>
-</p>
+      <p>
+        <strong>Status:</strong>
+        <%= @request.status %>
+      </p>
 
-<p>
-  <strong>Notes:</strong>
-    <%= @request.notes %>
-</p>
+      <p>
+        <strong>Notes:</strong>
+          <%= @request.notes %>
+      </p>
+    </div>
+  </div>
 
-<%= link_to 'View file', @request.file %>
-<%= link_to 'Download file', @request.file, download: '' %>
-
-<%= link_to 'Edit', edit_request_path(@request) %> |
-<%= link_to 'Back', requests_path(session[:user_id]) %>
+  <div class='card-stack'>
+    <%= link_to 'View file', @request.file, {:class => "button"} %>
+    <%= link_to 'Download file', @request.file, download: '', class: 'button' %>
+    <%= link_to 'Edit', edit_request_path(@request), {:class => "button"} %>
+    <%= link_to 'Back', requests_path(session[:user_id]), {:class => "button"} %>
+  </div>
+</div>
