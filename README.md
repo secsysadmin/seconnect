@@ -38,12 +38,26 @@ Install the app
 
 bundle install && rails webpacker:install && rails db:create && db:migrate
 
-Run the app rails server --binding:0.0.0.0
+Each time the Docker container is restarted, run the following commands:
+rails db:reset
+rake db:drop:all
+rake db:create:all
+rake db:migrate
+rake db:seed
+
+Run the app 
+rails server --binding:0.0.0.0
 
 The application can be seen using a browser and navigating to http://localhost:3000/
 
 Environmental Variables/Files
 app requires you to create an account or login to existing account as a user or admin to access functionality. 
+
+Bootstrap
+apt update
+apt install nodejs
+apt install npm
+yarn add bootstrap jquery pooper.js
 
 Deployment
 rails db:migrate'
