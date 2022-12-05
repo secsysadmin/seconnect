@@ -1,6 +1,8 @@
 # README
 ## SEC-BRS Application
 ###### README for installation and set-up for the SEC-BRS Web App
+###### Shiv Patel, Simisola Agboola, Nathaniel Trujillo, Julia Teleki, and Tian Le
+
 
 ## Requirements
 This code has been run and tested on:
