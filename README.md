@@ -4,7 +4,7 @@
 
 ## Requirements
 This code has been run and tested on:
-**
+
 Ruby - 3.0.2p107
 Rails - 6.1.4.1
 Ruby Gems - Listed in Gemfile
@@ -15,7 +15,7 @@ External Deps
 Docker - Download latest version at [https://www.docker.com/products/docker-desktop]
 Heroku CLI - Download latest version at [https://devcenter.heroku.com/articles/heroku-cli]
 Git - Downloat latest version at [https://git-scm.com/book/en/v2/Getting-Started-Installing-Git]
-**
+
 ## Installation
 Clone this code repository by using git:
 
@@ -42,7 +42,7 @@ Run the following code in Powershell if using windows or the terminal using Linu
 docker run --rm -it --volume "$(pwd):/sec-brs" -e DATABASE_USER=test_app -e DATABASE_PASSWORD=test_password -p 3000:3000 dmartinez05/ruby_rails_postgresql:latest
 ```
 
-** Note: Each time the Docker container is restarted, run the following commands: **
+**Note: Each time the Docker container is restarted, run the following commands:**
 
 ```
 rails db:reset
@@ -95,3 +95,6 @@ To ensure the pipeline is is set up properly, follow the documentation below for
 
 ## Support
 Admins looking for support should first look at the application documentation. Users looking for help seek out assistance from the documentation and Admins.
+
+
+<sup>Thank you!</sup>
