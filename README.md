@@ -44,7 +44,7 @@ docker run --rm -it --volume "$(pwd):/sec-brs" -e DATABASE_USER=test_app -e DATA
 
 **Note: Each time the Docker container is restarted, run the following commands:**
 
-```
+```ruby
 rails db:reset
 rake db:drop:all
 rake db:create:all
@@ -55,7 +55,7 @@ rake db:seed
 ## Run the app locally
 The application can be seen using a browser and navigating to http://localhost:3000/ to run locally:
 
-```
+```ruby
 rails server --binding:0.0.0.0
 ```
 
@@ -72,19 +72,15 @@ yarn add bootstrap jquery pooper.js
 ```
 
 ## Deployment
-The application is linked on Heroku's database, you can check the staging and production apps with the following link:
-
-https://stage-sec-brs.herokuapp.com/login 
+The application is linked on Heroku's database, you can check the staging and production apps with the following [Here](https://stage-sec-brs.herokuapp.com/login).
 
 ```ruby
 rails db:migrate
 rails server --binding=0.0.0.0
-Access Point: http://127.0.0.1:3000
 ```
 
 ## CI/CD
 The main.yml file is where we define our workflow CI/CD these will run all Security Brakeman, Rspec, and Rubocop tests. The pipeline from the sec-brs github is already linked to the Heroku database, all is needed is a push.
-
 
 Make deployment to Heroku with:
 
@@ -93,11 +89,10 @@ git push heroku master
 ```
 
 To ensure the pipeline is is set up properly, follow the documentation below for extra support:
-(Continuous Integration)[https://medium.com/scalereal/set-up-ci-cd-for-rails-app-using-github-actions-aws-beanstalk-%EF%B8%8F-1df0e2e3cbb9] 
-(Continuous Delivery)[https://shashanksrivastava.medium.com/use-github-actions-to-automatically-deploy-your-applications-to-heroku-566ff0637ffb]
+[Continuous Integration](https://medium.com/scalereal/set-up-ci-cd-for-rails-app-using-github-actions-aws-beanstalk-%EF%B8%8F-1df0e2e3cbb9)
+[Continuous Delivery](https://shashanksrivastava.medium.com/use-github-actions-to-automatically-deploy-your-applications-to-heroku-566ff0637ffb)
 
 ## Support
 Admins looking for support should first look at the application documentation. Users looking for help seek out assistance from the documentation and Admins.
-
 
 <sup>Thank you!</sup>
