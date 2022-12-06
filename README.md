@@ -16,7 +16,7 @@ This code has been run and tested on:
 + External Deps
 + Docker - Download latest version of [docker-desktop](https://www.docker.com/products/docker-desktop)
 + Heroku CLI - Download latest version of [heroku-cli](https://devcenter.heroku.com/articles/heroku-cli)
-+ Git - Downloat latest version of [getting-started-installing-git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
++ Git - Download latest version of [getting-started-installing-git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 
 ## Installation
 Clone this code repository by using git:
