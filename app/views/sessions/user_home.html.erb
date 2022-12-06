@@ -9,6 +9,7 @@
       <div class="info-card">
         <h1 class="welcome">Welcome!</h1>
         <h3 class="info">This website serves as a budget reimbursement system for the Student Engineers' Council SEC.</h3>
+        <h3><%= link_to 'View User Manual', "/user_manual.pdf", {:class => 'userManual'} %></h3>
         <% if @committee.committee_name == "default" %>
           <h2 style="color:red;" >You must be assigned to a committee or have admin privileges to be able to use this website!</h2>
           <p> Contact an admin of this website or the Student Engineering Council's Chief Financial Officer for more details. </p>
