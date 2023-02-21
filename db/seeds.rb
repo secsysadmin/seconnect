@@ -114,7 +114,7 @@ defaultUser = User.create!(
           email: 'secbrsuser@gmail.com',
           phone_number: '123-456-7890',
           committee_id: committee01.id,
-          permission_type: 'user',
+          permission_type: 'admin',
           uid: '100003231053752770743'
      }
 )
