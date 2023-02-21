@@ -89,8 +89,8 @@ class SessionsController < ApplicationController
                u.permission_type = 'user'
                committee = Committee.find_by(committee_name: "default")
                @committee = Committee.find_or_create_by!(committee_name: 'default')
+               u.committee_id = 'default'
 
-               u.committee_id = @committee.id
                puts "committee = #{committee.inspect}"
                
                # budget_subcategory = BudgetSubcategory.find_by(subcategory_name: "default")
