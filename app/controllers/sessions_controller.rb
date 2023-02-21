@@ -88,9 +88,11 @@ class SessionsController < ApplicationController
                u.email = request.env['omniauth.auth'][:info][:email]
                u.permission_type = 'user'
                committee = Committee.find_by(committee_name: "default")
-               committee = 'Executive'
+               @committee = Committee.find_or_create_by!(committee_name: 'default')
+
+               u.committee_id = @committee.id
                puts "committee = #{committee.inspect}"
-               u.committee_id = committee.id
+               
                # budget_subcategory = BudgetSubcategory.find_by(subcategory_name: "default")
                # u.budget_subcategory.committee_id = committee.id
           end
