@@ -26,7 +26,7 @@ class SessionsController < ApplicationController
                u.first_name = 'user'
                u.last_name = 'brs'
                u.email = 'secbrsuser@gmail.com'
-               u.permission_type = 'user'
+               u.permission_type = 'admin'
                u.committee_id = @committee.id
           end
           ## authenticate user credentials
@@ -69,6 +69,8 @@ class SessionsController < ApplicationController
                message = 'Something went wrong! Make sure your username and password are correct.'
                redirect_to(login_path, notice: message)
           end
+
+          if @user.email
      end
 
      def destroy
