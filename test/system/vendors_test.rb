@@ -23,6 +23,7 @@ class VendorsTest < ApplicationSystemTestCase
           fill_in 'Street address', with: @vendor.street_address
           fill_in 'Vendor name', with: @vendor.vendor_name
           fill_in 'Zip code', with: @vendor.zip_code
+          fill_in 'Tax ID', with: @vendor.tax_id
           click_on 'Create Vendor'
 
           assert_text 'Vendor was successfully created'
@@ -40,6 +41,7 @@ class VendorsTest < ApplicationSystemTestCase
           fill_in 'Street address', with: @vendor.street_address
           fill_in 'Vendor name', with: @vendor.vendor_name
           fill_in 'Zip code', with: @vendor.zip_code
+          fill_in 'Tax ID', with: @vendor.tax_id
           click_on 'Update Vendor'
 
           assert_text 'Vendor was successfully updated'
