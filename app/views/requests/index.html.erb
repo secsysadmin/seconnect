@@ -25,7 +25,7 @@
             <th>Gift</th>
             <th>Cost</th>
             <th>Items purchased</th>
-            <th>Vendor</th>
+            # <th>Vendor</th>
             <th>Status</th>
             <% if @user.permission_type == 'admin' %>
               <th colspan="5"></th>
@@ -49,7 +49,7 @@
               <td><%= request.gift %></td>
               <td><%= request.cost %></td>
               <td><%= request.items_purchased %></td>
-              <td><%= Vendor.where(id: request.vendor_id).last.vendor_name %></td>
+              # <td><%= Vendor.where(id: request.vendor_id).last.vendor_name %></td>
               <td><%= request.status %></td>
               <td class='noSpace'><%= link_to 'Show', request, {:class => 'crudButton'} %></td>
               <td class='noSpace'><%= 
