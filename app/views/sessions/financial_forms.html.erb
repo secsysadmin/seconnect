@@ -5,10 +5,10 @@
 
 	<div class="banner-stack">
 		<%= link_to 'Member Reimbursement', requests_path(session[:user_id]), {:class => "banner-button"} %>
+		<%= link_to 'Vendor Invoice', invoices_path(session[:admin_id]), {:class => "banner-button"} %>
 		<%= link_to 'Credit Card Request', creditcards_path(session[:user_id]), {:class => "banner-button"} %>
 		<%= link_to 'Approval To Charge', atcs_path(session[:user_id]), {:class => "banner-button"} %>
 		<%= link_to 'Forward Receipts', receipts_path(session[:user_id]), {:class => "banner-button"} %>
 		<%= link_to 'View Forwarded Receipts', receipts_path(session[:admin_id]), {:class => "banner-button"} %>
-		<%= link_to 'Vendor Invoice', invoices_path(session[:admin_id]), {:class => "banner-button"} %>
 	</div>
 </div>
