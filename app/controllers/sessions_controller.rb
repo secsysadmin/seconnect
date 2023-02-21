@@ -47,16 +47,15 @@ class SessionsController < ApplicationController
 
      def createadmin
           @committee = Committee.find_or_create_by!(committee_name: 'default')
-          puts "spot1"
+          
           @user = User.find_or_create_by!(uid: '109290679077990497398') do |u|
                u.first_name = 'admin'
                u.last_name = 'brs'
                u.email = 'secbrs23@gmail.com'
                u.permission_type = 'admin'
                u.committee_id = @committee.id
-               puts "spot2"
+               
           end
-          puts "spot3"
           ## authenticate user credentials
           if @user.valid?
                # set session and redirect on success
@@ -91,7 +90,7 @@ class SessionsController < ApplicationController
                u.email = request.env['omniauth.auth'][:info][:email]
                u.permission_type = 'user'
                committee = Committee.find_by(committee_name: "default")
-               puts "committee = #{committee.inspect}"
+               
                u.committee_id = committee.id
                # budget_subcategory = BudgetSubcategory.find_by(subcategory_name: "default")
                # u.budget_subcategory.committee_id = committee.id
