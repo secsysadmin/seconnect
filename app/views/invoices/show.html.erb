@@ -54,8 +54,8 @@
   </div>
 
   <div class='card-stack'>
-    <%= link_to 'View file', @invoice.attachement, {:class => 'button'} %>
-    <%= link_to 'Download file', @invoice.attachement, download: '', class: 'button' %>
+    <%= link_to 'View', @invoice.attachement, {:class => 'button'} %>
+    <%= link_to 'Download', @invoice.attachement, download: '', class: 'button' %>
     <%= link_to 'Edit', edit_invoice_path(@invoice), {:class => 'button'} %>
     <%= link_to 'Back', invoices_path, {:class => 'button'} %>
   </div>
