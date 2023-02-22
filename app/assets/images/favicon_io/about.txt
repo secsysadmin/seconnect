@@ -1,0 +1,6 @@
+This favicon was generated using the following font:
+
+- Font Title: Benne
+- Font Author: Copyright 2015 The Benne Project Authors (https://github.com/googlefonts/Benne)
+- Font Source: http://fonts.gstatic.com/s/benne/v22/L0xzDFAhn18E6Vjxlt6qTDBN.ttf
+- Font License: SIL Open Font License, 1.1 (http://scripts.sil.org/OFL))
