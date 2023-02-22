@@ -2,7 +2,7 @@
 
 require 'pry'
 class UsersController < ApplicationController
-     # ADMIN ONLY 
+     # ADMIN ONLY
      def index
           if session[:user_id]
                @user = User.find(session[:user_id])
