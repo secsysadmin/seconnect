@@ -29,11 +29,6 @@
       </div>
 
       <div class="field">
-        <%= form.label :recipient_name %>
-        <%= form.text_field :recipient_name %>
-      </div>
-
-      <div class="field">
         <%= form.label :tax_category %>
         <%= form.select :tax_category, [['Travel'],['Food'],['Office Supplies'],['Utilities'],['Membership'],['Services & Other Income'],['Clothing'],['Rent'],['Other Expenses'],['Items for Resale ']], include_blank: true %>
       </div>

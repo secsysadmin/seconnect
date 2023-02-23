@@ -119,7 +119,6 @@ ActiveRecord::Schema.define(version: 2022_11_17_230753) do
     t.string "notes"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "recipient_name"
     t.integer "vendor_id"
     t.integer "phone"
   end
@@ -174,7 +173,6 @@ ActiveRecord::Schema.define(version: 2022_11_17_230753) do
     t.string "status"
     t.text "notes"
     t.integer "budget_subcategory_id"
-    t.string "recipient_name"
   end
 
   create_table "users", force: :cascade do |t|

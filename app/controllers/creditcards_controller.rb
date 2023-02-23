@@ -85,7 +85,7 @@ class CreditcardsController < ApplicationController
 
      # Only allow a list of trusted parameters through.
      def creditcard_params
-          params.require(:creditcard).permit(:user_id, :recipient_name, :payment_link, :phone,
+          params.require(:creditcard).permit(:user_id, :payment_link, :phone,
                                              :Confirmation_order, :reservation_name, :status, :notes, :file, :vendor_id
           )
      end

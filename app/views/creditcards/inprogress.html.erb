@@ -11,7 +11,6 @@
         <thead>
           <tr class='strongRow'>
             <th>Request Submitted By</th>
-            <th>Recipient Name</th>
             <th>Vendor</th>
             <th>Payment link</th>
             <th>Phone</th>
@@ -28,7 +27,6 @@
           <% @creditcards.each do |creditcard| %>
             <tr class='normalRow'>
               <td><%= User.where(id: creditcard.user_id).last.first_name %></td>
-              <td><%= creditcard.recipient_name %></td>
               <td><%= Vendor.where(id: creditcard.vendor_id).last.vendor_name%></td>
               <td><%= creditcard.payment_link %></td>
               <td><%= creditcard.phone %></td>
