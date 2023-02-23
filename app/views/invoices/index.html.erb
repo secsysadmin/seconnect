@@ -37,7 +37,7 @@
               <td><%= invoice.payment_method %></td>
               <td><%= invoice.test %></td>
               <td><%= invoice.notes %></td>
-              <td><%= invoice.tax_id %></td>
+              
               <td class='noSpace'><%= link_to 'Show', invoice, {:class => 'crudButton'} %></td>
               <td class='noSpace'><%= link_to 'Edit', edit_invoice_path(invoice), {:class => 'crudButton'} %></td>
               <td class='noSpace'><%= button_to 'Destroy', invoice, method: :delete, data: { confirm: 'Are you sure?' } %></td>
