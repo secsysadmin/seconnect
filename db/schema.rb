@@ -121,6 +121,7 @@ ActiveRecord::Schema.define(version: 2022_11_17_230753) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "vendor_id"
     t.integer "phone"
+    t.string "travel_password_cc"
   end
 
   create_table "invoices", force: :cascade do |t|
