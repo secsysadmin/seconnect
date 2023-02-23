@@ -136,6 +136,7 @@ ActiveRecord::Schema.define(version: 2022_11_17_230753) do
     t.string "notes"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "travel_password"
   end
 
   create_table "items", force: :cascade do |t|
@@ -150,6 +151,7 @@ ActiveRecord::Schema.define(version: 2022_11_17_230753) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["invoice_id"], name: "index_items_on_invoice_id"
+
   end
 
   create_table "receipts", force: :cascade do |t|

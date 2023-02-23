@@ -29,6 +29,7 @@ class InvoicesControllerTest < ActionDispatch::IntegrationTest
                               zip: @invoice.zip,
                               payment_method: @invoice.payment_method,
                               test: @invoice.test,
+                              travel_password: @invoice.travel_password
                               notes: @invoice.notes
                          }
                     }

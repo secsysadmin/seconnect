@@ -14,6 +14,7 @@ RSpec.describe('Create Vendor', type: :feature) do
           fill_in 'Zip code', with: '77845'
           fill_in 'Email', with: 'juliateleki@tamu.edu'
           fill_in 'Phone number', with: '1234567890'
+          fill_in 'Tax ID' with: '1011'
           click_on 'Create Vendor'
           expect(page).to(have_content('123 street'))
      end
