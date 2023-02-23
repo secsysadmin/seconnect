@@ -9,6 +9,7 @@ class CreateInvoices < ActiveRecord::Migration[6.1]
       t.string :state
       t.string :zip
       t.string :payment_method
+      t.string :test
       t.string :notes
 
       t.timestamps

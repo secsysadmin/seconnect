@@ -8,6 +8,7 @@ one:
   state: MyString
   zip: MyString
   payment_method: MyString
+  test: MyString
   notes: MyString
   
 
@@ -19,4 +20,5 @@ two:
   state: MyString
   zip: MyString
   payment_method: MyString
+  test: MyString
   notes: MyString

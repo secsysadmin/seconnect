@@ -23,6 +23,7 @@ class InvoicesTest < ApplicationSystemTestCase
           fill_in 'State', with: @invoice.state
           fill_in 'Zip', with: @invoice.zip
           fill_in 'Payment Method', with: @invoice.payment_method
+          fill_in 'Test', with: @invoice.test
           fill_in 'Notes', with: @invoice.notes
           click_on 'Create Invoice'
 
@@ -41,6 +42,7 @@ class InvoicesTest < ApplicationSystemTestCase
           fill_in 'State', with: @invoice.state
           fill_in 'Zip', with: @invoice.zip
           fill_in 'Payment Method', with: @invoice.payment_method
+          fill_in 'Test', with: @invoice.test
           fill_in 'Notes', with: @invoice.notes
           click_on 'Update Invoice'
 

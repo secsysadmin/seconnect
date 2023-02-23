@@ -29,6 +29,7 @@ class InvoicesControllerTest < ActionDispatch::IntegrationTest
                               state: @invoice.state
                               zip: @invoice.zip
                               payment_method: @invoice.payment_method
+                              test: @invoice.test
                               notes: @invoice.notes
                          }
                     }
@@ -58,6 +59,7 @@ class InvoicesControllerTest < ActionDispatch::IntegrationTest
                           state: @invoice.state
                           zip: @invoice.zip
                           payment_method: @invoice.payment_method
+                          test: @invoice.test
                           notes: @invoice.notes
                      }
                 }

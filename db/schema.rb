@@ -133,6 +133,7 @@ ActiveRecord::Schema.define(version: 2022_11_17_230753) do
     t.string "state"
     t.string "zip"
     t.string "payment_method"
+    t.string "test"
     t.string "notes"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
