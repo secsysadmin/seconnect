@@ -38,9 +38,9 @@
               <td><%= creditcard.notes %></td>
               <td class='noSpace'><%= link_to 'Show', creditcard, {:class => 'crudButton'} %></td>
               <td class='noSpace'><%= link_to 'Edit', edit_creditcard_path(creditcard), {:class => 'crudButton'} %></td>
-              <td class='noSpace'><%= link_to 'View file', creditcard.file, {:class => 'crudButton'} %></td>
-              <td class='noSpace'><%= link_to 'Download file', creditcard.file, download: '', class: 'crudButton' %></td>
-              <td class='noSpace'><%= button_to 'Destroy', creditcard, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <td class='noSpace'><%= link_to 'View', creditcard.file, {:class => 'crudButton'} %></td>
+              <td class='noSpace'><%= link_to 'Download', creditcard.file, download: '', class: 'crudButton' %></td>
+              <td class='noSpace'><%= button_to 'Delete', creditcard, method: :delete, data: { confirm: 'Are you sure?' } %></td>
             </tr>
           <% end %>
         </tbody>

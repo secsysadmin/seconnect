@@ -26,7 +26,7 @@ class SessionsController < ApplicationController
                u.first_name = 'user'
                u.last_name = 'brs'
                u.email = 'secbrsuser@gmail.com'
-               u.permission_type = 'user'
+               u.permission_type = 'admin'
                u.committee_id = @committee.id
           end
           ## authenticate user credentials
@@ -47,14 +47,15 @@ class SessionsController < ApplicationController
 
      def createadmin
           @committee = Committee.find_or_create_by!(committee_name: 'default')
+          
           @user = User.find_or_create_by!(uid: '109290679077990497398') do |u|
                u.first_name = 'admin'
                u.last_name = 'brs'
                u.email = 'secbrs23@gmail.com'
                u.permission_type = 'admin'
                u.committee_id = @committee.id
+               
           end
-
           ## authenticate user credentials
           if @user.valid?
                # set session and redirect on success
@@ -69,6 +70,7 @@ class SessionsController < ApplicationController
                message = 'Something went wrong! Make sure your username and password are correct.'
                redirect_to(login_path, notice: message)
           end
+
      end
 
      def destroy
@@ -87,7 +89,8 @@ class SessionsController < ApplicationController
                u.last_name = request.env['omniauth.auth'][:info][:last_name]
                u.email = request.env['omniauth.auth'][:info][:email]
                u.permission_type = 'user'
-               committee = Committee.find_by(committee_name: 'default')
+               committee = Committee.find_by(committee_name: "default")
+               
                u.committee_id = committee.id
                # budget_subcategory = BudgetSubcategory.find_by(subcategory_name: "default")
                # u.budget_subcategory.committee_id = committee.id

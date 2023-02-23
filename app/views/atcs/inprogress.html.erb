@@ -36,9 +36,9 @@
               <td><%= atc.notes %></td>
               <td class='noSpace'><%= link_to 'Show', atc, {:class => 'crudButton'} %></td>
               <td class='noSpace'><%= link_to 'Edit', edit_atc_path(atc), {:class => 'crudButton'} %></td>
-              <td class='noSpace'><%= link_to 'View file', atc.file, {:class => 'crudButton'} %></td>
-              <td class='noSpace'><%= link_to 'Download file', atc.file, download: '', class: 'crudButton' %></td>
-              <td class='noSpace'><%= button_to 'Destroy', atc, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <td class='noSpace'><%= link_to 'View', atc.file, {:class => 'crudButton'} %></td>
+              <td class='noSpace'><%= link_to 'Download', atc.file, download: '', class: 'crudButton' %></td>
+              <td class='noSpace'><%= button_to 'Delete', atc, method: :delete, data: { confirm: 'Are you sure?' } %></td>
             </tr>
           <% end %>
         </tbody>

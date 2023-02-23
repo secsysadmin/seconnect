@@ -20,7 +20,7 @@
         <td><%= request.cost %></td>
         <td><%= request.items_purchased %></td>
         <td><%= request.type %></td>
-        <td><%= Vendor.where(id: request.vendor_id).last.vendor_name %></td>
+        # <td><%= Vendor.where(id: request.vendor_id).last.vendor_name %></td>
         <td><%= request.status %></td>
         <td><%= link_to 'Show', request %></td>
         <td><%= link_to 'Edit', edit_request_path(request) %></td>

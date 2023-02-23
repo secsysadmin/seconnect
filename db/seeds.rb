@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-
 vendor = Vendor.create!(
      {
           vendor_name: 'no vendor',
@@ -112,9 +111,9 @@ defaultUser = User.create!(
           zip_code: '77845',
           uin: 123,
           email: 'secbrsuser@gmail.com',
-          phone_number: '123-456-7890',
+          phone_number: '123-456-7899',
           committee_id: committee01.id,
-          permission_type: 'user',
+          permission_type: 'admin',
           uid: '100003231053752770743'
      }
 )
