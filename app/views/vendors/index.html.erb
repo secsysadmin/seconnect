@@ -16,6 +16,7 @@
             <th>Zip code</th>
             <th>Email</th>
             <th>Phone number</th>
+            <th>Tax ID</th>
             
             <th colspan="2"></th>
           </tr>
@@ -31,6 +32,8 @@
               <td><%= vendor.zip_code %></td>
               <td><%= vendor.email %></td>
               <td><%= vendor.phone_number %></td>
+              <td><%= vendor.tax_id %></td>
+              
               
               <td class="noSpace"><%= link_to 'Edit', edit_vendor_path(vendor), {:class => "crudButton"} %></td>
               <td class="noSpace"><%= button_to 'Destroy', vendor, method: :delete, data: { confirm: 'Are you sure?' } %></td>

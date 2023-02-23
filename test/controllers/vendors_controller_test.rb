@@ -29,6 +29,7 @@ class VendorsControllerTest < ActionDispatch::IntegrationTest
                               street_address: @vendor.street_address,
                               vendor_name: @vendor.vendor_name,
                               zip_code: @vendor.zip_code
+                              tax_id: @vendor.tax_id
                          }
                     }
           end
@@ -57,6 +58,7 @@ class VendorsControllerTest < ActionDispatch::IntegrationTest
                           street_address: @vendor.street_address,
                           vendor_name: @vendor.vendor_name,
                           zip_code: @vendor.zip_code
+                          tax_id: @vendor.tax_id
                      }
                 }
           assert_redirected_to vendor_url(@vendor)
