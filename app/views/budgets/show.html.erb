@@ -66,7 +66,7 @@
                 <td><%= BudgetSubcategory.find(subcategory_id).balance %></td>
                 <% if @user.permission_type == "admin" %>
                   <td class="noSpace"><%= link_to 'Edit', edit_budget_subcategory_path(BudgetSubcategory.find_by(id: subcategory_id)), {:class => "crudButton"}  %></td>
-                  <td class="noSpace"><%= button_to 'Destroy', BudgetSubcategory.find(subcategory_id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                  <td class="noSpace"><%= button_to 'Delete', BudgetSubcategory.find(subcategory_id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
                 <% end %>
               </tr>
             <% end %>

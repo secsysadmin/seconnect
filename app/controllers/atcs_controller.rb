@@ -65,7 +65,7 @@ class AtcsController < ApplicationController
           @atc.destroy!
 
           respond_to do |format|
-               format.html { redirect_to(atcs_url, notice: 'Atc was successfully destroyed.') }
+               format.html { redirect_to(atcs_url, notice: 'Atc was successfully deleted.') }
                format.json { head(:no_content) }
           end
      end

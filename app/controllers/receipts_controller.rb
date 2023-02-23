@@ -56,7 +56,7 @@ class ReceiptsController < ApplicationController
 
           respond_to do |format|
                format.html do
-                    redirect_to(receipts_url, notice: 'Receipt was successfully destroyed.')
+                    redirect_to(receipts_url, notice: 'Receipt was successfully deleted.')
                end
                format.json { head(:no_content) }
           end

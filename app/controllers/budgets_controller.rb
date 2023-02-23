@@ -75,7 +75,7 @@ class BudgetsController < ApplicationController
 
           respond_to do |format|
                format.html do
-                    redirect_to(budgets_url, notice: 'Budget was successfully destroyed.')
+                    redirect_to(budgets_url, notice: 'Budget was successfully deleted.')
                end
                format.json { head(:no_content) }
           end

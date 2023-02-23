@@ -109,7 +109,7 @@ class CommitteesController < ApplicationController
 
           respond_to do |format|
                format.html do
-                    redirect_to(committees_url, notice: 'Committee was successfully destroyed.')
+                    redirect_to(committees_url, notice: 'Committee was successfully deleted.')
                end
                format.json { head(:no_content) }
           end

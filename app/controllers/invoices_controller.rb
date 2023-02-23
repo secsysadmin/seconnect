@@ -67,7 +67,7 @@ class InvoicesController < ApplicationController
           
           respond_to do |format|
                format.html do
-                    redirect_to(invoices_url, notice: 'Invoice was successfully destroyed.')
+                    redirect_to(invoices_url, notice: 'Invoice was successfully deleted.')
                end
                format.json { head(:no_content) }
           end

@@ -66,7 +66,7 @@ class VendorsController < ApplicationController
           # end
           respond_to do |format|
                format.html do
-                    redirect_to(vendors_path, notice: 'Vendor was successfully destroyed.')
+                    redirect_to(vendors_path, notice: 'Vendor was successfully deleted.')
                end
                format.json { render(:destroy, status: :delete, location: @vendor) }
           end

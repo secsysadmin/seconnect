@@ -70,7 +70,7 @@ class CreditcardsController < ApplicationController
 
           respond_to do |format|
                format.html do
-                    redirect_to(creditcards_url, notice: 'Creditcard was successfully destroyed.')
+                    redirect_to(creditcards_url, notice: 'Creditcard was successfully deleted.')
                end
                format.json { head(:no_content) }
           end

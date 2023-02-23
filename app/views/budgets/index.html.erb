@@ -36,7 +36,7 @@
               <td><%= budget.locked %></td>
               <td><%= budget.default %></td>
               <td class="noSpace"><%= link_to 'Show', budget, {:class => "crudButton"} %></td>
-              <td class="noSpace"><%= button_to 'Destroy', budget, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <td class="noSpace"><%= button_to 'Delete', budget, method: :delete, data: { confirm: 'Are you sure?' } %></td>
             </tr>
           <% end %>
         </tbody>

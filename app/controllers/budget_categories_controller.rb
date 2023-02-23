@@ -72,7 +72,7 @@ class BudgetCategoriesController < ApplicationController
           respond_to do |format|
                format.html do
                     redirect_to(budget_categories_url,
-                                notice: 'Budget category was successfully destroyed.'
+                                notice: 'Budget category was successfully deleted.'
                                )
                end
                format.json { head(:no_content) }
