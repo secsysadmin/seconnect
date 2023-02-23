@@ -17,7 +17,6 @@ class InvoicesTest < ApplicationSystemTestCase
           click_on 'New Invoice'
 
           fill_in 'Vendor ID', with: @invoice.vendor_id
-          fill_in 'Vendor title', with: @invoice.vendor_title
           fill_in 'Address', with: @invoice.address
           fill_in 'City', with: @invoice.city
           fill_in 'State', with: @invoice.state
@@ -36,7 +35,6 @@ class InvoicesTest < ApplicationSystemTestCase
           click_on 'Edit', match: :first
 
           fill_in 'Vendor ID', with: @invoice.vendor_id
-          fill_in 'Vendor title', with: @invoice.vendor_title
           fill_in 'Address', with: @invoice.address
           fill_in 'City', with: @invoice.city
           fill_in 'State', with: @invoice.state

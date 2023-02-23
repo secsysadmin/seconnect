@@ -126,7 +126,6 @@ ActiveRecord::Schema.define(version: 2022_11_17_230753) do
 
   create_table "invoices", force: :cascade do |t|
     t.string "vendor_id"
-    t.string "vendor_title"
     t.string "tax_id_number"
     t.string "address"
     t.string "city"
@@ -203,7 +202,7 @@ ActiveRecord::Schema.define(version: 2022_11_17_230753) do
     t.string "phone_number"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "tax_identification_number"
+    t.integer "tax_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

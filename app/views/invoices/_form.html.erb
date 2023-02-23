@@ -18,10 +18,6 @@
         <%= form.select :vendor_id, Vendor.order(:vendor_name).map { |vendor| [vendor.vendor_name, vendor.id] }, include_blank: true, id: "id_of_the_vendor_id_select_box" %>
       </div>
 
-      <div class="field">
-        <%= form.label :vendor_title %>
-        <%= form.text_field :vendor_title %>
-      </div>
 
       <div class="field">
         <%= form.label :tax_id_number %>

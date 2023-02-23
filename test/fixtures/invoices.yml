@@ -2,7 +2,6 @@
 
 one:
   vendor_id: 1
-  vendor_title: MyString
   address: MyString
   city: MyString
   state: MyString
@@ -14,7 +13,6 @@ one:
 
 two:
   vendor_id: 1
-  vendor_title: MyString
   address: MyString
   city: MyString
   state: MyString

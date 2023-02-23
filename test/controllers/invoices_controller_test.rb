@@ -23,13 +23,12 @@ class InvoicesControllerTest < ActionDispatch::IntegrationTest
                     params: {
           invoice: {
                               vendor_id: @invoice.vendor_id,
-                              vendor_title: @invoice.vendor_title,
-                              tax_id_number: @invoice.tax_id_number
-                              city: @invoice.city
-                              state: @invoice.state
-                              zip: @invoice.zip
-                              payment_method: @invoice.payment_method
-                              test: @invoice.test
+                              tax_id_number: @invoice.tax_id_number,
+                              city: @invoice.city,
+                              state: @invoice.state,
+                              zip: @invoice.zip,
+                              payment_method: @invoice.payment_method,
+                              test: @invoice.test,
                               notes: @invoice.notes
                          }
                     }
@@ -53,13 +52,12 @@ class InvoicesControllerTest < ActionDispatch::IntegrationTest
                 params: {
      invoice: {
                           vendor_id: @invoice.vendor_id,
-                          vendor_title: @invoice.vendor_title,
-                          tax_id_number: @invoice.tax_id_number
-                          city: @invoice.city
-                          state: @invoice.state
-                          zip: @invoice.zip
-                          payment_method: @invoice.payment_method
-                          test: @invoice.test
+                          tax_id_number: @invoice.tax_id_number,
+                          city: @invoice.city,
+                          state: @invoice.state,
+                          zip: @invoice.zip,
+                          payment_method: @invoice.payment_method,
+                          test: @invoice.test,
                           notes: @invoice.notes
                      }
                 }

@@ -11,7 +11,6 @@
         <thead>
           <tr class='strongRow'>
             <th>Vendor</th>
-            <th>Vendor title</th>
             <th>Tax id number</th>
             <th>Address</th>
             <th>City</th>
@@ -27,7 +26,6 @@
           <% @invoices.each do |invoice| %>
             <tr class='normalRow'>
               <td><%= Vendor.where(id: invoice.vendor_id).last.vendor_name %></td>
-              <td><%= invoice.vendor_title %></td>
               <td><%= invoice.tax_id_number %></td>
               <td><%= invoice.address %></td>
               <td><%= invoice.city %></td>
