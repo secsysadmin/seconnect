@@ -67,7 +67,7 @@
 
           <% if User.find(session[:user_id]).permission_type == 'admin' %>
             <li class="nav-item <%= users_path %>">
-              <%= link_to 'Users', users_path, class: 'nav-link element' %>
+              <%= link_to 'Sub Accounts', users_path, class: 'nav-link element' %>
             </li>
             <li class="nav-item <%= vendors_path(session[:user_id]) %>">
               <%= link_to 'Vendors', vendors_path(session[:user_id]), class: 'nav-link element' %>
