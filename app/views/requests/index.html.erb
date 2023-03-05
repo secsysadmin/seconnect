@@ -58,7 +58,7 @@
               end
               %></td>
               <td class='noSpace'><%= link_to 'View', request.file, {:class => 'crudButton'} %></td>
-              <td class='noSpace'><%= link_to 'Download', url_for(controller: 'requests_controller', action: 'download', id: 1), download: example.pdf, class: 'crudButton' %></td>
+              <td class='noSpace'><%= link_to 'Download', request.file, download: '', class: 'crudButton' %></td>
               <td class='noSpace'><%= button_to 'Delete', request, method: :delete, data: { confirm: 'Are you sure?' } %></td>
             </tr>
           <% end %>

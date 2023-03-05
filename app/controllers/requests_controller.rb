@@ -122,16 +122,16 @@ class RequestsController < ApplicationController
           )
      end
 
-     def download
-          # find the file you want to send for download
-          @file = File.find(params[:id])
+     # def download
+     #      # find the file you want to send for download
+     #      @file = File.find(params[:id])
       
-          # send the file as an attachment
-          send_file(
-            @file.path,
-            filename: @file.name,
-            type: @file.mime_type,
-            disposition: 'attachment'
-          )
-        end
+     #      # send the file as an attachment
+     #      send_file(
+     #        @file.path,
+     #        filename: @file.name,
+     #        type: @file.mime_type,
+     #        disposition: 'attachment'
+     #      )
+     #    end
 end
