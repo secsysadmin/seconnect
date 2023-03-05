@@ -8,7 +8,8 @@
 
   <% @budgets_by_year.each do |year, budgets| %>
     <div class="card-stack">
-      <h1><%= year %></button>
+      <label for="<%= year %>"><%= year %></label>
+      <input type="checkbox" id="<%= year %>">
       <div class="panel">
         <table>
           <thead>
@@ -51,3 +52,22 @@
   </div>
 
 </div>
+
+<style>
+input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+}
+
+label {
+  cursor: pointer;
+}
+
+input[type="checkbox"]:checked ~ .panel {
+  display: block;
+}
+
+.panel {
+  display: none;
+}
+</style>
