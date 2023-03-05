@@ -5,7 +5,8 @@ class BudgetsController < ApplicationController
 
      # GET /budgets or /budgets.json
      def index
-          @budgets = Budget.all
+          @budgets_by_year = Budget.all.group_by { |budget| budget.fiscal_year }
+
      end
 
      # GET /budgets/1 or /budgets/1.json
