@@ -6,9 +6,7 @@
   <p id="notice"><%= notice %></p>
 
   <div class="card-stack">
-  <br>
-  <br>
-    <% @budgets_by_year.each do |year, budgets| %>
+    <% @budgets_by_year.keys.sort.reverse.each do |year| %>
       <div class="card">
         <div class="card-header">
           <%= year %>
@@ -21,7 +19,6 @@
             <thead>
               <tr class="strongRow">
                 <th>Name</th>
-                <th>Fiscal Year</th>
                 <th>Budgeted</th>
                 <th>Spent</th>
                 <th>Pending</th>
@@ -33,10 +30,9 @@
               </tr>
             </thead>
             <tbody>
-              <% budgets.each do |budget| %>
+              <% @budgets_by_year[year].each do |budget| %>
                 <tr class="normalRow">
                   <td><%= budget.name %></td>
-                  <td><%= budget.fiscal_year %></td>
                   <td><%= budget.budgeted %></td>
                   <td><%= budget.spent %></td>
                   <td><%= budget.pending %></td>
@@ -45,7 +41,7 @@
                   <td><%= budget.locked %></td>
                   <td><%= budget.default %></td>
                   <td class="noSpace"><%= link_to 'Show', budget, {:class => "crudButton"} %></td>
-                  <td class="noSpace"><%= button_to 'Delete', budget, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                  <td class="noSpace"><%= button_to 'Delete', budget, method: :delete, data: { confirm: 'Are you sure?' }, {:class => "crudButton"} %></td>
                 </tr>
               <% end %>
             </tbody>
