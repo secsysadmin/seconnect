@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function(event) { 
+    console.log('hi!');
     var acc = document.getElementsByClassName("accordion");
     var i;
   
