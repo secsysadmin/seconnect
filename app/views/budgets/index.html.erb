@@ -8,7 +8,7 @@
 
   <% @budgets_by_year.each do |year, budgets| %>
     <div class="card-stack">
-      <button class="accordion"><%= year %></button>
+      <h1><%= year %></button>
       <div class="panel">
         <table>
           <thead>
@@ -51,20 +51,3 @@
   </div>
 
 </div>
-
-<script>
-  var acc = document.getElementsByClassName("accordion");
-  var i;
-
-  for (i = 0; i < acc.length; i++) {
-    acc[i].addEventListener("click", function() {
-      this.classList.toggle("active");
-      var panel = this.nextElementSibling;
-      if (panel.style.maxHeight){
-        panel.style.maxHeight = null;
-      } else {
-        panel.style.maxHeight = panel.scrollHeight + "px";
-      }
-    });
-  }
-</script>
