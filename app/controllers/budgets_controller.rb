@@ -5,9 +5,8 @@ class BudgetsController < ApplicationController
 
      # GET /budgets or /budgets.json
      def index
-          @budgets_by_year = Budget.all.group_by { |budget| budget.fiscal_year }
-
-     end
+          @budgets_by_year = Budget.all.group_by { |budget| budget.fiscal_year }.sort.reverse.to_h
+        end
 
      # GET /budgets/1 or /budgets/1.json
      def show
