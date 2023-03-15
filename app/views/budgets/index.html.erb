@@ -35,10 +35,22 @@
                 <td><%= budget.pending %></td>
                 <td><%= budget.balance %></td>
                 <td><%= budget.active %></td>
-                <td><%= budget.locked %></td>
+                <td><%= budget.locked ? "Yes" : "No" %></td>
                 <td><%= budget.default %></td>
-                <td class="noSpace"><%= link_to 'Show', budget, {:class => "crudButton"} %></td>
-                <td class="noSpace"><%= button_to 'Delete', budget, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                <td class="noSpace">
+                  <% if budget.locked %>
+                    <%= link_to 'Show', budget, {:class => "crudButton"} %>
+                  <% else %>
+                    <%= link_to 'Edit', edit_budget_path(budget), {:class => "crudButton"} %>
+                  <% end %>
+                </td>
+                <td class="noSpace">
+                  <% if budget.locked %>
+                    <button class="crudButton" disabled>Delete</button>
+                  <% else %>
+                    <%= button_to 'Delete', budget, method: :delete, data: { confirm: 'Are you sure?' }, :class => "crudButton" %>
+                  <% end %>
+                </td>
               </tr>
             <% end %>
           </tbody>
@@ -61,14 +73,6 @@ input[type="checkbox"] {
 
 label {
   cursor: pointer;
-  text-decoration: none;
-  background-color: dodgerblue;
-  font-size: 20px;
-  border-radius: 10px;
-  border: none;
-  color: white;
-  padding: 10px;
-  margin: 10px;
 }
 
 input[type="checkbox"]:checked ~ .panel {
