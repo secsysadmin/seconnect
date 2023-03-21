@@ -19,7 +19,6 @@ class InvoicesController < ApplicationController
           @invoice.items << Item.new
           @invoice.items << Item.new
           @invoice.items << Item.new
-          @invoice.items << Item.new
      end
 
      # GET /invoices/1/edit
