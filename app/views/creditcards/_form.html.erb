@@ -59,6 +59,11 @@
       </div>
 
       <div class="field">
+        <%= form.label :Name_under_reservation %>
+        <%= form.text_field :res_under %>
+      </div>
+
+      <div class="field">
         <%= form.label :travel_password %>
         <%= form.text_field :travel_password_cc %>
       </div>
@@ -77,7 +82,7 @@
       <% end %>
 
       <div class="field">
-        <%= form.label :statement_of_purpose%>
+        <%= form.label :statement_of_purpose %>
         <%= form.text_field :sop, :required => true %>
       </div>
 

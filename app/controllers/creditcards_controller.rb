@@ -88,7 +88,7 @@ class CreditcardsController < ApplicationController
           params.require(:creditcard).permit(:user_id, :payment_link, :phone,
                                               :Confirmation_order, :reservation_name, :status, 
                                               :notes, :vendor_id, :travel_password_cc, 
-                                              :amount, :contact_name, :sop, :res_ph)
+                                              :amount, :contact_name, :sop, :res_ph, :res_under)
         end
         
 end
