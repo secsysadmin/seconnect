@@ -59,14 +59,10 @@
       </div>
 
       <div class="field">
-        <%= form.label :travel_Password_cc %>
+        <%= form.label :travel_password %>
         <%= form.text_field :travel_password_cc %>
       </div>
 
-      <div class="field">
-        <%= form.label :file %>
-        <%= form.file_field :file %>
-      </div>
 
       <% if User.find(session[:user_id]).permission_type == 'admin' %>
         <div class="field" >
