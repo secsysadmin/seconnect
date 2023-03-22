@@ -75,36 +75,6 @@
         <%= form.text_field :notes%>
       </div>
 
-      <div class="card">
-      Items:
-      <ul>
-        <%= form.fields_for :items do |items_form| %>
-          <li>
-            <%= items_form.label :items_purchased %>
-            <%= items_form.text_field :items_purchased %>
-    
-            <%= items_form.label :budget %>
-            <%= items_form.select :budget, Budget.order(:name).map{ |budget| [budget.name, budget.id] }, include_blank: true, id: "id_of_the_budget_id_select_box" %>
-        
-            <%= items_form.label :category %>
-            <%= items_form.text_field :category%>
-            
-            <%= items_form.label :subcategory %>
-            <%= items_form.text_field :subcategory%>
-            
-            <%= items_form.label :taxcategory %>
-            <%= items_form.text_field :taxcategory %>
-            
-            <%= items_form.label :gift %>
-            <%= items_form.check_box :gift%>
-            
-            <%= items_form.label :cost %>
-            <%= items_form.text_field :cost %>
-
-          </li>
-        <% end %>
-      </ul>
-
       <div class="actions">
         <%= form.submit %>
       </div>
