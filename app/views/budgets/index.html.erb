@@ -22,7 +22,7 @@
               <th>Active</th>
               <th>Locked</th>
               <th>Default</th>
-              <th colspan="2"></th>
+              <th colspan="3"></th>
             </tr>
           </thead>
 
@@ -40,19 +40,24 @@
                 <td class="noSpace"><%= link_to 'Show', budget, {:class => "crudButton"} %></td>
                 <% unless budget.locked %>
                   <td class="noSpace"><%= button_to 'Delete', budget, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                <% else %>
+                  <td></td>
                 <% end %>
               </tr>
             <% end %>
           </tbody>
         </table>
+        <% if budgets.all? { |budget| budget.locked } %>
+          <%= button_to 'Unlock Year', unlock_year_path(year), method: :put, class: "toggle-lock-button" %>
+        <% else %>
+          <%= button_to 'Lock Year', lock_year_path(year), method: :put, class: "toggle-lock-button" %>
+        <% end %>
       </div>
     </div>
   <% end %>
 
   <div class="card-stack">
-    <% if @budgets_by_year[Date.today.year]&.none? { |budget| budget.locked } %>
-      <%= link_to 'New Budget', new_budget_path, {:class => "button"} %>
-    <% end %>
+    <%= link_to 'New Budget', new_budget_path, {:class => "button"} %>
   </div>
 
 </div>
@@ -82,4 +87,14 @@ input[type="checkbox"]:checked ~ .panel {
 .panel {
   display: none;
 }
-</style>
+
+.toggle-lock-button {
+  background-color: orange;
+  border-radius: 5px;
+  border: none;
+  color: white;
+  padding: 5px;
+  margin: 10px;
+  cursor: pointer;
+  font-size: 14px;
+}
