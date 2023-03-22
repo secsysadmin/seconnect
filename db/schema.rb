@@ -64,6 +64,9 @@ ActiveRecord::Schema.define(version: 2022_11_17_230753) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "status"
+    t.string "event_name"
+    t.string "event_date"
+    t.string "sop"
     t.integer "user_id"
   end
 

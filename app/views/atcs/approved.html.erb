@@ -17,6 +17,9 @@
             <th>Email</th>
             <th>Purchase info</th>
             <th>Amount</th>
+            <th>Event Name</th>
+            <th>Event Date</th>
+            <th>Statement of purpose</th>
             <th>Notes</th>
             <th colspan="5"></th>
           </tr>
@@ -33,6 +36,9 @@
               <td><%= atc.email %></td>
               <td><%= atc.purchase_info %></td>
               <td><%= atc.amount %></td>
+              <td><%= atc.event_name %></td>
+              <td><%= atc.event_date %></td>
+              <td><%= atc.sop %></td>
               <td><%= atc.notes %></td>
               <td class='noSpace'><%= link_to 'Show', atc, {:class => 'crudButton'} %></td>
               <td class='noSpace'><%= link_to 'Edit', edit_atc_path(atc), {:class => 'crudButton'} %></td>

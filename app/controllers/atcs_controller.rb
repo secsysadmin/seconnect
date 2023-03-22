@@ -80,7 +80,7 @@ class AtcsController < ApplicationController
      # Only allow a list of trusted parameters through.
      def atc_params
           params.require(:atc).permit(:vendor_id, :user_id, :contact_name, :phone, :email,
-                                      :purchase_info, :amount, :notes, :file, :status
+                                      :purchase_info, :amount, :notes, :file, :status, :event_name, :event_date, :sop
           )
      end
 end
