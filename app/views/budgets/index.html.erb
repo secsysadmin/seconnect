@@ -38,7 +38,9 @@
                 <td><%= budget.locked %></td>
                 <td><%= budget.default %></td>
                 <td class="noSpace"><%= link_to 'Show', budget, {:class => "crudButton"} %></td>
-                <td class="noSpace"><%= button_to 'Delete', budget, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                <% unless budget.locked %>
+                  <td class="noSpace"><%= button_to 'Delete', budget, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                <% end %>
               </tr>
             <% end %>
           </tbody>
@@ -48,7 +50,9 @@
   <% end %>
 
   <div class="card-stack">
-    <%= link_to 'New Budget', new_budget_path, {:class => "button"} %>
+    <% if @budgets_by_year[Date.today.year]&.none? { |budget| budget.locked } %>
+      <%= link_to 'New Budget', new_budget_path, {:class => "button"} %>
+    <% end %>
   </div>
 
 </div>
