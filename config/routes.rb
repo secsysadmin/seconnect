@@ -36,6 +36,10 @@ Rails.application.routes.draw do
   get '/auth/google_oauth2/callback', to: 'sessions#omniauth'
 
   get '/financial_forms', to: 'sessions#financial_forms'
+
+  put 'budgets/lock_year/:year', to: 'budgets#lock_year', as: 'lock_year'
+  put 'budgets/unlock_year/:year', to: 'budgets#unlock_year', as: 'unlock_year'
+
   # delete 'vendors/:id', to: 'vendors#destroy' # destroy
   # delete 'budget_subcategories/:id', to: 'budget_subcategories#destroy' # destroy
   

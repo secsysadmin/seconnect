@@ -6,7 +6,7 @@ class BudgetsController < ApplicationController
      # GET /budgets or /budgets.json
      def index
           @budgets_by_year = Budget.all.group_by { |budget| budget.fiscal_year }.sort.reverse.to_h
-        end
+     end
 
      # GET /budgets/1 or /budgets/1.json
      def show
@@ -18,6 +18,19 @@ class BudgetsController < ApplicationController
      def new
           @budget = Budget.new
      end
+
+     def lock_year
+          year = params[:year].to_i
+          Budget.where("EXTRACT(year FROM created_at) = ?", year).update_all(locked: true)
+          redirect_to budgets_path, notice: "#{year} has been locked."
+        end
+        
+        def unlock_year
+          year = params[:year].to_i
+          Budget.where("EXTRACT(year FROM created_at) = ?", year).update_all(locked: false)
+          redirect_to budgets_path, notice: "#{year} has been unlocked."
+        end
+        
 
      # GET /budgets/1/edit
      def edit; end
