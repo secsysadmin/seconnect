@@ -13,6 +13,7 @@
             <th>Request Submitted By</th>
             <th>Vendor</th>
             <th>Amount</th>
+            <th>Contact Name</th>
             <th>Payment link</th>
             <th>Phone</th>
             <th>Confirmation order</th>
@@ -30,6 +31,8 @@
             <tr class='normalRow'>
               <td><%= User.where(id: creditcard.user_id).last.first_name %></td>
               <td><%= Vendor.where(id: creditcard.vendor_id).last.vendor_name%></td>
+              <td><%= creditcard.amount %></td>
+              <td><%= creditcard.contact_name %></td>
               <td><%= creditcard.payment_link %></td>
               <td><%= creditcard.phone %></td>
               <td><%= creditcard.Confirmation_order %></td>

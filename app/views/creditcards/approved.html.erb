@@ -13,6 +13,7 @@
             <th>Request Submitted By</th>
             <th>Vendor</th>
             <th>Amount</th>
+            <th>Contact Name</th>
             <th>Payment link</th>
             <th>Phone</th>
             <th>Confirmation order</th>
@@ -30,6 +31,8 @@
             <tr class='normalRow'>
               <td><%= User.where(id: creditcard.user_id).last.first_name %></td>
               <td><%= Vendor.where(id: creditcard.vendor_id).last.vendor_name%></td>
+              <td><%= creditcard.amount %></td>
+              <td><%= creditcard.contact_name %></td>
               <td><%= creditcard.payment_link %></td>
               <td><%= creditcard.phone %></td>
               <td><%= creditcard.Confirmation_order %></td>
@@ -39,8 +42,8 @@
               <td><%= creditcard.notes %></td>
               <td class='noSpace'><%= link_to 'Show', creditcard, {:class => "crudButton"} %></td>
               <td class='noSpace'><%= link_to 'Edit', edit_creditcard_path(creditcard), {:class => "crudButton"} %></td>
-              <td class='noSpace'><%= link_to 'View', creditcard.file, {:class => "crudButton"} %></td>
-              <td class='noSpace'><%= link_to 'Download', creditcard.file, download: '', class: 'crudButton' %></td>
+              <!--<td class='noSpace'><%= link_to 'View', creditcard.file, {:class => "crudButton"} %></td>-->
+              <!--<td class='noSpace'><%= link_to 'Download', creditcard.file, download: '', class: 'crudButton' %></td>-->
               <td class='noSpace'><%= button_to 'Delete', creditcard, method: :delete, data: { confirm: 'Are you sure?' } %></td>
             </tr>
           <% end %>

@@ -22,6 +22,7 @@
             <th>Vendor</th>
             <th>Amount</th>
             <th>Payment link</th>
+            <th>Contact Name</th>
             <th>Phone</th>
             <th>Confirmation order</th>
             <th>Reservation name</th>
@@ -40,6 +41,8 @@
             <tr class='normalRow'>
               <td><%= User.find_by(id: creditcard.user_id).first_name %></td>
               <td><%= Vendor.where(id: creditcard.vendor_id).last.vendor_name%></td>
+              <td><%= creditcard.amount %></td>
+              <td><%= creditcard.contact_name %></td>
               <td><%= creditcard.payment_link %></td>
               <td><%= creditcard.phone %></td>
               <td><%= creditcard.Confirmation_order %></td>

@@ -29,6 +29,11 @@
       </div>
 
       <div class="field">
+        <%= form.label :contact_name %>
+        <%= form.text_field :contact_name, :required => true %>
+      </div>
+
+      <div class="field">
         <%= form.label :payment_link %>
         <%= form.text_field :payment_link, :required => true %>
       </div>
