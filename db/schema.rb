@@ -124,6 +124,7 @@ ActiveRecord::Schema.define(version: 2022_11_17_230753) do
     t.string "travel_password_cc"
     t.string "amount"
     t.string "contact_name"
+    t.string "res_ph"
   end
 
   create_table "invoices", force: :cascade do |t|
