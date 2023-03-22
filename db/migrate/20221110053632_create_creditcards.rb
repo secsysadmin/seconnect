@@ -11,6 +11,7 @@ class CreateCreditcards < ActiveRecord::Migration[6.1]
       t.string :travel_password_cc
       t.string :notes
       t.string :amount
+      t.string :sop
 
       t.timestamps
     end

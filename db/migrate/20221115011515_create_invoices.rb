@@ -10,6 +10,7 @@ class CreateInvoices < ActiveRecord::Migration[6.1]
       t.string :payment_method
       t.string :test
       t.string :travel_password
+      t.string :sop
       t.string :notes
 
       t.timestamps

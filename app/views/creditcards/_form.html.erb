@@ -76,6 +76,11 @@
       <% end %>
 
       <div class="field">
+        <%= form.label :sop %>
+        <%= form.text_field :sop, :required => true %>
+      </div>
+
+      <div class="field">
         <%= form.label :notes %>
         <%= form.text_field :notes %>
       </div>
