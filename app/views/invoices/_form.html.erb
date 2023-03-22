@@ -48,7 +48,7 @@
 
       <div class="field">
         <%= form.label :payment_method %>
-        <%= form.text_field :payment_method %>
+        <%= form.select :payment_method, [['Credit Card', 'credit_card'], ['Check', 'check'],['Cash', 'cash']] %>
       </div>
 
       <div class="field">
