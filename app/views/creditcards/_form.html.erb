@@ -15,7 +15,7 @@
     <div class="card">
       <div class="field" >
         <%= form.label :user_id %>
-        <%= form.text_field :user_id, :readonly => true %>
+        <%= form.text_field :User.find(session[:user_id]).first_name, :readonly => true %>
       </div>
 
       <div class="field">
@@ -25,7 +25,7 @@
 
       <div class="field">
         <%= form.label :payment_link %>
-        <%= form.text_field :payment_link %>
+        <%= form.text_field :payment_link, :required => true %>
       </div>
 
       <div class="field">
