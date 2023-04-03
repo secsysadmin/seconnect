@@ -25,6 +25,7 @@
             <th>Status</th>
             <th>Travel Password</th>
             <th>Statement of Purpose</th>
+            <th>Google Drive Link<th>
             <th colspan="5"></th>
           </tr>
         </thead>
@@ -48,7 +49,7 @@
               <td><%= creditcard.travel_password_cc %></td>
               <td><%= creditcard.status %></td>
               <td><%= creditcard.sop %></td>
-              <td><%= creditcard.notes %></td>
+              <td><%= creditcard.google_drive_link %></td>
               <td class='noSpace'><%= link_to 'Show', creditcard, {:class => 'crudButton'} %></td>
               <td class='noSpace'><%= link_to 'Edit', edit_creditcard_path(creditcard), {:class => 'crudButton'} %></td>
               <td class='noSpace'><%= button_to 'Delete', creditcard, method: :delete, data: { confirm: 'Are you sure?' } %></td>
