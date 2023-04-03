@@ -18,6 +18,7 @@
             <th>Gift</th>
             <th>Cost</th>
             <th>Items purchased</th>
+            <th>Google Drive Link</th>
             <th>Status</th>
             <th colspan="5"></th>
           </tr>
@@ -35,7 +36,7 @@
               <td><%= request.gift %></td>
               <td><%= request.cost %></td>
               <td><%= request.items_purchased %></td>
-              
+              <td><%= request.google_drive_link %></td>
               <td><%= request.status %></td>
               <td class='noSpace'><%= link_to 'Show', request, {:class => 'crudButton'} %></td>
               <td class='noSpace'><%= link_to 'Edit', edit_request_path(request), {:class => 'crudButton'} %></td>
