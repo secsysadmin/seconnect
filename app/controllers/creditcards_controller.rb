@@ -87,7 +87,7 @@ class CreditcardsController < ApplicationController
      def creditcard_params
           params.require(:creditcard).permit(:user_id, :payment_link, :phone,
                                               :Confirmation_order, :reservation_name, :status, 
-                                              :notes, :vendor_id, :travel_password_cc, 
+                                              :google_drive_link, :vendor_id, :travel_password_cc, 
                                               :amount, :contact_name, :sop, :res_ph, :res_under, :res_from_date, :res_to_date)
         end
         
