@@ -57,8 +57,8 @@
                 link_to 'Edit', edit_request_path(request), {:class => 'crudButton'} 
               end
               %></td>
-              <!--<td class='noSpace'><%= link_to 'View', request.file, {:class => 'crudButton'} %></td>
-              <td class='noSpace'><%= link_to 'Download', request.file, download: '', class: 'crudButton' %></td>-->
+              <td class='noSpace'><%= link_to 'View', request.google_drive_link, {:class => 'crudButton'} %></td>
+              <!--<td class='noSpace'><%= link_to 'Download', request.file, download: '', class: 'crudButton' %></td>-->
               <td class='noSpace'><%= button_to 'Delete', request, method: :delete, data: { confirm: 'Are you sure?' } %></td>
             </tr>
           <% end %>
