@@ -65,8 +65,8 @@
   </div>
 
   <div class='card-stack'>
-    <td class='noSpace'><%= link_to 'View', request.google_drive_link, {:class => 'crudButton'} %></td>
-    <!--<%= link_to 'Download', @request.file, download: '', class: 'button' %>-->
+    <!--<%= link_to 'View', @request.file, {:class => "button"} %>
+    <%= link_to 'Download', @request.file, download: '', class: 'button' %>-->
     <%= link_to 'Edit', edit_request_path(@request), {:class => "button"} %>
     <%= link_to 'Back', requests_path(session[:user_id]), {:class => "button"} %>
   </div>
