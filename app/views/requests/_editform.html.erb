@@ -15,8 +15,8 @@
     <div class="card">
       <% if @user.permission_type == 'admin' %>
         <div class="field">
-          <%= form.label :google_drive_link %>
-          <%= form.text_area :google_drive_link, :cols => 50, :rows => 20 %>
+          <%= form.label :notes %>
+          <%= form.text_area :notes, :cols => 50, :rows => 20 %>
         </div>
 
         <div class="field">

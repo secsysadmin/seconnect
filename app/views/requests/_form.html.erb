@@ -66,8 +66,13 @@
       <% end %>
 
       <div class="field">
-        <%= form.label :google_drive_link %>
-        <%= form.text_field :google_drive_link%>
+        <%= form.label :file %>
+        <%= form.file_field :file %>
+      </div>
+
+      <div class="field">
+        <%= form.label :notes %>
+        <%= form.text_field :notes%>
       </div>
 
       <div class="actions">
