@@ -5,15 +5,15 @@
   </div>
   <p id="notice"><%= notice %></p>
 
-  <div class="card-stack">
+    <div class="card-stack">
     <% if User.find(session[:user_id]).permission_type == 'admin' %>
       <%= link_to 'Completed Reimbursement Requests', request_approved_path, {:class => 'button'} %>
       <%= link_to 'Pending Reimbursement Requests', request_inprogress_path, {:class => 'button'} %>
+    <% else %>
+      <%= link_to 'Completed Reimbursement Requests', 'https://powerforms.docusign.net/ad8a61ef-f272-451f-ab06-0f7c2da14bef?env=na2&acct=16517be3-5a0c-489f-a422-a57859ee0f60&accountId=16517be3-5a0c-489f-a422-a57859ee0f60&recipientLang=en', {:class => 'button'} %>
+    <% end %>
   </div>
 
-  <div class="card-stack">
-    <%= link_to 'Completed Reimbursement Requests', 'https://powerforms.docusign.net/ad8a61ef-f272-451f-ab06-0f7c2da14bef?env=na2&acct=16517be3-5a0c-489f-a422-a57859ee0f60&accountId=16517be3-5a0c-489f-a422-a57859ee0f60&recipientLang=en', {:class => 'button'} %>
-  </div>
 
   <div class="card-stack">
     <div class="card">
