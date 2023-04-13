@@ -118,20 +118,8 @@ class RequestsController < ApplicationController
      # Only allow a list of trusted parameters through.
      def request_params
           params.require(:request).permit(:user_id, :budget_id, :budget_category_id, :budget_subcategory_id, :tax_category,
-                                          :gift, :cost, :items_purchased, :request_type, :vendor_id, :vendor_name, :status, :notes, :file, :google_drive_link, :address, :phone_num, :uin
+                                          :gift, :cost, :items_purchased, :request_type, :vendor_id, :vendor_name, :status, :notes, :google_drive_link, :address, :phone_num, :uin
           )
      end
 
-     # def download
-     #      # find the file you want to send for download
-     #      @file = File.find(params[:id])
-      
-     #      # send the file as an attachment
-     #      send_file(
-     #        @file.path,
-     #        filename: @file.name,
-     #        type: @file.mime_type,
-     #        disposition: 'attachment'
-     #      )
-     #    end
 end
