@@ -6,7 +6,7 @@
   <p id="notice"><%= notice %></p>
 
     <div class="card-stack">
-    <% if User.find(session[:user_id]).permission_type == 'admin' %>
+    <% if session[:user_id].present? && User.exists?(session[:user_id]) && User.find(session[:user_id]).permission_type == 'admin' %>
       <%= link_to 'Completed Reimbursement Requests', request_approved_path, {:class => 'button'} %>
       <%= link_to 'Pending Reimbursement Requests', request_inprogress_path, {:class => 'button'} %>
     <% else %>
