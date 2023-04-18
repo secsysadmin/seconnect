@@ -14,10 +14,7 @@
       <%= link_to 'Direct Deposit Form', 'https://powerforms.docusign.net/ad8a61ef-f272-451f-ab06-0f7c2da14bef?env=na2&acct=16517be3-5a0c-489f-a422-a57859ee0f60&accountId=16517be3-5a0c-489f-a422-a57859ee0f60&recipientLang=en', {:class => 'button', :target => "_blank"} %>
     </div>
 <% end %>
-
   </div>
-
-
   <div class="card-stack">
     <div class="card">
       <table>
@@ -26,6 +23,7 @@
 
           <tr class="strongRow">
             <th>Submitted By</th>
+            <th>Name</th>
             <th>Budget</th>
             <th>Tax category</th>
             <th>Gift</th>
@@ -51,6 +49,7 @@
           <% @requests.each do |request|%>
             <tr class="normalRow">
               <td><%= User.where(id: request.user_id).last.first_name %></td>
+              <td><%= request.name %></td>
               <td><%= Budget.find(BudgetCategory.find(BudgetSubcategory.find(request.budget_subcategory_id).budget_category_id).budget_id).name %></td>
               <td><%= request.tax_category %></td>
               <td><%= request.gift %></td>
