@@ -27,13 +27,14 @@
           <tr class="strongRow">
             <th>Submitted By</th>
             <th>Budget</th>
-            <th>Category</th>
-            <th>Subcategory</th>
             <th>Tax category</th>
             <th>Gift</th>
             <th>Cost</th>
             <th>Items purchased</th>
             <th>Google Drive Link</th>
+            <th>Address</th>
+            <th>Phone #</th>
+            <th>UIN</th>
             <th>Status</th>
             <% if @user.permission_type == 'admin' %>
               <th colspan="5"></th>
@@ -51,8 +52,6 @@
             <tr class="normalRow">
               <td><%= User.where(id: request.user_id).last.first_name %></td>
               <td><%= Budget.find(BudgetCategory.find(BudgetSubcategory.find(request.budget_subcategory_id).budget_category_id).budget_id).name %></td>
-              <td><%= BudgetCategory.find(BudgetSubcategory.find(request.budget_subcategory_id).budget_category_id).name %></td>
-              <td><%= BudgetSubcategory.find(request.budget_subcategory_id).name %></td>
               <td><%= request.tax_category %></td>
               <td><%= request.gift %></td>
               <td><%= request.cost %></td>
