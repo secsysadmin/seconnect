@@ -47,10 +47,11 @@
         <%= @request.items_purchased %>
       </p>
 
-      <p>
-        <strong>Vendor:</strong>
-        <%= Vendor.find(@request.vendor_id).vendor_name %>
-      </p>
+     <p>
+      <strong>Vendor:</strong>
+      <%= @request.vendor.present? ? Vendor.find(@request.vendor_id).vendor_name : '' %>
+    </p>
+
 
       <p>
         <strong>Status:</strong>

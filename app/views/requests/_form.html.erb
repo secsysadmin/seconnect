@@ -52,6 +52,8 @@
         <%= form.label :vendor_id %>
         <%= form.select :vendor_id, Vendor.order(:vendor_name).map { |vendor| [vendor.vendor_name, vendor.id] }, include_blank: true, id: "id_of_the_vendor_id_select_box" %>
       </div>
+
+      <p>**Vendor required for company reimbursements**</p>
       
       <% if User.find(session[:user_id]).permission_type == 'admin' %>
         <div class="field" >
