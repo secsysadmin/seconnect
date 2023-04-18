@@ -62,24 +62,9 @@ class RequestsController < ApplicationController
      end
 
      def show
-          if session[:user_id]
-            @current_user = User.find(session[:user_id])
-            if @current_user.permission_type == 'admin' || @current_user.permission_type == 'user'
-              @user = User.find(params[:id])
-              if @user
-               @budget_subcategory = BudgetSubcategory.find(@request.budget_subcategory_id)
-               @budget_category = BudgetCategory.find(@budget_subcategory.budget_category_id)
-               @budget = @budget_category.budget
-              else
-                # handle case where @user is nil
-                redirect_to(root_url) and return
-              end
-            else
-              redirect_to(root_url) and return
-            end
-          else
-            redirect_to(root_url) and return
-          end
+          @budget_subcategory = BudgetSubcategory.find(@request.budget_subcategory_id)
+          @budget_category = BudgetCategory.find(@budget_subcategory.budget_category_id)
+          @budget = @budget_category.budget   
         end
         
         
