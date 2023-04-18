@@ -40,7 +40,7 @@ class RequestsController < ApplicationController
      def index
           if session[:user_id]
             @current_user = User.find(session[:user_id])
-            if @current_user.permission_type == 'admin'
+            if @current_user.permission_type == 'user' || @current_user.permission_type == 'admin'
               @requests = Request.all
             else
               redirect_to(root_url) and return
