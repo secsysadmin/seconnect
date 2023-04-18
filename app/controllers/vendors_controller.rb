@@ -2,6 +2,7 @@
 
 class VendorsController < ApplicationController
      before_action :set_vendor, only: %i[show edit update destroy]
+     before_action :require_user
 
      # GET /vendors or /vendors.json
      def index
@@ -74,15 +75,26 @@ class VendorsController < ApplicationController
 
      private
 
-     # Use callbacks to share common setup or constraints between actions.
-     def set_vendor
-          @vendor = Vendor.find(params[:id])
-     end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_vendor
+    @vendor = Vendor.find(params[:id])
+  end
 
-     # Only allow a list of trusted parameters through.
-     def vendor_params
-          params.require(:vendor).permit(:vendor_name, :street_address, :city, :state, :zip_code,
-                                         :email, :phone_number, :tax_id
-          )
-     end
+  # Only allow a list of trusted parameters through.
+  def vendor_params
+    params.require(:vendor).permit(:vendor_name, :street_address, :city, :state, :zip_code,
+                                   :email, :phone_number, :tax_id
+    )
+  end
+
+  # Add the require_user method
+  def require_user
+    unless session[:user_id] && (User.find(session[:user_id]).permission_type == 'user' || User.find(session[:user_id]).permission_type == 'admin')
+      redirect_to(root_url) and return
+    end
+  end
 end
+
+
+
+
