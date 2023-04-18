@@ -63,13 +63,15 @@ class RequestsController < ApplicationController
 
      def show
           if session[:user_id]
-            @current_user = User.find_by(id: session[:user_id]) # find_by returns nil if record not found
-            if @current_user && (@current_user.permission_type == 'admin' || @current_user.permission_type == 'user')
-              @user = User.find_by(id: params[:id])
+            @current_user = User.find(session[:user_id])
+            if @current_user.permission_type == 'admin' || @current_user.permission_type == 'user'
+              @user = User.find(params[:id])
               if @user
-                # user found, proceed with rendering the page
+               @budget_subcategory = BudgetSubcategory.find(@request.budget_subcategory_id)
+               @budget_category = BudgetCategory.find(@budget_subcategory.budget_category_id)
+               @budget = @budget_category.budget
               else
-                flash[:error] = 'User not found'
+                # handle case where @user is nil
                 redirect_to(root_url) and return
               end
             else
@@ -79,6 +81,7 @@ class RequestsController < ApplicationController
             redirect_to(root_url) and return
           end
         end
+        
         
 
      # GET /requests/1/edit
