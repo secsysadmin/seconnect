@@ -38,6 +38,7 @@ class RequestsController < ApplicationController
 
      # GET /requests/1 or /requests/1.json
      def index
+          @user = User.find(session[:user_id])
           if session[:user_id]
             @current_user = User.find(session[:user_id])
             if @current_user.permission_type == 'user' || @current_user.permission_type == 'admin'
@@ -67,6 +68,7 @@ class RequestsController < ApplicationController
           @budget = @budget_category.budget   
         end
         
+     
         
 
      # GET /requests/1/edit
