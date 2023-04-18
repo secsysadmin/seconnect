@@ -37,14 +37,11 @@ class RequestsController < ApplicationController
      end
 
      # GET /requests/1 or /requests/1.json
-     def show
+     def index
           if session[:user_id]
-            @current_user = User.find(session[:user_id]) # keep track of session user
-            # check for proper permissions
-            if @current_user.permission_type == 'user'
-              @budget_subcategory = BudgetSubcategory.find(@request.budget_subcategory_id)
-              @budget_category = BudgetCategory.find(@budget_subcategory.budget_category_id)
-              @budget = @budget_category.budget
+            @current_user = User.find(session[:user_id])
+            if @current_user.permission_type == 'admin'
+              @requests = Request.all
             else
               redirect_to(root_url) and return
             end
@@ -52,6 +49,7 @@ class RequestsController < ApplicationController
             redirect_to(root_url) and return
           end
         end
+        
         
 
      # GET /requests/new
