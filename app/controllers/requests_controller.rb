@@ -63,17 +63,23 @@ class RequestsController < ApplicationController
 
      def show
           if session[:user_id]
-               @current_user = User.find(session[:user_id]) # keep track of session user
-               # check for proper permissions
-               if @current_user.permission_type == 'admin' || @current_user.permission_type == 'user'
-                    @user = User.find(params[:id])
-               else
-                    redirect_to(root_url) and return
-               end
+            @current_user = User.find_by(id: session[:user_id]) # find_by returns nil if record not found
+            if @current_user && (@current_user.permission_type == 'admin' || @current_user.permission_type == 'user')
+              @user = User.find_by(id: params[:id])
+              if @user
+                # user found, proceed with rendering the page
+              else
+                flash[:error] = 'User not found'
+                redirect_to(root_url) and return
+              end
+            else
+              redirect_to(root_url) and return
+            end
           else
-               redirect_to(root_url) and return
+            redirect_to(root_url) and return
           end
-     end
+        end
+        
 
      # GET /requests/1/edit
      def edit
