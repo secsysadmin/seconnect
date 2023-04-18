@@ -38,10 +38,21 @@ class RequestsController < ApplicationController
 
      # GET /requests/1 or /requests/1.json
      def show
-          @budget_subcategory = BudgetSubcategory.find(@request.budget_subcategory_id)
-          @budget_category = BudgetCategory.find(@budget_subcategory.budget_category_id)
-          @budget = @budget_category.budget
-     end
+          if session[:user_id]
+            @current_user = User.find(session[:user_id]) # keep track of session user
+            # check for proper permissions
+            if @current_user.permission_type == 'user'
+              @budget_subcategory = BudgetSubcategory.find(@request.budget_subcategory_id)
+              @budget_category = BudgetCategory.find(@budget_subcategory.budget_category_id)
+              @budget = @budget_category.budget
+            else
+              redirect_to(root_url) and return
+            end
+          else
+            redirect_to(root_url) and return
+          end
+        end
+        
 
      # GET /requests/new
      def new
