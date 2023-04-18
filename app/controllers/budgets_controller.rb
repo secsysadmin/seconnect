@@ -2,6 +2,7 @@
 
 class BudgetsController < ApplicationController
      before_action :set_budget, only: %i[show edit update destroy]
+     before_action :require_user
 
      # GET /budgets or /budgets.json
      def index
@@ -96,15 +97,22 @@ class BudgetsController < ApplicationController
 
      private
 
-     # Use callbacks to share common setup or constraints between actions.
-     def set_budget
-          @budget = Budget.find(params[:id])
-     end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_budget
+    @budget = Budget.find(params[:id])
+  end
 
-     # Only allow a list of trusted parameters through.
-     def budget_params
-          params.require(:budget).permit(:name, :amount, :fiscal_year, :budgeted, :active, :locked,
-                                         :default
-          )
-     end
+  # Only allow a list of trusted parameters through.
+  def budget_params
+    params.require(:budget).permit(:name, :amount, :fiscal_year, :budgeted, :active, :locked,
+                                   :default
+    )
+  end
+
+  # Add the require_user method
+  def require_user
+    unless session[:user_id] && (User.find(session[:user_id]).permission_type == 'user' || User.find(session[:user_id]).permission_type == 'admin')
+      redirect_to(root_url) and return
+    end
+  end
 end
