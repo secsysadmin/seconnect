@@ -61,6 +61,20 @@ class RequestsController < ApplicationController
           @request = Request.new(user_id: @user.id, status: 'pending')
      end
 
+     def show
+          if session[:user_id]
+               @current_user = User.find(session[:user_id]) # keep track of session user
+               # check for proper permissions
+               if @current_user.permission_type == 'admin' || @current_user.permission_type == 'user'
+                    @user = User.find(params[:id])
+               else
+                    redirect_to(root_url) and return
+               end
+          else
+               redirect_to(root_url) and return
+          end
+     end
+
      # GET /requests/1/edit
      def edit
           @user = User.find(session[:user_id]) if session[:user_id]
