@@ -9,7 +9,20 @@ class InvoicesController < ApplicationController
      end
 
      # GET /invoices/1 or /invoices/1.json
-     def show; end
+     def show
+          @user = User.find(session[:user_id])
+          if session[:user_id]
+            @current_user = User.find(session[:user_id])
+            if @current_user.permission_type == 'user' || @current_user.permission_type == 'admin'
+              @invoice = Invoice.find(params[:id])
+            else
+              redirect_to(root_url) and return
+            end
+          else
+            redirect_to(root_url) and return
+          end
+        end
+        
 
      # GET /invoices/new
      def new
