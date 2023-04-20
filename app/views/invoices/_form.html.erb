@@ -77,15 +77,16 @@
     
             <%= items_form.label :budget %>
             <%= items_form.select :budget, Budget.order(:name).map{ |budget| [budget.name, budget.id] }, include_blank: true, id: "id_of_the_budget_id_select_box" %>
-
+        
             <div class="field">
               <%= items_form.label :category %>
-              <%= items_form.select :category_id, @categories.map{ |category| [category.name, category.id] }, include_blank: "- Please select -", onchange: "this.form.submit()" %>
+              <%= items_form.select :category_id, options_from_collection_for_select(@categories, "id", "name", params[:category_id]), prompt: "- Please select -",
+              onchange: "this.form.submit()" %>
 
               <%= items_form.label :subcategory %>
-              <%= items_form.select :subcategory_id, @subcategories.map{ |subcategory| [subcategory.name, subcategory.id] }, include_blank: "- Subcategory -", onchange: "this.form.submit()" %>
+              <%= items_form.select :subcategory_id, options_from_collection_for_select(@subcategories, "id", "name", params[:subcategory_id]), prompt: "- Subcategory -",
+              onchange: "this.form.submit()" %>
             </div>
-
 
             
             <%= items_form.label :taxcategory %>
