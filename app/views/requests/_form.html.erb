@@ -27,7 +27,6 @@
         <%= form.label :budget_id %>
         <%= select_tag :budget_id, options_from_collection_for_select(@budgets, "id", "name", params[:budget_id]), prompt: "- Please select -",
         onchange: "this.form.submit()"%>
-        
         <%= select_tag :budget_category_id, options_from_collection_for_select(@budget_categories, "id", "name", params[:budget_category_id]), prompt: "- Category -",
         onchange: "this.form.submit()"%>
         <%= form.select :budget_subcategory_id, options_from_collection_for_select(@budget_subcategories, "id", "name", params[:budget_subcategory_id]), prompt: "- Subcategory -",
