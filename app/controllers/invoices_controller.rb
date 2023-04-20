@@ -28,7 +28,7 @@ class InvoicesController < ApplicationController
      # POST /invoices or /invoices.json
      def create
        @invoice = Invoice.new(invoice_params)
-   
+       @invoice.user_id = current_user.id
        respond_to do |format|
          if @invoice.save
            format.html do
