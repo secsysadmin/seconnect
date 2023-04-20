@@ -78,9 +78,9 @@
             <%= items_form.label :budget %>
             <%= items_form.select :budget, Budget.order(:name).map{ |budget| [budget.name, budget.id] }, include_blank: true, id: "id_of_the_budget_id_select_box" %>
         
-            <%= items_form.label :budget_category %>
-            <%= items_form.select :budget_category, @budget_categories.order(:name).map{ |budget_category| [budget_category.name, budget_category.id] }, include_blank: true, id: "id_of_the_budget_category_id_select_box" %>
-
+            <%= items_form.label :category %>
+            <%= items_form.select :category, Category.order(:name).map{ |category| [category.name, category.id] }, include_blank: true, id: "id_of_the_category_id_select_box" %>
+            
             <%= items_form.label :subcategory %>
             <%= items_form.text_field :subcategory%>
             
