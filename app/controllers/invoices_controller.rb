@@ -15,6 +15,8 @@ class InvoicesController < ApplicationController
      # GET /invoices/new
      def new
        @invoice = Invoice.new
+       @categories = Category.order(:name)
+       @subcategories = Subcategory.order(:name)
        @invoice.items << Item.new
        @invoice.items << Item.new
        @invoice.items << Item.new
