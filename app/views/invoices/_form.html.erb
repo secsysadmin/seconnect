@@ -75,7 +75,7 @@
             <%= items_form.label :items_purchased %>
             <%= items_form.text_field :items_purchased %>
     
-            <%= items_form.label :budget %>
+            <%= items_form.label :budget_id %>
             <%= items_form.collection_select :budget_id, Budget.order(:name), :id, :name, { include_blank: true }, { id: "budget-select" } %>
 
             <%= items_form.label :category %>
