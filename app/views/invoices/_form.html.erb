@@ -77,12 +77,13 @@
     
             <%= items_form.label :budget %>
             <%= items_form.select :budget, Budget.order(:name).map{ |budget| [budget.name, budget.id] }, include_blank: true, id: "id_of_the_budget_id_select_box" %>
-        
+
             <%= items_form.label :category %>
-            <%= items_form.text_field :category%>
-            
+            <%= items_form.select :category, BudgetCategory.order(:name).map{ |category| [category.name, category.id] }, include_blank: true, id: "id_of_the_category_id_select_box" %>
+
             <%= items_form.label :subcategory %>
-            <%= items_form.text_field :subcategory%>
+            <%= items_form.select :subcategory, BudgetSubcategory.order(:name).map{ |subcategory| [subcategory.name, subcategory.id] }, include_blank: true, id: "id_of_the_subcategory_id_select_box" %>
+
             
             <%= items_form.label :taxcategory %>
             <%= items_form.text_field :taxcategory %>
