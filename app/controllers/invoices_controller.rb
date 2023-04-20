@@ -15,6 +15,7 @@ class InvoicesController < ApplicationController
      # GET /invoices/new
      def new
        @invoice = Invoice.new
+       @budget_categories = BudgetCategory.all
        @invoice.items << Item.new
        @invoice.items << Item.new
        @invoice.items << Item.new
