@@ -24,6 +24,10 @@
         </thead>
 
         <tbody>
+        <% if User.find(session[:user_id]).permission_type == 'user' %>
+          <% @invoices = @invoices.where('user_id = ?', User.find(session[:user_id]).id) %>
+        <% end %>
+        
           <% @invoices.each do |invoice| %>
             <tr class='normalRow'>
               <td><%= Vendor.where(id: invoice.vendor_id).last.vendor_name %></td>
