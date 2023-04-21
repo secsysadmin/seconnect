@@ -76,58 +76,57 @@
             <%= items_form.text_field :items_purchased %>
     
            <%= items_form.label :budget %>
-            <%= items_form.select :budget, Budget.order(:name).map{ |budget| [budget.name, budget.id] }, include_blank: true, id: "id_of_the_budget_id_select_box" %>
+            <%= items_form.select :budget, Budget.order(:name).map{ |budget| [budget.name, budget.id] }, include_blank: true, class: "budget_select" %>
 
             <%= items_form.label :category %>
-            <%= items_form.select :category, BudgetCategory.order(:name).map{ |category| [category.name, category.id, {"data-budget-id" => category.budget_id}] }, include_blank: true, id: "id_of_the_category_id_select_box" %>
+            <%= items_form.select :category, BudgetCategory.order(:name).map{ |category| [category.name, category.id, {"data-budget-id" => category.budget_id}] }, include_blank: true, class: "category_select" %>
 
             <%= items_form.label :subcategory %>
-            <%= items_form.select :subcategory, BudgetSubcategory.order(:name).map{ |subcategory| [subcategory.name, subcategory.id, {"data-category-id" => subcategory.budget_category_id}] }, include_blank: true, id: "id_of_the_subcategory_id_select_box" %>
+            <%= items_form.select :subcategory, BudgetSubcategory.order(:name).map{ |subcategory| [subcategory.name, subcategory.id, {"data-category-id" => subcategory.budget_category_id}] }, include_blank: true, class: "subcategory_select" %>
             <script>
             $(document).ready(function() {
-  const $budgetSelect = $("#id_of_the_budget_id_select_box");
-  const $categorySelect = $("#id_of_the_category_id_select_box");
-  const $subcategorySelect = $("#id_of_the_subcategory_id_select_box");
+            $(".budget_select").on("change", function() {
+              const selectedBudgetId = $(this).val();
+              const $categorySelect = $(this).closest("li").find(".category_select");
+              const $subcategorySelect = $(this).closest("li").find(".subcategory_select");
 
-  $budgetSelect.on("change", function() {
-    const selectedBudgetId = $(this).val();
+              $categorySelect.find("option").each(function() {
+                const $option = $(this);
+                const optionBudgetId = $option.data("budget-id");
 
-    $categorySelect.find("option").each(function() {
-      const $option = $(this);
-      const optionBudgetId = $option.data("budget-id");
+                if (selectedBudgetId === "" || optionBudgetId === undefined || optionBudgetId == selectedBudgetId) {
+                  $option.show();
+                } else {
+                  $option.hide();
+                }
+              });
 
-      if (selectedBudgetId === "" || optionBudgetId === undefined || optionBudgetId == selectedBudgetId) {
-        $option.show();
-      } else {
-        $option.hide();
-      }
-    });
+              // Reset category and subcategory selections
+              $categorySelect.val("").change();
+              $subcategorySelect.val("").change();
+            });
 
-    // Reset category and subcategory selections
-    $categorySelect.val("").change();
-    $subcategorySelect.val("").change();
-  });
+            $(".category_select").on("change", function() {
+              const selectedCategoryId = $(this).val();
+              const $subcategorySelect = $(this).closest("li").find(".subcategory_select");
 
-  $categorySelect.on("change", function() {
-    const selectedCategoryId = $(this).val();
+              $subcategorySelect.find("option").each(function() {
+                const $option = $(this);
+                const optionCategoryId = $option.data("category-id");
 
-    $subcategorySelect.find("option").each(function() {
-      const $option = $(this);
-      const optionCategoryId = $option.data("category-id");
+                if (selectedCategoryId === "" || optionCategoryId === undefined || optionCategoryId == selectedCategoryId) {
+                  $option.show();
+                } else {
+                  $option.hide();
+                }
+              });
 
-      if (selectedCategoryId === "" || optionCategoryId === undefined || optionCategoryId == selectedCategoryId) {
-        $option.show();
-      } else {
-        $option.hide();
-      }
-    });
+              // Reset subcategory selection
+              $subcategorySelect.val("").change();
+            });
+          });
 
-    // Reset subcategory selection
-    $subcategorySelect.val("").change();
-  });
-});
-
-            </script>
+                      </script>
 
 
             <%= items_form.label :taxcategory %>
